@@ -124,7 +124,7 @@
         <h2 class="menu-title">Pengaturan akun</h2>
         <ul>
             <li>
-                <a href="#">
+                <a href="{{ route('profile') }}" @class(['active' => Route::is('profile')])>
                     <x-tabler-user class="icon-5" />
                     <span>Edit profile</span>
                 </a>

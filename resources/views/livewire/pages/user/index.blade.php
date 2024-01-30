@@ -3,10 +3,10 @@
 
     <div class="flex justify-between">
         <input type="text" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
-        <button class="btn btn-primary">
+        <label class="btn btn-primary" for="createUser">
             <x-tabler-circle-plus class="icon-5" />
             <span>Create User</span>
-        </button>
+        </label>
     </div>
 
     <div class="table-wrapper">
@@ -63,4 +63,6 @@
             </tbody>
         </table>
     </div>
+
+    @livewire('pages.user.create')
 </div>
