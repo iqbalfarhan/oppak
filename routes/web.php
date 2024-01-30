@@ -24,4 +24,7 @@ Route::middleware("guest")->group(function () {
 Route::middleware("auth")->group(function () {
     Route::get("/home", \App\Livewire\Pages\Home::class)->name("home");
     Route::get("/profile", \App\Livewire\Pages\User\Profile::class)->name("profile");
+
+    Route::get("/user", \App\Livewire\Pages\User\Index::class)->name("user.index");
+    Route::get("/tamu", \App\Livewire\Pages\Tamu\Index::class)->name("tamu.index");
 });

@@ -8,7 +8,7 @@
         <h2 class="menu-title">Dashboard laporan</h2>
         <ul>
             <li>
-                <a href="#" @class(['active', Route::is('home')])>
+                <a href="{{ route('home') }}" @class(['active' => Route::is('home')])>
                     <x-tabler-dashboard class="icon-5" />
                     <span>Dashboard</span>
                 </a>
@@ -71,7 +71,7 @@
         <h2 class="menu-title">Buku tamu site</h2>
         <ul>
             <li>
-                <a href="#">
+                <a href="{{ route('tamu.index') }}" @class(['active' => Route::is('tamu.index')])>
                     <x-tabler-id class="icon-5" />
                     <span>Buku tamu</span>
                 </a>
@@ -95,7 +95,7 @@
             </li>
             <li></li>
             <li>
-                <a href="#">
+                <a href="{{ route('user.index') }}" @class(['active' => Route::is('user.index')])>
                     <x-tabler-users class="icon-5" />
                     <span>User management</span>
                 </a>
