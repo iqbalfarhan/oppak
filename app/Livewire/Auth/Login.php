@@ -3,12 +3,14 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Login extends Component
 {
-    public $username;
-    public $password;
+    use LivewireAlert;
+    public $username = "";
+    public $password = "";
 
     public function login(){
         $valid = $this->validate([
@@ -17,7 +19,11 @@ class Login extends Component
         ]);
 
         if (Auth::attempt($valid)) {
-            return redirect()->route('home');
+            $this->flash('success', 'Berhasil login sebagai '.$this->username);
+            $this->redirect('home', navigate:true);
+        }
+        else{
+            $this->alert('error', 'User tidak ditemukan');
         }
     }
 

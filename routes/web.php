@@ -23,8 +23,18 @@ Route::middleware("guest")->group(function () {
 
 Route::middleware("auth")->group(function () {
     Route::get("/home", \App\Livewire\Pages\Home::class)->name("home");
+    Route::get("/dokumentasi", \App\Livewire\Pages\Dokumentasi::class)->name("dokumentasi");
+
+    // user
+    Route::get("/user", \App\Livewire\Pages\User\Index::class)->name("user.index");
     Route::get("/profile", \App\Livewire\Pages\User\Profile::class)->name("profile");
 
-    Route::get("/user", \App\Livewire\Pages\User\Index::class)->name("user.index");
+    // tamu
     Route::get("/tamu", \App\Livewire\Pages\Tamu\Index::class)->name("tamu.index");
+
+    // role
+    Route::get("/role", \App\Livewire\Pages\Role\Index::class)->name("role.index");
+
+    // lokasi
+    Route::get("/lokasi", \App\Livewire\Pages\Lokasi\Index::class)->name("lokasi.index");
 });

@@ -8,7 +8,7 @@
         <h2 class="menu-title">Dashboard laporan</h2>
         <ul>
             <li>
-                <a href="{{ route('home') }}" @class(['active' => Route::is('home')])>
+                <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
                     <x-tabler-dashboard class="icon-5" />
                     <span>Dashboard</span>
                 </a>
@@ -71,7 +71,7 @@
         <h2 class="menu-title">Buku tamu site</h2>
         <ul>
             <li>
-                <a href="{{ route('tamu.index') }}" @class(['active' => Route::is('tamu.index')])>
+                <a href="{{ route('tamu.index') }}" @class(['active' => Route::is('tamu.index')]) wire:navigate>
                     <x-tabler-id class="icon-5" />
                     <span>Buku tamu</span>
                 </a>
@@ -95,19 +95,19 @@
             </li>
             <li></li>
             <li>
-                <a href="{{ route('user.index') }}" @class(['active' => Route::is('user.index')])>
+                <a href="{{ route('user.index') }}" @class(['active' => Route::is('user.index')]) wire:navigate>
                     <x-tabler-users class="icon-5" />
                     <span>User management</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('lokasi.index') }}" @class(['active' => Route::is('lokasi.index')]) wire:navigate>
                     <x-tabler-building class="icon-5" />
                     <span>Site management</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('role.index') }}" @class(['active' => Route::is('role.index')]) wire:navigate>
                     <x-tabler-asterisk class="icon-5" />
                     <span>Role & permission</span>
                 </a>
@@ -124,22 +124,22 @@
         <h2 class="menu-title">Pengaturan akun</h2>
         <ul>
             <li>
-                <a href="{{ route('profile') }}" @class(['active' => Route::is('profile')])>
+                <a href="{{ route('profile') }}" @class(['active' => Route::is('profile')]) wire:navigate>
                     <x-tabler-user class="icon-5" />
                     <span>Edit profile</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('dokumentasi') }}" @class(['active' => Route::is('dokumentasi')]) wire:navigate>
                     <x-tabler-book class="icon-5" />
                     <span>Dokumentasi</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <button wire:click="logout">
                     <x-tabler-logout class="icon-5" />
                     <span>Logout</span>
-                </a>
+                </button>
             </li>
         </ul>
     </li>

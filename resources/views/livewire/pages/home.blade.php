@@ -1,3 +1,3 @@
-<div>
-    {{-- The whole world belongs to you. --}}
+<div class="page-wrapper">
+    @livewire('partial.header')
 </div>

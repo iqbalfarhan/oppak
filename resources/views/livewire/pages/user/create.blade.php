@@ -1,34 +1,83 @@
 <div>
-    <input type="checkbox" id="createUser" class="modal-toggle" @checked($show) />
+    <input type="checkbox" id="createUser" class="modal-toggle" wire:model.live="show" />
     <div class="modal" role="dialog">
-        <form class="modal-box max-w-sm" wire:submit="simpan">
+        <form class="modal-box max-w-3xl" wire:submit="simpan">
             <div class="divider">
-                <h3 class="font-bold text-lg text-center">Create new user</h3>
+                <h3 class="font-bold text-lg text-center">{{ isset($form->user) ? 'Edit' : 'Create new' }} user</h3>
             </div>
-            <div class="py-4 space-y-2">
-                <div class="form-control">
-                    <label for="" class="label">
-                        <span class="label-text">Nama user</span>
-                    </label>
-                    <input type="text" class="input input-bordered" placeholder="Nama user" wire:model="form.name">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="py-4 space-y-2">
+                    <div class="form-control">
+                        <label for="" class="label">
+                            <span class="label-text">Nama user</span>
+                            @error('form.name')
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            @enderror
+                        </label>
+                        <input type="text" class="input input-bordered @error('form.name') input-error @enderror"
+                            placeholder="Nama user" wire:model.live="form.name">
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">
+                            <span class="label-text">Username</span>
+                            @error('form.username')
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            @enderror
+                        </label>
+                        <input type="text" class="input input-bordered @error('form.username') input-error @enderror"
+                            placeholder="Username" wire:model="form.username">
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">
+                            <span class="label-text">Password</span>
+                            @error('form.password')
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            @enderror
+                        </label>
+                        <input type="password"
+                            class="input input-bordered @error('form.password') input-error @enderror"
+                            placeholder="Password" wire:model="form.password">
+                    </div>
                 </div>
-                <div class="form-control">
-                    <label for="" class="label">
-                        <span class="label-text">Username</span>
-                    </label>
-                    <input type="text" class="input input-bordered" placeholder="Username"
-                        wire:model="form.username">
-                </div>
-                <div class="form-control">
-                    <label for="" class="label">
-                        <span class="label-text">Password</span>
-                    </label>
-                    <input type="password" class="input input-bordered" placeholder="Password"
-                        wire:model="form.password">
+                <div class="py-4 space-y-2">
+                    <div class="form-control">
+                        <label for="" class="label">
+                            <span class="label-text">Lokasi</span>
+                            @error('form.lokasi_id')
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            @enderror
+                        </label>
+                        <select class="select select-bordered @error('form.lokasi_id') select-error @enderror"
+                            wire:model="form.lokasi_id">
+                            <option value="">Pilih lokasi</option>
+                            @foreach ($lokasis as $witel => $lokasi)
+                                <optgroup label="{{ $witel }}">
+                                    @foreach ($lokasi as $site)
+                                        <option value="{{ $site->id }}">{{ $site->name }}</option>
+                                    @endforeach
+                                </optgroup>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="" class="label">
+                            <span class="label-text">Access roles</span>
+                            @error('form.roles')
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            @enderror
+                        </label>
+                        @foreach ($roles as $role)
+                            <label class="flex gap-2 items-center">
+                                <input type="checkbox" wire:model.live="form.roles" value="{{ $role }}"
+                                    class="toggle toggle-xs checked:toggle-primary">
+                                {{ $role }}
+                            </label>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div class="modal-action justify-between">
-                <label for="createUser" class="btn">Close</label>
+                <button class="btn" type="button" wire:click="resetForm">Close</button>
                 <button class="btn btn-primary">Simpan</button>
             </div>
         </form>

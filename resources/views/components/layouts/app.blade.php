@@ -17,7 +17,7 @@
                     @livewire('partial.navbar')
                     {{ $slot }}
                 </div>
-                <div class="drawer-side">
+                <div class="drawer-side scrollbar-hide">
                     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                     @livewire('partial.sidebar')
                 </div>
@@ -25,13 +25,14 @@
         @endauth
 
         @guest
-            <div class="w-full min-h-screen bg-base-200 grid place-content-center p-4">
-                operasional site PAK
-                <div class="card w-96 bg-base-100">
-                    {{ $slot }}
-                </div>
+            <div class="w-full min-h-screen bg-base-200 grid place-content-center p-4  space-y-4">
+                {{ $slot }}
             </div>
         @endguest
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <x-livewire-alert::scripts />
+
     </body>
 
 </html>

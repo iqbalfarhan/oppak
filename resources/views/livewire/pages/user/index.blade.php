@@ -1,12 +1,12 @@
 <div class="page-wrapper">
     @livewire('partial.header')
 
-    <div class="flex justify-between">
-        <input type="text" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
-        <label class="btn btn-primary" for="createUser">
+    <div class="flex flex-col md:flex-row justify-between">
+        <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
+        <button class="btn btn-primary" wire:click="$dispatch('createUser')">
             <x-tabler-circle-plus class="icon-5" />
             <span>Create User</span>
-        </label>
+        </button>
     </div>
 
     <div class="table-wrapper">
@@ -14,7 +14,8 @@
             <thead>
                 <th>No</th>
                 <th>Nama user</th>
-                <th>created at</th>
+                <th>Lokasi jaga</th>
+                <th>Roles</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -36,25 +37,26 @@
                                 </div>
                             </div>
                         </td>
-                        <td>{{ $data->created_at->diffForHumans() }}</td>
+                        <td>
+                            {{ $data->lokasi->label ?? '' }}
+                        </td>
+                        <td>{{ implode(', ', $data->getRoleNames()->toArray()) }}</td>
                         <td>
                             <div class="flex gap-1">
-                                <button class="btn btn-xs btn-neutral">
+                                <button class="btn btn-xs btn-neutral"
+                                    wire:click="$dispatch('resetUser', {user:{{ $data->id }}})">
                                     <x-tabler-key class="icon-4" />
-                                    <span>Reset</span>
+                                    <span class="hidden md:flex">Reset</span>
                                 </button>
-                                <button class="btn btn-xs btn-info">
-                                    <x-tabler-folder class="icon-4" />
-                                    <span>Detail</span>
-                                </button>
-                                <button class="btn btn-xs btn-success">
+                                <button class="btn btn-xs btn-success"
+                                    wire:click="$dispatch('editUser', {user:{{ $data->id }}})">
                                     <x-tabler-edit class="icon-4" />
-                                    <span>Edit</span>
+                                    <span class="hidden md:flex">Edit</span>
                                 </button>
                                 <button class="btn btn-xs btn-error" wire:click="deleteUser({{ $data->id }})"
                                     wire:confirm="anda yakin akan menghapus data ini.">
                                     <x-tabler-trash class="icon-4" />
-                                    <span>Delete</span>
+                                    <span class="hidden md:flex">Delete</span>
                                 </button>
                             </div>
                         </td>
@@ -65,4 +67,5 @@
     </div>
 
     @livewire('pages.user.create')
+    @livewire('pages.user.password')
 </div>
