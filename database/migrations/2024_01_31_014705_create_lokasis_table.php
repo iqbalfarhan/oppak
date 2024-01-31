@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('witel');
             $table->string('name');
+            $table->string('type')->nullable()->default('pln');
             $table->timestamps();
         });
     }

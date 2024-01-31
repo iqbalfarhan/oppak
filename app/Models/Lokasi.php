@@ -12,6 +12,7 @@ class Lokasi extends Model
     protected $fillable = [
         'witel',
         'name',
+        'type',
     ];
 
     public function users(){

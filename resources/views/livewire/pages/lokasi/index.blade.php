@@ -2,17 +2,23 @@
     @livewire('partial.header')
     <div class="flex flex-col md:flex-row justify-between">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
+
+        <label for="createLokasi" class="btn">
+            <x-tabler-circle-plus class="icon-5" />
+            <span>Create lokasi</span>
+        </label>
     </div>
     <div class="table-wrapper">
         <table class="table">
             @foreach ($datas as $witel => $sites)
                 <thead class="bg-base-200">
-                    <th colspan="2">{{ $witel }}</th>
+                    <th colspan="100%">{{ $witel }}</th>
                 </thead>
                 <tbody>
                     @foreach ($sites as $site)
                         <tr>
                             <td>{{ $site->name }}</td>
+                            <td>{{ $site->type ?? '' }}</td>
                             <td>
                                 <div class="flex gap-1 justify-end">
                                     <button class="btn btn-xs btn-success"
@@ -33,4 +39,6 @@
             @endforeach
         </table>
     </div>
+
+    @livewire('pages.lokasi.create')
 </div>

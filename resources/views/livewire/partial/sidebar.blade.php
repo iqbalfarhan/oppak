@@ -113,7 +113,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/adminer" target="_blank">
                     <x-tabler-database class="icon-5" />
                     <span>Adminer Database</span>
                 </a>

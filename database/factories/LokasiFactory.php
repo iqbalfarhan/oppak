@@ -18,7 +18,8 @@ class LokasiFactory extends Factory
     {
         return [
             'witel' => fake()->randomElement(['BALIKPAPAN', 'SAMARINDA', 'KALBAR', 'KALTARA', 'KALSEL', 'KALTENG']),
-            'name' => fake()->city
+            'name' => fake()->city,
+            'type' => fake()->randomElement(['pln', 'solar']),
         ];
     }
 }
