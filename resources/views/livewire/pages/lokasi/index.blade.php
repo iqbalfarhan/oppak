@@ -3,7 +3,7 @@
     <div class="flex flex-col md:flex-row justify-between">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
 
-        <label for="createLokasi" class="btn">
+        <label for="createLokasi" class="btn border-2 border-base-300">
             <x-tabler-circle-plus class="icon-5" />
             <span>Create lokasi</span>
         </label>
@@ -11,7 +11,7 @@
     <div class="table-wrapper">
         <table class="table">
             @foreach ($datas as $witel => $sites)
-                <thead class="bg-base-200">
+                <thead>
                     <th colspan="100%">{{ $witel }}</th>
                 </thead>
                 <tbody>

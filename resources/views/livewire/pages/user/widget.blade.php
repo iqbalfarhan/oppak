@@ -7,7 +7,7 @@
         </div>
         <div>
             <h3 class="font-semibold">{{ $user->name }}</h3>
-            <span class="text-xs opacity-50">{{ $user->lokasi ? $user->lokasi->name : $user->username }}</span>
+            <span class="text-xs opacity-50">{{ $user->lokasi ? $user->lokasi->label : $user->username }}</span>
         </div>
     </div>
     <div class="card-body bg-base-200">

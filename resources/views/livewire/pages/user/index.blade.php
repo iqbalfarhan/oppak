@@ -3,7 +3,7 @@
 
     <div class="flex flex-col md:flex-row justify-between">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
-        <button class="btn btn-primary" wire:click="$dispatch('createUser')">
+        <button class="btn border-2 border-base-300" wire:click="$dispatch('createUser')">
             <x-tabler-circle-plus class="icon-5" />
             <span>Create User</span>
         </button>

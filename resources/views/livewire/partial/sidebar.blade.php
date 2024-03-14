@@ -37,7 +37,7 @@
         <h2 class="menu-title">Ticketing</h2>
         <ul>
             <li>
-                <a href="#">
+                <a href="{{ route('ticket.index') }}" @class(['active' => Route::is('ticket.index')]) wire:navigate>
                     <x-tabler-ticket class="icon-5" />
                     <span>Data ticketing</span>
                 </a>
@@ -74,6 +74,12 @@
                 <a href="{{ route('tamu.index') }}" @class(['active' => Route::is('tamu.index')]) wire:navigate>
                     <x-tabler-id class="icon-5" />
                     <span>Buku tamu</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('tamu.index') }}" @class(['active' => Route::is('tamu.index')]) wire:navigate>
+                    <x-tabler-edit class="icon-5" />
+                    <span>Input buku tamu</span>
                 </a>
             </li>
         </ul>

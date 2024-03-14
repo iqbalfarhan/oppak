@@ -37,4 +37,7 @@ Route::middleware("auth")->group(function () {
 
     // lokasi
     Route::get("/lokasi", \App\Livewire\Pages\Lokasi\Index::class)->name("lokasi.index");
+
+    // ticket
+    Route::get("/ticket", \App\Livewire\Pages\Ticket\Index::class)->name("ticket.index");
 });
