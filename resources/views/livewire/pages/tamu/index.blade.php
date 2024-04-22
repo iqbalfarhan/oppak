@@ -32,13 +32,13 @@
                                         <span>{{ $data->nama[0] }}</span>
                                     </div>
                                 </button>
-                                <div class="flex flex-col gap-1 justify-center">
+                                <div class="flex flex-col justify-center">
                                     <div>{{ $data->nama }}</div>
                                     <div class="text-xs opacity-75">({{ $data->perusahaan }})</div>
                                 </div>
                             </div>
                         </td>
-                        <td class="whitespace-normal w-80">{{ $data->keperluan }}</td>
+                        <td class="whitespace-normal min-w-80 text-xs">{{ $data->keperluan }}</td>
                         <td class="text-center">{{ $data->masuk->format('H:i') }}</td>
                         <td>
                             <div class="flex gap-1 justify-center">
@@ -55,10 +55,9 @@
                         </td>
                         <td>
                             <div class="flex gap-1 justify-center">
-                                <button class="btn btn-bordered btn-xs btn-square"
-                                    wire:click="$dispatch('exitTamu', {tamu: {{ $data->id }}})">
+                                <a href="" class="btn btn-bordered btn-xs btn-square">
                                     <x-tabler-edit class="size-4" />
-                                </button>
+                                </a>
                                 <button class="btn btn-bordered btn-xs btn-square"
                                     wire:click="$dispatch('deleteTamu', {tamu: {{ $data->id }}})">
                                     <x-tabler-trash class="size-4" />

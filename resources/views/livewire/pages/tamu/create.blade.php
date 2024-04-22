@@ -7,13 +7,6 @@
         <form class="card-body" wire:submit="simpan">
             <div class="card-title">Input tamu baru</div>
             <div class="flex flex-col gap-2 py-6">
-                <div class="flex justify-center items-center">
-                    <div class="avatar">
-                        <div class="w-32 rounded-xl input-bordered">
-                            <img src="{{ url('nouser.jpg') }}" />
-                        </div>
-                    </div>
-                </div>
                 <label class="form-control w-full">
                     <div class="label">
                         <span class="label-text">Nama tamu</span>
@@ -99,8 +92,8 @@
             </div>
             <div class="card-actions">
                 <button class="btn btn-primary">
-                    <x-tabler-check class="size-5" />
-                    <span>Simpan</span>
+                    <x-tabler-arrow-right class="size-5" />
+                    <span>Selanjutnya</span>
                 </button>
             </div>
         </form>

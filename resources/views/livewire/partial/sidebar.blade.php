@@ -12,9 +12,26 @@
             @endcan
             @can('tamu.dashboard')
                 <li>
-                    <a href="{{ route('tamu.dashboard') }}" @class(['active' => Route::is(['tamu.dashboard', 'tamu.index'])]) wire:navigate>
+                    <a href="{{ route('tamu.dashboard') }}" @class([
+                        'active' => Route::is([
+                            'tamu.dashboard',
+                            'tamu.index',
+                            'tamu.create',
+                            'tamu.show',
+                        ]),
+                    ]) wire:navigate>
                         <x-tabler-users class="size-5" />
                         <span>Visitors Book</span>
+                    </a>
+                </li>
+            @endcan
+            @can('tamu.dashboard')
+                <li>
+                    <a href="{{ route('tamu.dashboard') }}" @class([
+                        'active' => Route::is('home'),
+                    ]) wire:navigate>
+                        <x-tabler-tags class="size-5" />
+                        <span>Ticketing</span>
                     </a>
                 </li>
             @endcan

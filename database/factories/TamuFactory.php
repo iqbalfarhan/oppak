@@ -24,6 +24,7 @@ class TamuFactory extends Factory
             'keperluan' => fake()->sentence(),
             'tipe_identitas' => fake()->randomElement(['ktp', 'sim']),
             'nomor_identitas' => fake()->randomNumber(),
+            'notelp' => fake()->phoneNumber(),
             'masuk' => fake()->dateTime(),
         ];
     }

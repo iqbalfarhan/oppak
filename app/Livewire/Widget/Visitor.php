@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class Visitor extends Component
 {
+    protected $listeners = ['reload' => '$refresh'];
+
     public $number = 0;
     public $color = "base";
     public $title = "Visitor widget";

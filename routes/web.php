@@ -28,4 +28,5 @@ Route::middleware('auth')->group(function(){
     Route::middleware('can:tamu.index')->get('/tamu', \App\Livewire\Pages\Tamu\Index::class)->name('tamu.index');
     Route::middleware('can:tamu.create')->get('/tamu/create', \App\Livewire\Pages\Tamu\Create::class)->name('tamu.create');
     Route::middleware('can:tamu.dashboard')->get('/tamu/dashboard', \App\Livewire\Pages\Tamu\Dashboard::class)->name('tamu.dashboard');
+    Route::middleware('can:tamu.show')->get('/tamu/{tamu}', \App\Livewire\Pages\Tamu\Show::class)->name('tamu.show');
 });

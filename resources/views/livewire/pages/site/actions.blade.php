@@ -11,8 +11,7 @@
                     <select type="text" placeholder="Type here" @class([
                         'select select-bordered w-full',
                         'select-error' => $errors->first('form.witel'),
-                    ])
-                        wire:model.live="form.witel">
+                    ]) wire:model="form.witel">
                         <option value="">Pilih witel</option>
                         @foreach ($witels as $witel)
                             <option value="{{ $witel }}">{{ $witel }}</option>
@@ -31,8 +30,7 @@
                     <input type="text" placeholder="Type here" @class([
                         'input input-bordered w-full',
                         'input-error' => $errors->first('form.name'),
-                    ])
-                        wire:model.live="form.name" />
+                    ]) wire:model="form.name" />
                     @error('form.name')
                         <div class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>
@@ -47,7 +45,7 @@
                         'select select-bordered w-full',
                         'select-error' => $errors->first('form.listrik'),
                     ])
-                        wire:model.live="form.listrik">
+                        wire:model="form.listrik">
                         <option value="">Pilih site</option>
                         @foreach ($listrik as $lstrk)
                             <option value="{{ $lstrk }}">{{ $lstrk }}</option>

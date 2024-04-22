@@ -13,7 +13,8 @@ class SiteForm extends Form
     public $listrik;
     public ?Site $site;
 
-    public function setSite(Site $site){
+    public function setSite(Site $site)
+    {
         $this->site = $site;
 
         $this->name = $site->name;
@@ -21,7 +22,8 @@ class SiteForm extends Form
         $this->listrik = $site->listrik;
     }
 
-    public function store(){
+    public function store()
+    {
         $valid = $this->validate([
             'name' => 'required',
             'witel' => 'required',
@@ -32,7 +34,8 @@ class SiteForm extends Form
         $this->reset();
     }
 
-    public function update(){
+    public function update()
+    {
         $valid = $this->validate([
             'name' => 'required',
             'witel' => 'required',

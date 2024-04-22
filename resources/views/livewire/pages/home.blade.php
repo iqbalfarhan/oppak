@@ -4,4 +4,10 @@
         @livewire('widget.userinfo')
         @livewire('widget.tanggal')
     </div>
+
+    <div class="grid md:grid-cols-3 gap-3 md:gap-4">
+        @foreach ($witels as $witel)
+            @livewire('widget.laporan-rutin')
+        @endforeach
+    </div>
 </div>

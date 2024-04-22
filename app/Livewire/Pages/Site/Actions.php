@@ -13,10 +13,12 @@ class Actions extends Component
     use LivewireAlert;
     public $show = false;
     public SiteForm $form;
+    public ?Site $site;
 
     #[On('createSite')]
     public function createSite()
     {
+        $this->form->reset();
         $this->show = true;
     }
 
@@ -43,14 +45,16 @@ class Actions extends Component
             $this->form->store();
         }
 
+        $this->closeModal();
         $this->alert('success', 'Data site berhasil disimpan');
         $this->dispatch('reload');
     }
 
-    public function closeModal(Site $site)
+    public function closeModal()
     {
+        $this->show = false;
         $this->form->reset();
-        $this->reset();
+        $this->dispatch('reload');
     }
 
     public function render()
