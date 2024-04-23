@@ -21,17 +21,53 @@
                         ]),
                     ]) wire:navigate>
                         <x-tabler-users class="size-5" />
-                        <span>Visitors Book</span>
+                        <span>Buku tamu</span>
+                    </a>
+                </li>
+            @endcan
+            @can('ticket.index')
+                <li>
+                    <a href="{{ route('ticket.index') }}" @class([
+                        'active' => Route::is('ticket.index'),
+                    ]) wire:navigate>
+                        <x-tabler-tags class="size-5" />
+                        <span>Ticketing</span>
+                    </a>
+                </li>
+            @endcan
+        </ul>
+    </li>
+    <li>
+        <h2 class="menu-title">Buat Laporan</h2>
+        <ul>
+            @can('home')
+                <li>
+                    <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
+                        <x-tabler-home class="size-5" />
+                        <span>Laporan Rutin</span>
                     </a>
                 </li>
             @endcan
             @can('tamu.dashboard')
                 <li>
                     <a href="{{ route('tamu.dashboard') }}" @class([
-                        'active' => Route::is('home'),
+                        'active' => Route::is([
+                            'tamu.dashboard',
+                            'tamu.index',
+                            'tamu.create',
+                            'tamu.show',
+                        ]),
                     ]) wire:navigate>
-                        <x-tabler-tags class="size-5" />
-                        <span>Ticketing</span>
+                        <x-tabler-users class="size-5" />
+                        <span>Laporan Insidensial</span>
+                    </a>
+                </li>
+            @endcan
+            @can('home')
+                <li>
+                    <a href="{{ route('home') }}" @class(['active' => Route::is()]) wire:navigate>
+                        <x-tabler-home class="size-5" />
+                        <span>Pergantian Rutin</span>
                     </a>
                 </li>
             @endcan

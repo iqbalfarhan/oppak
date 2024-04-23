@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Tamu extends Model
 {
@@ -37,5 +38,9 @@ class Tamu extends Model
 
     public function site(){
         return $this->belongsTo(Site::class);
+    }
+
+    public function getImagesAttribute(){
+        return Storage::allFiles('tamu/'.$this->id);
     }
 }

@@ -7,7 +7,7 @@
         <div class="card-body py-5 bg-base-200/50">
             <div class="card-actions justify-between items-center">
                 <h3 class="text-lg font-bold">{{ $tamu->nama }}</h3>
-                <button class="btn btn-success">
+                <button class="btn btn-success" wire:click="$dispatch('editTamu', {tamu: {{ $tamu->id }}})">
                     <x-tabler-edit class="size-5" />
                     <span>Edit tamu</span>
                 </button>
@@ -33,15 +33,23 @@
         <div class="card-body py-5 bg-base-200/50">
             <div class="card-actions justify-between items-center">
                 <h3 class="text-lg font-bold">Photo kegiatan dan dokumen tamu</h3>
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" wire:click="$dispatch('addPhoto', {tamu: {{ $tamu->id }}})">
                     <x-tabler-camera class="size-5" />
                     <span>Tambah photo</span>
                 </button>
             </div>
         </div>
         <div class="card-body space-y-4">
-            <div class="flex flex-wrap gap-4">
-                Belum ada photo
+            <div class="flex flex-wrap gap-2">
+                @forelse ($tamu->images as $item)
+                    <div class="avatar" wire:click="$dispatch('showPreview', {url : '{{ $item }}'})">
+                        <div class="w-32 rounded-xl btn-bordered">
+                            <img src="{{ Storage::url($item) }}" />
+                        </div>
+                    </div>
+                @empty
+                    Belum ada photo
+                @endforelse
             </div>
         </div>
     </div>
@@ -65,4 +73,6 @@
     @endif
 
     @livewire('pages.tamu.actions')
+    @livewire('pages.tamu.create')
+    @livewire('pages.tamu.add-photo')
 </div>

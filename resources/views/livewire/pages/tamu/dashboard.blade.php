@@ -33,10 +33,10 @@
                 <p class="text-sm line-clamp-2">Input tamu sebelum masuk ke site atau STO. Input nama, nomor
                     identitas, perusahaan, nomor telepon dan keperluan kunjungan.</p>
                 <div class="card-actions">
-                    <a href="{{ route('tamu.create') }}" class="btn btn-primary btn-sm gap-1" wire:navigate>
+                    <button class="btn btn-primary btn-sm gap-1" wire:click="$dispatch('createTamu')">
                         <x-tabler-plus class="size-4" />
                         <span>Input visitor</span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -63,6 +63,7 @@
             <thead>
                 <th>No</th>
                 <th>STO / Site</th>
+                <th>Photo kegiatan</th>
                 <th>Nama Tamu</th>
                 <th>Keperluan</th>
                 <th class="text-center">Masuk</th>
@@ -73,6 +74,18 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->site->name }}</td>
+                        <td>
+                            <div class="avatar-group -space-x-3 rtl:space-x-reverse">
+                                @foreach ($data->images as $gambar)
+                                    <div class="avatar"
+                                        wire:click="$dispatch('showPreview', {url : '{{ $gambar }}'})">
+                                        <div class="w-6">
+                                            <img src="{{ Storage::url($gambar) }}" />
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </td>
                         <td>
                             <a href="{{ route('tamu.show', $data) }}" class="btn btn-xs btn-bordered" wire:navigate>
                                 <span>{{ $data->nama }}</span>
@@ -104,4 +117,5 @@
     </div>
 
     @livewire('pages.tamu.actions')
+    @livewire('pages.tamu.create')
 </div>

@@ -25,18 +25,22 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>
-                            <div class="flex gap-3 items-center">
-                                <button class="avatar placeholder"
-                                    wire:click="$dispatch('previewTamu', {tamu: {{ $data->id }}})">
+                            <button class="flex gap-3 items-center"
+                                wire:click="$dispatch('previewTamu', {tamu: {{ $data->id }}})">
+                                <div @class(['avatar', 'placeholder' => !$data->images])>
                                     <div class="w-8 bg-base-300 rounded-full">
-                                        <span>{{ $data->nama[0] }}</span>
+                                        @if ($data->images)
+                                            <img src="{{ Storage::url($data->images[0]) }}" alt="">
+                                        @else
+                                            <span>{{ $data->nama[0] }}</span>
+                                        @endif
                                     </div>
-                                </button>
-                                <div class="flex flex-col justify-center">
+                                </div>
+                                <div class="flex flex-col items-start">
                                     <div>{{ $data->nama }}</div>
                                     <div class="text-xs opacity-75">({{ $data->perusahaan }})</div>
                                 </div>
-                            </div>
+                            </button>
                         </td>
                         <td class="whitespace-normal min-w-80 text-xs">{{ $data->keperluan }}</td>
                         <td class="text-center">{{ $data->masuk->format('H:i') }}</td>
@@ -55,9 +59,10 @@
                         </td>
                         <td>
                             <div class="flex gap-1 justify-center">
-                                <a href="" class="btn btn-bordered btn-xs btn-square">
+                                <button class="btn btn-bordered btn-xs btn-square"
+                                    wire:click="$dispatch('editTamu', {tamu: {{ $data->id }}})">
                                     <x-tabler-edit class="size-4" />
-                                </a>
+                                </button>
                                 <button class="btn btn-bordered btn-xs btn-square"
                                     wire:click="$dispatch('deleteTamu', {tamu: {{ $data->id }}})">
                                     <x-tabler-trash class="size-4" />
@@ -71,5 +76,6 @@
     </div>
 
     @livewire('pages.tamu.actions')
+    @livewire('pages.tamu.create')
 
 </div>

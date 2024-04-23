@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Route::get('logout',  function(){
@@ -29,4 +29,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware('can:tamu.create')->get('/tamu/create', \App\Livewire\Pages\Tamu\Create::class)->name('tamu.create');
     Route::middleware('can:tamu.dashboard')->get('/tamu/dashboard', \App\Livewire\Pages\Tamu\Dashboard::class)->name('tamu.dashboard');
     Route::middleware('can:tamu.show')->get('/tamu/{tamu}', \App\Livewire\Pages\Tamu\Show::class)->name('tamu.show');
+
+    Route::middleware('can:ticket.index')->get('/ticket', \App\Livewire\Pages\Ticket\Index::class)->name('ticket.index');
+    Route::middleware('can:ticket.show')->get('/ticket/{ticket}', \App\Livewire\Pages\Ticket\Show::class)->name('ticket.show');
 });

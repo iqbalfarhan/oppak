@@ -7,7 +7,7 @@
         <form class="card-body" wire:submit="simpan">
             <div class="flex w-full justify-center">
                 <div class="avatar" onclick="document.getElementById('pickPhoto').click()">
-                    <div class="w-28 rounded-full shadow-lg">
+                    <div class="w-32 rounded-full btn-bordered">
                         <img src="{{ $photo ? $photo->temporaryUrl() : $user->image }}" />
                     </div>
                 </div>

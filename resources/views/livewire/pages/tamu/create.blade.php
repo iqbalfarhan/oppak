@@ -1,10 +1,7 @@
-<div class="page-wrapper">
-    @livewire('partial.header', [
-        'title' => 'Input tamu',
-    ])
-
-    <div class="card max-w-md mx-auto">
-        <form class="card-body" wire:submit="simpan">
+<div>
+    <input type="checkbox" class="modal-toggle" @checked($show) />
+    <div class="modal" role="dialog">
+        <form class="modal-box max-w-sm" wire:submit="simpan">
             <div class="card-title">Input tamu baru</div>
             <div class="flex flex-col gap-2 py-6">
                 <label class="form-control w-full">
@@ -90,7 +87,8 @@
                 </label>
 
             </div>
-            <div class="card-actions">
+            <div class="modal-action justify-between">
+                <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
                 <button class="btn btn-primary">
                     <x-tabler-arrow-right class="size-5" />
                     <span>Selanjutnya</span>

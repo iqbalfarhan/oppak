@@ -28,6 +28,7 @@
 
     .input-bordered,
     .textarea-bordered,
+    .file-input-bordered,
     .select-bordered,
     .btn-bordered {
         @apply border-2 border-base-300;
@@ -35,6 +36,7 @@
 
     .input-error,
     .textarea-error,
+    .file-input-error,
     .select-error {
         @apply border-2 border-error;
     }
@@ -45,6 +47,9 @@
 
     .modal {
         @apply backdrop-blur-sm;
+    }
+    .modal-box {
+        @apply scrollbar-hide;
     }
 
     .card {

@@ -13,12 +13,6 @@ class Actions extends Component
     public $show = false;
     public ?Tamu $tamu;
 
-    #[On('createTamu')]
-    public function createTamu()
-    {
-        $this->show = true;
-    }
-
     #[On('previewTamu')]
     public function previewTamu(Tamu $tamu)
     {

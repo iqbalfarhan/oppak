@@ -1,10 +1,10 @@
 <div class="card card-compact">
     <div class="card-body flex flex-row gap-4 items-center">
-        <div class="avatar">
-            <div class="w-12 rounded-full">
+        <button class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $user->photo }}'})">
+            <div class="w-12 rounded-full btn-bordered">
                 <img src="{{ $user->image }}" alt="">
             </div>
-        </div>
+        </button>
         <div class="flex flex-col flex-1">
             <div class="text-lg font-bold">{{ $user->name }}</div>
             <div class="text-sm">{{ $user->email }}</div>

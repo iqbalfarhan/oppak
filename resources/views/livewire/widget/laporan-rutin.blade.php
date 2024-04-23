@@ -2,10 +2,13 @@
     <div class="card-body">
         <div class="flex flex-row justify-between items-end">
             <h3 class="text-3xl font-bold">100%</h3>
-            <div>23 site</div>
+            <div class="text-xs">22 Laporan</div>
         </div>
     </div>
     <div class="card-body py-0 bg-base-200/50">
-        <span class="text-xs">BALIKPAPAN</span>
+        <div class="flex justify-between text-xs">
+            <span>BALIKPAPAN</span>
+            <span>23 Site</span>
+        </div>
     </div>
 </div>

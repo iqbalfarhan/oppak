@@ -20,6 +20,17 @@ class TamuForm extends Form
 
     public ?Tamu $tamu;
 
+    public $rules = [
+        'site_id' => 'required',
+        'nama' => 'required',
+        'perusahaan' => 'required',
+        'keperluan' => 'required',
+        'tipe_identitas' => 'required',
+        'nomor_identitas' => 'required',
+        'notelp' => 'required',
+        'masuk' => 'required',
+    ];
+
     public function setTamu(Tamu $tamu)
     {
         $this->tamu = $tamu;

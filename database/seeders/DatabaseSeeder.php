@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PermissionSeeder::class,
             SiteSeeder::class,
-            TamuSeeder::class
+            TamuSeeder::class,
+            TicketSeeder::class,
         ]);
     }
 }
