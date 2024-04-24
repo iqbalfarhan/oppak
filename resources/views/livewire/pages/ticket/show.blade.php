@@ -57,7 +57,7 @@
             </div>
             @if ($progress == 100)
                 <div class="card-body space-y-2">
-                    <h3 class="font-bold text-lg">Pengajuan close ticket</h3>
+                    <h3 class="font-bold">Pengajuan close ticket</h3>
                     <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
                         ({{ $ticket->user->name }}).
                     </p>
@@ -67,6 +67,10 @@
                             <span>Ajukan close ticket</span>
                         </button>
                     </div>
+                </div>
+            @else
+                <div class="card-body py-4">
+                    <p class="text-xs opacity-75">Bisa mengajukan close ticket jika progress sudah 100%.</p>
                 </div>
             @endif
         </div>
