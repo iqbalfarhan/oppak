@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('perangkat');
             $table->text('uraian');
             $table->boolean('done')->default(false);
+            $table->boolean('pengajuan')->default(false);
             $table->timestamps();
         });
     }

@@ -82,7 +82,7 @@
                             <span>A</span>
                         </div>
                     </div>
-                    <div class="chat-bubble">It was said that you would, destroy the Sith, not join them.</div>
+                    <div class="chat-bubble">{{ fake()->sentence(20) }}</div>
                 </div>
                 <div class="chat chat-start">
                     <div class="chat-image avatar placeholder">
@@ -90,7 +90,7 @@
                             <span>A</span>
                         </div>
                     </div>
-                    <div class="chat-bubble">It was you who would bring balance to the Force</div>
+                    <div class="chat-bubble">{{ fake()->sentence() }}</div>
                 </div>
                 <div class="chat chat-end">
                     <div class="chat-image avatar placeholder">
@@ -98,7 +98,7 @@
                             <span>A</span>
                         </div>
                     </div>
-                    <div class="chat-bubble">Not leave it in Darkness</div>
+                    <div class="chat-bubble">{{ fake()->sentence() }}</div>
                 </div>
             </div>
         </div>
