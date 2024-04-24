@@ -5,7 +5,7 @@
             @can('home')
                 <li>
                     <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
-                        <x-tabler-home class="size-5" />
+                        <x-tabler-calendar class="size-5" />
                         <span>Laporan Rutin</span>
                     </a>
                 </li>
@@ -21,16 +21,16 @@
                         ]),
                     ]) wire:navigate>
                         <x-tabler-users class="size-5" />
-                        <span>Buku tamu</span>
+                        <span>Buku Tamu</span>
                     </a>
                 </li>
             @endcan
             @can('ticket.index')
                 <li>
                     <a href="{{ route('ticket.index') }}" @class([
-                        'active' => Route::is('ticket.index'),
+                        'active' => Route::is(['ticket.index', 'ticket.show']),
                     ]) wire:navigate>
-                        <x-tabler-tags class="size-5" />
+                        <x-tabler-ticket class="size-5" />
                         <span>Ticketing</span>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
         <ul>
             @can('home')
                 <li>
-                    <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
+                    <a href="{{ route('home') }}" wire:navigate>
                         <x-tabler-home class="size-5" />
                         <span>Laporan Rutin</span>
                     </a>
@@ -50,14 +50,7 @@
             @endcan
             @can('tamu.dashboard')
                 <li>
-                    <a href="{{ route('tamu.dashboard') }}" @class([
-                        'active' => Route::is([
-                            'tamu.dashboard',
-                            'tamu.index',
-                            'tamu.create',
-                            'tamu.show',
-                        ]),
-                    ]) wire:navigate>
+                    <a href="{{ route('home') }}" wire:navigate>
                         <x-tabler-users class="size-5" />
                         <span>Laporan Insidensial</span>
                     </a>
@@ -65,7 +58,7 @@
             @endcan
             @can('home')
                 <li>
-                    <a href="{{ route('home') }}" @class(['active' => Route::is()]) wire:navigate>
+                    <a href="{{ route('home') }}" wire:navigate>
                         <x-tabler-home class="size-5" />
                         <span>Pergantian Rutin</span>
                     </a>

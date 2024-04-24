@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
-    Route::middleware('can:home')->get('/home', \App\Livewire\Pages\Home::class)->name('home');
+    Route::middleware('can:home')->get('/home', \App\Livewire\Pages\Home\Index::class)->name('home');
     Route::middleware('can:profile')->get('/profile', \App\Livewire\Pages\Profile::class)->name('profile');
     Route::middleware('can:about')->get('/about', \App\Livewire\Pages\About::class)->name('about');
     Route::middleware('can:user.index')->get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Site extends Model
 {
@@ -28,4 +29,8 @@ class Site extends Model
         'pln',
         'solar cell'
     ];
+
+    public function getLabelAttribute(){
+        return $this->witel ." - ". $this->name. " (".Str::upper($this->listrik).")";
+    }
 }

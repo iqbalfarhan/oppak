@@ -63,7 +63,7 @@
             <thead>
                 <th>No</th>
                 <th>STO / Site</th>
-                <th>Photo kegiatan</th>
+                <th>Kegiatan</th>
                 <th>Nama Tamu</th>
                 <th>Keperluan</th>
                 <th class="text-center">Masuk</th>
