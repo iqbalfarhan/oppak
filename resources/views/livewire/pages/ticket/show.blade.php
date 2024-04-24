@@ -103,19 +103,21 @@
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-body space-y-2">
-                <h3 class="font-bold text-lg">Batalkan penerimaan df</h3>
-                <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
-                    ({{ $ticket->user->name }}).
-                </p>
-                <div class="card-actions">
-                    <button class="btn btn-primary btn-block">
-                        <x-tabler-exclamation-circle class="size-5" />
-                        <span>Ajukan close ticket</span>
-                    </button>
+        @if ($ticket->done)
+            <div class="card">
+                <div class="card-body space-y-2">
+                    <h3 class="font-bold text-lg">Batalkan penerimaan df</h3>
+                    <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
+                        ({{ $ticket->user->name }}).
+                    </p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-block">
+                            <x-tabler-exclamation-circle class="size-5" />
+                            <span>Ajukan close ticket</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>
