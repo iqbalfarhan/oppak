@@ -17,6 +17,7 @@ class Ticket extends Model
         'perangkat',
         'uraian',
         'done',
+        'pengajuan'
     ];
 
     public function user()
