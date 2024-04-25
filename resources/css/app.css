@@ -67,4 +67,8 @@
     .sidebar {
         @apply border-r-2 border-base-300 bg-base-100;
     }
+
+    .btn-base {
+        @apply bg-base-100;
+    }
 }

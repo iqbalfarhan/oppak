@@ -9,8 +9,6 @@ class Index extends Component
 {
     public function render()
     {
-        return view('livewire.pages.home.index', [
-            'witels' => Site::$witels
-        ]);
+        return view('livewire.pages.home.index');
     }
 }

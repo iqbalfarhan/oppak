@@ -6,7 +6,7 @@
                 <li>
                     <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
                         <x-tabler-calendar class="size-5" />
-                        <span>Laporan Rutin</span>
+                        <span>Dashboard</span>
                     </a>
                 </li>
             @endcan
@@ -40,9 +40,9 @@
     <li>
         <h2 class="menu-title">Buat Laporan</h2>
         <ul>
-            @can('home')
+            @can('laporan.index')
                 <li>
-                    <a href="{{ route('home') }}" wire:navigate>
+                    <a href="{{ route('laporan.index') }}" @class(['active' => Route::is(['laporan.index', 'laporan.show'])]) wire:navigate>
                         <x-tabler-home class="size-5" />
                         <span>Laporan Rutin</span>
                     </a>

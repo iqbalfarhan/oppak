@@ -32,4 +32,8 @@ Route::middleware('auth')->group(function(){
 
     Route::middleware('can:ticket.index')->get('/ticket', \App\Livewire\Pages\Ticket\Index::class)->name('ticket.index');
     Route::middleware('can:ticket.show')->get('/ticket/{ticket}', \App\Livewire\Pages\Ticket\Show::class)->name('ticket.show');
+
+    Route::middleware('can:laporan.index')->get('/laporan', \App\Livewire\Pages\Laporan\Index::class)->name('laporan.index');
+    Route::middleware('can:laporan.create')->get('/laporan/create', \App\Livewire\Pages\Laporan\Create::class)->name('laporan.create');
+    Route::middleware('can:laporan.show')->get('/laporan/{laporan}', \App\Livewire\Pages\Laporan\Show::class)->name('laporan.show');
 });
