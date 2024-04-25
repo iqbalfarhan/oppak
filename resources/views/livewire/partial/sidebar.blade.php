@@ -48,9 +48,9 @@
                     </a>
                 </li>
             @endcan
-            @can('tamu.dashboard')
+            @can('insidensial.index')
                 <li>
-                    <a href="{{ route('home') }}" wire:navigate>
+                    <a href="{{ route('insidensial.index') }}" @class(['active' => Route::is('insidensial.index')]) wire:navigate>
                         <x-tabler-users class="size-5" />
                         <span>Laporan Insidensial</span>
                     </a>

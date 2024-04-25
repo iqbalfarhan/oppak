@@ -52,6 +52,6 @@ class User extends Authenticatable
 
     public function getImageAttribute()
     {
-        return $this->photo ? Storage::url($this->photo) : url('nouser.jpg');
+        return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
 }

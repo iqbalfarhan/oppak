@@ -49,13 +49,11 @@ class Actions extends Component
 
         $this->alert('success', 'Setting berhasil diperbarui');
         $this->dispatch('reload');
-
-        $this->reset();
+        $this->closeModal();
     }
 
     public function closeModal(){
         $this->show = false;
-        $this->form->reset();
         $this->dispatch('reload');
     }
 
