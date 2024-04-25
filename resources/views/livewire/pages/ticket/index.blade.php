@@ -1,7 +1,7 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Ticketing'])
 
-    <div class="flex justify-between">
+    <div class="flex flex-col md:flex-row gap-2 justify-between">
         <input type="text" class="input input-bordered" placeholder="Pencarian" />
         <button class="btn btn-primary">
             <x-tabler-plus class="size-5" />

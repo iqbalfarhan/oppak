@@ -1,7 +1,7 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Site management'])
 
-    <div class="flex justify-between">
+    <div class="flex flex-col md:flex-row gap-2 justify-between">
         <input type="text" class="input input-bordered" placeholder="Pencarian">
         @can('site.create')
             <button class="btn btn-primary" wire:click="$dispatch('createSite')">

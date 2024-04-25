@@ -14,8 +14,8 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-3 gap-6">
-        <div class="col-span-full table-wrapper">
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="md:col-span-full table-wrapper">
             <table class="table">
                 <tr>
                     <td>Kode ticket</td>
@@ -74,31 +74,35 @@
                 </div>
             @endif
         </div>
-        <div class="card col-span-2 row-span-3">
+        <div class="card md:col-span-2 md:row-span-3 divide-y-2">
             <div class="card-body">
-                <div class="chat chat-start">
-                    <div class="chat-image avatar placeholder">
-                        <div class="w-10 rounded-full bg-base-300">
-                            <span>A</span>
+                <h3 class="font-bold">Pengajuan close ticket</h3>
+                <div class="py-4">
+                    @for ($i = 0; $i <= 5; $i++)
+                        <div @class([
+                            'chat',
+                            'chat-start' => $i % 2 == 0,
+                            'chat-end' => $i % 2 != 0,
+                        ])>
+                            <div class="chat-image avatar placeholder">
+                                <div class="w-10 rounded-full bg-base-300">
+                                    <span>A</span>
+                                </div>
+                            </div>
+                            <div class="chat-bubble">{{ fake()->sentence() }}</div>
                         </div>
-                    </div>
-                    <div class="chat-bubble">{{ fake()->sentence(20) }}</div>
+                    @endfor
                 </div>
-                <div class="chat chat-start">
-                    <div class="chat-image avatar placeholder">
-                        <div class="w-10 rounded-full bg-base-300">
-                            <span>A</span>
-                        </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="card-actions">
+                    <div class="flex w-full gap-2">
+                        <input type="text" placeholder="Tulis pesan" class="input input-bordered w-full">
+                        <button class="btn btn-primary">
+                            <x-tabler-arrow-right class="size-5" />
+                            <span>Kirim</span>
+                        </button>
                     </div>
-                    <div class="chat-bubble">{{ fake()->sentence() }}</div>
-                </div>
-                <div class="chat chat-end">
-                    <div class="chat-image avatar placeholder">
-                        <div class="w-10 rounded-full bg-base-300">
-                            <span>A</span>
-                        </div>
-                    </div>
-                    <div class="chat-bubble">{{ fake()->sentence() }}</div>
                 </div>
             </div>
         </div>

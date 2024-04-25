@@ -33,7 +33,7 @@
                             </div>
                         </td>
                         <td>{{ $data->kategori }}</td>
-                        <td class="whitespace-normal max-w-80 text-xs">
+                        <td class="whitespace-normal min-w-80 max-w-80 text-xs">
                             <div class="flex items-center gap-3">
                                 <div class="avatar"
                                     wire:click="$dispatch('showPreview', {url : '{{ $data->photo }}'})">

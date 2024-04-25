@@ -35,17 +35,9 @@
                     </a>
                 </li>
             @endcan
-            @can('laporan.index')
+            @can('laporan.download')
                 <li>
-                    <a href="{{ route('laporan.index') }}" wire:navigate>
-                        <x-tabler-search class="size-5" />
-                        <span>Pencarian Laporan</span>
-                    </a>
-                </li>
-            @endcan
-            @can('laporan.index')
-                <li>
-                    <a href="{{ route('laporan.index') }}" wire:navigate>
+                    <a href="{{ route('laporan.download') }}" @class(['active' => Route::is('laporan.download')]) wire:navigate>
                         <x-tabler-download class="size-5" />
                         <span>Download Laporan</span>
                     </a>
