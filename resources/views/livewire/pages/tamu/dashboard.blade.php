@@ -75,11 +75,11 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->site->name }}</td>
                         <td>
-                            <div class="avatar-group -space-x-3 rtl:space-x-reverse">
+                            <div class="flex -space-x-3 rtl:space-x-reverse">
                                 @foreach ($data->images as $gambar)
                                     <div class="avatar"
                                         wire:click="$dispatch('showPreview', {url : '{{ $gambar }}'})">
-                                        <div class="w-6">
+                                        <div class="w-6 rounded-full btn-bordered">
                                             <img src="{{ Storage::url($gambar) }}" />
                                         </div>
                                     </div>

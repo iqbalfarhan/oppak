@@ -35,6 +35,22 @@
                     </a>
                 </li>
             @endcan
+            @can('laporan.index')
+                <li>
+                    <a href="{{ route('laporan.index') }}" wire:navigate>
+                        <x-tabler-search class="size-5" />
+                        <span>Pencarian Laporan</span>
+                    </a>
+                </li>
+            @endcan
+            @can('laporan.index')
+                <li>
+                    <a href="{{ route('laporan.index') }}" wire:navigate>
+                        <x-tabler-download class="size-5" />
+                        <span>Download Laporan</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
     <li>
