@@ -1,6 +1,18 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Ticketing'])
 
+    <div class="grid grid-cols-2 gap-6">
+        @livewire('widget.ticket', [
+            'color' => 'success',
+            'title' => 'Ticket selesai ',
+            'desc' => 'Jumlah ticket yang selesai dikerjakan',
+        ])
+        @livewire('widget.ticket', [
+            'title' => 'Ticket belum ',
+            'desc' => 'Jumlah ticket yang belum selesai',
+        ])
+    </div>
+
     <div class="flex flex-col md:flex-row gap-2 justify-between">
         <input type="text" class="input input-bordered" placeholder="Pencarian" />
         <button class="btn btn-primary">
@@ -17,6 +29,7 @@
                 <th>Pembuat ticket</th>
                 <th>Site / STO</th>
                 <th>Percentage</th>
+                <th>Log</th>
                 <th class="text-center">Actions</th>
             </thead>
             <tbody>
@@ -35,6 +48,7 @@
                         <td>{{ $data->user->name }}</td>
                         <td>{{ $data->site->witel }} : {{ $data->site->name }}</td>
                         <td>{{ Number::percentage($data->progress) }}</td>
+                        <td>{{ $data->logtickets_count }}</td>
                         <td>
                             <div class="flex gap-1 justify-center">
                                 @if ($data->progress == 100 && !$data->done)

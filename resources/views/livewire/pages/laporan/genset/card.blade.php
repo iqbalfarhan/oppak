@@ -1,6 +1,6 @@
 <div class="card card-compact divide-y-2 divide-base-300">
-    <figure>
-        <img src="{{ $genset->gambar }}" alt="Shoes" />
+    <figure class="avatar">
+        <img src="{{ $genset->gambar }}" alt="Shoes" class="h-fit" />
     </figure>
     <div class="card-body space-y-4">
         <p>{{ $genset->label }}</p>

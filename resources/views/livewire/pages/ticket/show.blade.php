@@ -78,32 +78,34 @@
             <div class="card-body">
                 <h3 class="font-bold">Pengajuan close ticket</h3>
                 <div class="py-4">
-                    @for ($i = 0; $i <= 5; $i++)
+                    @foreach ($ticket->logtickets as $log)
                         <div @class([
                             'chat',
-                            'chat-start' => $i % 2 == 0,
-                            'chat-end' => $i % 2 != 0,
+                            'chat-start' => $log->user_id != auth()->id(),
+                            'chat-end' => $log->user_id == auth()->id(),
                         ])>
                             <div class="chat-image avatar placeholder">
                                 <div class="w-10 rounded-full bg-base-300">
                                     <span>A</span>
                                 </div>
                             </div>
-                            <div class="chat-bubble">{{ fake()->sentence() }}</div>
+                            <div class="chat-bubble flex flex-col">
+                                @if ($log->photo)
+                                    <div class="avatar"
+                                        wire:click="$dispatch('showPreview', {url:'{{ $log->photo }}'})">
+                                        <div class="w-32 rounded-xl">
+                                            <img src="{{ $log->image }}" />
+                                        </div>
+                                    </div>
+                                @endif
+                                <span>{{ $log->uraian }}</span>
+                            </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
             <div class="card-body p-4">
-                <div class="card-actions">
-                    <div class="flex w-full gap-2">
-                        <input type="text" placeholder="Tulis pesan" class="input input-bordered w-full">
-                        <button class="btn btn-primary">
-                            <x-tabler-arrow-right class="size-5" />
-                            <span>Kirim</span>
-                        </button>
-                    </div>
-                </div>
+                @livewire('pages.ticket.log.create', ['ticket' => $ticket])
             </div>
         </div>
 

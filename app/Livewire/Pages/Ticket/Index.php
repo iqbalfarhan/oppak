@@ -16,7 +16,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.ticket.index', [
-            'datas' => Ticket::orderBy('done')->get()
+            'datas' => Ticket::withCount('logtickets')->orderBy('done')->get()
         ]);
     }
 }

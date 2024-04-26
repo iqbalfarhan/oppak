@@ -18,6 +18,13 @@ class Show extends Component
         $this->ticket->save();
     }
 
+    public function tambahLog(){
+        $this->ticket->logtickets()->create([
+            'user_id' => auth()->id(),
+            'uraian' => $this->ticket->uraian
+        ]);
+    }
+
     public function mount(Ticket $ticket)
     {
         $this->ticket = $ticket;

@@ -27,6 +27,8 @@
 
         @guest
             <div class="flex flex-col gap-6 items-center justify-center h-screen bg-base-300">
+                <div class="font-extrabold text-5xl mb-4 text-neutral">{{ config('app.name') }}</div>
+
                 {{ $slot }}
 
                 @if (Route::is('register'))

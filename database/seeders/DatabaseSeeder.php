@@ -20,6 +20,14 @@ class DatabaseSeeder extends Seeder
             SiteSeeder::class,
             TamuSeeder::class,
             TicketSeeder::class,
+
+            InsidensialSeeder::class,
+
+            LaporanSeeder::class,
+            GensetSeeder::class,
+            AmfSeeder::class,
+            TemperaturSeeder::class,
+            BbmSeeder::class,
         ]);
     }
 }

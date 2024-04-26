@@ -33,4 +33,12 @@ class Laporan extends Model
     public function gensets(){
         return $this->hasMany(Genset::class);
     }
+
+    public function amf(){
+        return $this->hasOne(Amf::class);
+    }
+
+    public function temperatur(){
+        return $this->hasOne(Temperatur::class);
+    }
 }

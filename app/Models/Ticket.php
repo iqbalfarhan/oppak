@@ -29,4 +29,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Site::class);
     }
+
+    public function logtickets()
+    {
+        return $this->hasMany(Logticket::class);
+    }
 }
