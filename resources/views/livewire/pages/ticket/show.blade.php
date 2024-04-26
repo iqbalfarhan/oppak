@@ -14,116 +14,140 @@
         </div>
     @endif
 
+    <div class="table-wrapper">
+        <table class="table">
+            <tr>
+                <td>Kode ticket</td>
+                <td>:</td>
+                <td>{{ Str::upper($ticket->kode) }}</td>
+            </tr>
+            <tr>
+                <td>Pembuat</td>
+                <td>:</td>
+                <td>{{ $ticket->user->name }}</td>
+            </tr>
+            <tr>
+                <td>Site / STO</td>
+                <td>:</td>
+                <td>{{ $ticket->site->label }}</td>
+            </tr>
+            <tr>
+                <td>Progress</td>
+                <td>:</td>
+                <td>{{ $ticket->progress }}%</td>
+            </tr>
+            <tr>
+                <td>Perangkat</td>
+                <td>:</td>
+                <td>{{ $ticket->perangkat }}</td>
+            </tr>
+            <tr>
+                <td>Uraian</td>
+                <td>:</td>
+                <td>{{ $ticket->uraian }}</td>
+            </tr>
+            <tr>
+                <td>Status pengajuan</td>
+                <td>:</td>
+                <td>{{ $ticket->pengajuan ? 'Sudah diajukan' : 'Belum diajukan' }}</td>
+            </tr>
+        </table>
+    </div>
+
     <div class="grid md:grid-cols-3 gap-6">
-        <div class="md:col-span-full table-wrapper">
-            <table class="table">
-                <tr>
-                    <td>Kode ticket</td>
-                    <td>:</td>
-                    <td>{{ Str::upper($ticket->kode) }}</td>
-                </tr>
-                <tr>
-                    <td>Pembuat</td>
-                    <td>:</td>
-                    <td>{{ $ticket->user->name }}</td>
-                </tr>
-                <tr>
-                    <td>Site / STO</td>
-                    <td>:</td>
-                    <td>{{ $ticket->site->label }}</td>
-                </tr>
-                <tr>
-                    <td>Progress</td>
-                    <td>:</td>
-                    <td>{{ $ticket->progress }}%</td>
-                </tr>
-                <tr>
-                    <td>Perangkat</td>
-                    <td>:</td>
-                    <td>{{ $ticket->perangkat }}</td>
-                </tr>
-                <tr>
-                    <td>Uraian</td>
-                    <td>:</td>
-                    <td>{{ $ticket->uraian }}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="card divide-y-2 border-base-300">
-            <div class="card-body space-y-2">
-                <h3 class="font-bold text-lg">Progress ticket ({{ Number::percentage($ticket->progress) }})</h3>
-                <input type="range" min="0" max="100" value="{{ $ticket->progress }}"
-                    wire:model.live="progress" @class(['range range-sm', 'range-primary' => !$ticket->done]) @disabled($ticket->done) />
-            </div>
-            @if ($progress == 100)
+        <div class="space-y-6">
+            <div class="card divide-y-2 border-base-300">
                 <div class="card-body space-y-2">
-                    <h3 class="font-bold">Pengajuan close ticket</h3>
-                    <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
-                        ({{ $ticket->user->name }}).
-                    </p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary btn-block">
-                            <x-tabler-exclamation-circle class="size-5" />
-                            <span>Ajukan close ticket</span>
-                        </button>
-                    </div>
+                    <h3 class="font-bold text-lg">Progress ticket ({{ Number::percentage($ticket->progress) }})</h3>
+                    <input type="range" min="0" max="100" value="{{ $ticket->progress }}"
+                        wire:model.live="progress" @class(['range range-sm', 'range-primary' => !$ticket->done]) @disabled($ticket->done) />
                 </div>
-            @else
-                <div class="card-body py-4">
-                    <p class="text-xs opacity-75">Bisa mengajukan close ticket jika progress sudah 100%.</p>
+                @if ($ticket->pengajuan)
+                    <div class="card-body space-y-2">
+                        <h3 class="font-bold">Pengajuan sudah dikirim</h3>
+                        <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
+                            ({{ $ticket->user->name }}).
+                        </p>
+                        <div class="card-actions">
+                            <button class="btn btn-info btn-block" wire:click="togglePengajuan">
+                                <x-tabler-arrow-back-up class="size-5" />
+                                <span>Batalkan pengajuan</span>
+                            </button>
+                        </div>
+                    </div>
+                @elseif ($progress == 100)
+                    <div class="card-body space-y-2">
+                        <h3 class="font-bold">Pengajuan close ticket</h3>
+                        <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
+                            ({{ $ticket->user->name }}).
+                        </p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary btn-block" wire:click="togglePengajuan">
+                                <x-tabler-arrow-right class="size-5" />
+                                <span>Ajukan close ticket</span>
+                            </button>
+                        </div>
+                    </div>
+                @else
+                    <div class="card-body py-4">
+                        <p class="text-xs opacity-75">Bisa mengajukan close ticket jika progress sudah 100%.</p>
+                    </div>
+                @endif
+            </div>
+
+            @if ($ticket->done)
+                <div class="card">
+                    <div class="card-body space-y-2">
+                        <h3 class="font-bold text-lg">Kembalikan status ke Draft</h3>
+                        <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
+                            ({{ $ticket->user->name }}).
+                        </p>
+                        <div class="card-actions">
+                            <button class="btn btn-error btn-block" wire:click="backToDraft">
+                                <x-tabler-arrow-back-up class="size-5" />
+                                <span>Kembalikan ke draft</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             @endif
         </div>
-        <div class="card md:col-span-2 md:row-span-3 divide-y-2">
-            <div class="card-body">
-                <h3 class="font-bold">Pengajuan close ticket</h3>
-                <div class="py-4">
-                    @foreach ($ticket->logtickets as $log)
-                        <div @class([
-                            'chat',
-                            'chat-start' => $log->user_id != auth()->id(),
-                            'chat-end' => $log->user_id == auth()->id(),
-                        ])>
-                            <div class="chat-image avatar placeholder">
-                                <div class="w-10 rounded-full bg-base-300">
-                                    <span>A</span>
+        <div class="md:col-span-2">
+            <div class="card divide-y-2 divide-base-300">
+                <div class="card-body">
+                    <h3 class="font-bold">Log progress ticket</h3>
+                    <div class="py-4 space-y-2">
+                        @foreach ($ticket->logtickets as $log)
+                            <div @class([
+                                'chat',
+                                'chat-start' => !$log->is_me,
+                                'chat-end' => $log->is_me,
+                            ])>
+                                <div @class(['chat-image avatar'])>
+                                    <div class="w-10 rounded-full bg-base-300">
+                                        <img src="{{ $log->user->image }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="chat-header">
+                                    {{ $log->user->name }}
+                                    <time class="text-xs opacity-50">{{ $log->created_at->diffForHumans() }}</time>
+                                </div>
+                                <div class="chat-bubble flex flex-col gap-2">
+                                    @if ($log->photo)
+                                        <img src="{{ $log->image }}"
+                                            wire:click="$dispatch('showPreview', {url:'{{ $log->photo }}'})"
+                                            class="rounded-lg max-w-40 max-h-40" />
+                                    @endif
+                                    <span>{{ $log->uraian }}</span>
                                 </div>
                             </div>
-                            <div class="chat-bubble flex flex-col">
-                                @if ($log->photo)
-                                    <div class="avatar"
-                                        wire:click="$dispatch('showPreview', {url:'{{ $log->photo }}'})">
-                                        <div class="w-32 rounded-xl">
-                                            <img src="{{ $log->image }}" />
-                                        </div>
-                                    </div>
-                                @endif
-                                <span>{{ $log->uraian }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="card-body p-4">
-                @livewire('pages.ticket.log.create', ['ticket' => $ticket])
-            </div>
-        </div>
-
-        @if ($ticket->done)
-            <div class="card">
-                <div class="card-body space-y-2">
-                    <h3 class="font-bold text-lg">Batalkan penerimaan df</h3>
-                    <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
-                        ({{ $ticket->user->name }}).
-                    </p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary btn-block">
-                            <x-tabler-exclamation-circle class="size-5" />
-                            <span>Ajukan close ticket</span>
-                        </button>
+                        @endforeach
                     </div>
                 </div>
+                <div class="card-body p-4">
+                    @livewire('pages.ticket.log.create', ['ticket' => $ticket])
+                </div>
             </div>
-        @endif
+        </div>
     </div>
 </div>

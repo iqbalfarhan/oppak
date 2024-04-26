@@ -17,8 +17,18 @@ class Logticket extends Model
         'photo',
     ];
 
-    protected function getImageAttribute()
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getImageAttribute()
     {
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
+    }
+
+    public function getIsMeAttribute()
+    {
+        return $this->user_id == auth()->id();
     }
 }
