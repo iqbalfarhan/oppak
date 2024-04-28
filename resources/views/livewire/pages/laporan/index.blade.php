@@ -27,7 +27,7 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->tanggal->format('d F Y') }}</td>
                         <td>{{ $data->user->name }}</td>
-                        <td>{{ \App\Models\Site::first()->label }}</td>
+                        <td>{{ $data->site->label }}</td>
                         <td>
                             <badge @class([
                                 'badge badge-sm',
@@ -39,12 +39,10 @@
                             <div class="flex gap-1 justify-center">
                                 <a href="{{ route('laporan.show', $data) }}" class="btn btn-xs btn-square btn-bordered"
                                     wire:navigate>
-                                    <x-tabler-folder class="size-4" />
-                                </a>
-                                <button class="btn btn-xs btn-square btn-bordered">
                                     <x-tabler-edit class="size-4" />
-                                </button>
-                                <button class="btn btn-xs btn-square btn-bordered">
+                                </a>
+                                <button class="btn btn-xs btn-square btn-bordered"
+                                    wire:click="$dispatch('deleteLaporan', {laporan: {{ $data->id }}})">
                                     <x-tabler-trash class="size-4" />
                                 </button>
                             </div>
@@ -59,5 +57,5 @@
         </table>
     </div>
 
-    @livewire('pages.laporan.create')
+    @livewire('pages.laporan.actions')
 </div>

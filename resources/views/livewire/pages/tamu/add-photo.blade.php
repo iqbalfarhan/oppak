@@ -5,7 +5,7 @@
             <h3 class="font-bold text-lg">Upload photo</h3>
             <div class="py-6 flex flex-col items-center gap-4">
                 <div class="avatar">
-                    <div class="max-w-48 btn-bordered rounded-full">
+                    <div class="max-w-48 btn-bordered rounded-lg">
                         <img src="{{ $photo ? $photo->temporaryUrl() : url('nouser.jpg') }}" />
                     </div>
                 </div>

@@ -15,7 +15,7 @@
                     </tr>
                     <tr>
                         <th>Witel Site / STO</th>
-                        <td>{{ $site->label }}</td>
+                        <td>{{ $site?->label }}</td>
                     </tr>
                 </table>
             </div>

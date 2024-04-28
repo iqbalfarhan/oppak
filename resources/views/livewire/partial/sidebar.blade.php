@@ -64,10 +64,10 @@
                     </a>
                 </li>
             @endcan
-            @can('home')
+            @can('pergantian.index')
                 <li>
-                    <a href="{{ route('home') }}" wire:navigate>
-                        <x-tabler-home class="size-5" />
+                    <a href="{{ route('pergantian.index') }}" @class(['active' => Route::is('pergantian.index')]) wire:navigate>
+                        <x-tabler-switch-2 class="size-5" />
                         <span>Pergantian Rutin</span>
                     </a>
                 </li>

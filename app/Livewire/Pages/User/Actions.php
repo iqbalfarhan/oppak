@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\User;
 
 use App\Livewire\Forms\UserForm;
+use App\Models\Site;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -93,7 +94,8 @@ class Actions extends Component
     {
         $roles = auth()->user()->hasRole('superadmin') ? Role::pluck('name') : Role::whereNot('name', 'superadmin')->pluck('name');
         return view('livewire.pages.user.actions', [
-            'roles' => $roles
+            'roles' => $roles,
+            'sites' => Site::pluck('name', 'id'),
         ]);
     }
 }

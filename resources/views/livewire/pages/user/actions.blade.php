@@ -48,6 +48,20 @@
                         @endforeach
                     </select>
                 </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Site/STO</span>
+                    </div>
+                    <select type="text" @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.site_id'),
+                    ]) wire:model="form.site_id">
+                        <option value="">Pilih site/sto</option>
+                        @foreach ($sites as $siteid => $sitename)
+                            <option value="{{ $siteid }}">{{ $sitename }}</option>
+                        @endforeach
+                    </select>
+                </label>
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

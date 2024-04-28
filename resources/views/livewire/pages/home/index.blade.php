@@ -7,4 +7,5 @@
     </div>
 
     @livewire('pages.laporan.dashboard')
+    @livewire('pages.insidensial.dashboard')
 </div>

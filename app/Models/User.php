@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'photo',
         'active',
+        'site_id',
     ];
 
     /**
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function getImageAttribute()
     {
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
+    }
+
+    public function site()
+    {
+        return $this->belongsTo(Site::class);
     }
 }

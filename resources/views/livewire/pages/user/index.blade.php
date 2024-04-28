@@ -17,7 +17,7 @@
             <thead>
                 <th>No</th>
                 <th>Nama lengkap user</th>
-                <th>Alamat email</th>
+                <th>Site/STO</th>
                 <th>Role</th>
                 <th class="text-center">Active</th>
                 @canany(['user.resetpassword', 'user.edit', 'user.delete'])
@@ -29,16 +29,19 @@
                     <tr wire:key="{{ $data->id }}" @class(['line-through' => !$data->active])>
                         <td>{{ $no++ }}</td>
                         <td>
-                            <div class="flex gap-2 items-center">
+                            <div class="flex gap-3 items-center">
                                 <div class="avatar">
-                                    <div class="w-6 rounded-full">
+                                    <div class="w-10 rounded-full">
                                         <img src="{{ $data->image }}" />
                                     </div>
                                 </div>
-                                <span>{{ $data->name }}</span>
+                                <div class="flex flex-col">
+                                    <span>{{ $data->name }}</span>
+                                    <span class="text-xs">{{ $data->email }}</span>
+                                </div>
                             </div>
                         </td>
-                        <td>{{ $data->email }}</td>
+                        <td>{{ $data->site?->label }}</td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>
                             <div class="flex justify-center">

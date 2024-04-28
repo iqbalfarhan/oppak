@@ -10,7 +10,7 @@ class Show extends Component
 {
     use LivewireAlert;
 
-    public $page = "rectifier";
+    public $page = "summary";
 
     public $pageList = [
         "summary" => "Summary",

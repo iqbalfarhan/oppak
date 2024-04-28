@@ -1,15 +1,21 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Ticketing'])
 
-    <div class="grid grid-cols-2 gap-6">
+    <div class="grid grid-cols-3 gap-6">
+        @livewire('widget.ticket', [
+            'title' => 'Ticket belum selesai',
+            'desc' => 'Jumlah ticket belum selesai',
+        ])
+        @livewire('widget.ticket', [
+            'color' => 'warning',
+            'number' => '12',
+            'title' => 'Request close',
+            'desc' => 'Jumlah ticket yang belum selesai',
+        ])
         @livewire('widget.ticket', [
             'color' => 'success',
             'title' => 'Ticket selesai ',
-            'desc' => 'Jumlah ticket yang selesai dikerjakan',
-        ])
-        @livewire('widget.ticket', [
-            'title' => 'Ticket belum ',
-            'desc' => 'Jumlah ticket yang belum selesai',
+            'desc' => 'Jumlah ticket selesai',
         ])
     </div>
 
@@ -46,7 +52,7 @@
                             </a>
                         </td>
                         <td>{{ $data->user->name }}</td>
-                        <td>{{ $data->site->witel }} : {{ $data->site->name }}</td>
+                        <td>{{ $data->site->label }}</td>
                         <td>{{ Number::percentage($data->progress) }}</td>
                         <td>{{ $data->logtickets_count }}</td>
                         <td>

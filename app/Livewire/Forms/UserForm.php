@@ -15,6 +15,7 @@ class UserForm extends Form
     public $email;
     public $password;
     public $role;
+    public $site_id;
 
     public function setUser(User $user){
         $this->user = $user;
@@ -22,6 +23,7 @@ class UserForm extends Form
         $this->name = $user->name;
         $this->email = $user->email;
         $this->role = $user->getRoleNames()->first();
+        $this->site_id = $user->site_id;
     }
 
     public function store(){
@@ -31,6 +33,8 @@ class UserForm extends Form
             'role' => 'required',
             'password' => 'required|min:8',
         ]);
+
+        $valid['site_id'] = $this->site_id == "" ? null : $this->site_id;
 
         $user = User::create($valid);
         $user->syncRoles($this->role);
@@ -42,8 +46,10 @@ class UserForm extends Form
         $valid = $this->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'role' => 'required'
+            'role' => 'required',
         ]);
+
+        $valid['site_id'] = $this->site_id == "" ? null : $this->site_id;
 
         if ($this->password) {
             $this->validate([
