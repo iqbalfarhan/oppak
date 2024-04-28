@@ -3,22 +3,22 @@
 
 
     <div role="tablist" class="tabs tabs-boxed bg-base-300/50 p-2 btn-bordered overflow-x-auto">
-        @foreach ($pageList as $list)
+        @foreach ($pageList as $key => $list)
             <button role="tab" @class([
-                'tab capitalize h-10',
-                'tab-active font-bold' => $page == $list,
+                'tab capitalize h-10 cursor-pointer',
+                'tab-active font-bold' => $page == $key,
             ])
-                wire:click="$set('page', '{{ $list }}')">{{ $list }}</button>
+                wire:click="$set('page', '{{ $key }}')">{{ $list }}</button>
         @endforeach
     </div>
 
     @if ($page == 'summary')
-        <div class="card divide-y-2 divide-base-300">
+        <div class="card card-divider">
             <div class="card-body space-y-4">
                 <h3 class="font-bold text-xl">Summary laporan</h3>
                 <div class="table-wrapper">
                     <table class="table">
-                        <thead>
+                        <tbody>
                             <tr>
                                 <td>Pembuat laporan</td>
                                 <td>:</td>
@@ -44,7 +44,7 @@
                                 <td>:</td>
                                 <td>{{ $laporan->done ? 'Done' : 'Draft' }}</td>
                             </tr>
-                        </thead>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -54,19 +54,49 @@
                     <table class="table text-center">
                         <thead>
                             @foreach ($pageList as $key => $list)
-                                @if ($key)
+                                @if ($key != 'summary')
                                     <th class="capitalize">{{ $list }}</th>
                                 @endif
                             @endforeach
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $laporan->gensets->count() ? 'done' : '...' }}</td>
-                                <td>{{ $laporan->amf ? 'done' : '...' }}</td>
-                                <td></td>
-                                <td></td>
-                                <td>{{ $laporan->temperatur ? 'done' : '...' }}</td>
-                                <td></td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <x-tabler-circle-check @class(['stroke-success', 'opacity-0' => !$laporan->gensets->count()]) />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <x-tabler-circle-check @class(['stroke-success', 'opacity-0' => !$laporan->amf]) />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <x-tabler-circle-check @class([
+                                            'stroke-success',
+                                            'opacity-0' => !$laporan->baterais->count(),
+                                        ]) />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <x-tabler-circle-check @class([
+                                            'stroke-success',
+                                            'opacity-0' => !$laporan->rectifiers->count(),
+                                        ]) />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <x-tabler-circle-check @class(['stroke-success', 'opacity-0' => !$laporan->temperatur]) />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <x-tabler-circle-check @class(['stroke-success', 'opacity-0' => !$laporan->bbm]) />
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -80,7 +110,7 @@
                     bbm). kemudian klik tombol di bawah ini untuk merubah status laporan menjadi selesai.
                 </p>
                 <div class="card-actions">
-                    <button class="btn btn-primary" wire:click="toggleDone">
+                    <button class="btn btn-primary" wire:click="toggleDone" wire:loading.attr="disabled">
                         <x-tabler-check class="size-5" />
                         <span>Laporan sudah selesai</span>
                     </button>
@@ -92,13 +122,9 @@
     @elseif ($page == 'amf')
         @livewire('pages.laporan.amf.actions', ['laporan' => $laporan])
     @elseif ($page == 'baterai')
-        <div class="card-body space-y-4">
-            <h3 class="font-bold text-xl">Baterai</h3>
-        </div>
+        @livewire('pages.laporan.baterai.index', ['laporan' => $laporan])
     @elseif ($page == 'rectifier')
-        <div class="card-body space-y-4">
-            <h3 class="font-bold text-xl">Rectifier</h3>
-        </div>
+        @livewire('pages.laporan.rectifier.index', ['laporan' => $laporan])
     @elseif ($page == 'temperatur')
         @livewire('pages.laporan.temperatur.actions', ['laporan' => $laporan])
     @elseif ($page == 'bbm')

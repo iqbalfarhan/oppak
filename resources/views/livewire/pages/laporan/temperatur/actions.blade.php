@@ -1,4 +1,4 @@
-<div class="card divide-y-2 divide-base-300 max-w-lg mx-auto">
+<div class="card card-divider max-w-lg mx-auto">
     <form class="card-body space-y-4" wire:submit="simpan">
         <h3 class="font-bold text-xl">Temperatur ruangan</h3>
         <div class="space-y-2">
@@ -10,7 +10,7 @@
                     'input input-bordered flex items-center gap-2',
                     'input-error' => $errors->first('rectifier'),
                 ])>
-                    <input type="number" class="grow" placeholder="Search" wire:model="rectifier" />
+                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="rectifier" />
                     <span class="badge">Celcius</span>
                 </div>
             </label>
@@ -22,7 +22,7 @@
                     'input input-bordered flex items-center gap-2',
                     'input-error' => $errors->first('metro'),
                 ])>
-                    <input type="number" class="grow" placeholder="Search" wire:model="metro" />
+                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="metro" />
                     <span class="badge">Celcius</span>
                 </div>
             </label>
@@ -34,7 +34,7 @@
                     'input input-bordered flex items-center gap-2',
                     'input-error' => $errors->first('transmisi'),
                 ])>
-                    <input type="number" class="grow" placeholder="Search" wire:model="transmisi" />
+                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="transmisi" />
                     <span class="badge">Celcius</span>
                 </div>
             </label>
@@ -46,7 +46,7 @@
                     'input input-bordered flex items-center gap-2',
                     'input-error' => $errors->first('gpon'),
                 ])>
-                    <input type="number" class="grow" placeholder="Search" wire:model="gpon" />
+                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="gpon" />
                     <span class="badge">Celcius</span>
                 </div>
             </label>

@@ -10,16 +10,16 @@ class Show extends Component
 {
     use LivewireAlert;
 
-    public $page = "summary";
+    public $page = "rectifier";
 
     public $pageList = [
-        "summary",
-        "genset",
-        "amf",
-        "baterai",
-        "rectifier",
-        "temperatur",
-        "bbm",
+        "summary" => "Summary",
+        "genset" => "Genset",
+        "amf" => "AMF",
+        "baterai" => "Baterai",
+        "rectifier" => "Rectifier",
+        "temperatur" => "Temperatur",
+        "bbm" => "BBM",
     ];
     public Laporan $laporan;
 

@@ -6,16 +6,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Bbm extends Model
+class Baterai extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'laporan_id',
-        'satuan',
-        'volume',
         'photo',
+        'tegangan',
+        'elektrolit',
+        'bj_cell',
+        'bj_pilot_cell_bank',
     ];
+
+    public function casts(){
+        return [
+            'tegangan' => 'array',
+            'bj_pilot_cell_bank' => 'array',
+        ];
+    }
+
+    public function laporan()
+    {
+        return $this->belongsTo(Laporan::class);
+    }
 
     public function getImageAttribute(){
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');

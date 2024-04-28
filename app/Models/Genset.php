@@ -18,10 +18,15 @@ class Genset extends Model
         'suhu_ruangan',
         'bbm_utama',
         'bbm_harian',
+        'photo',
     ];
 
     public function laporan(){
         return $this->belongsTo(Laporan::class);
+    }
+
+    public function bateraistarters(){
+        return $this->hasMany(Bateraistarter::class);
     }
 
     public function getLabelAttribute(){
@@ -30,8 +35,8 @@ class Genset extends Model
             $this->ruangan_bersih ? "Ruangan bersih" : "Ruangan tidak bersih",
             $this->engine_bersih ? "Engine bersih" : "Engine tidak bersih",
             "Suhu ruangan {$this->suhu_ruangan} C",
-            "BBM Utama {$this->bbm_utama} L",
-            "BBM Harian {$this->bbm_harian} L",
+            "BBM Utama {$this->bbm_utama} liter",
+            "BBM Harian {$this->bbm_harian} liter.",
         ]);
     }
 

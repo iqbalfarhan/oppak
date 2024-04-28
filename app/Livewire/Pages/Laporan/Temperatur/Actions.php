@@ -4,10 +4,12 @@ namespace App\Livewire\Pages\Laporan\Temperatur;
 
 use App\Models\Laporan;
 use App\Models\Temperatur;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Actions extends Component
 {
+    use LivewireAlert;
     public Laporan $laporan;
     public $rectifier;
     public $metro;
@@ -28,6 +30,8 @@ class Actions extends Component
         Temperatur::updateOrCreate([
             'laporan_id' => $valid['laporan_id']
         ], $valid);
+
+        $this->alert('success', 'Temperatur ruangan berhasil disimpan');
     }
 
     public function deleteTemperatur(){

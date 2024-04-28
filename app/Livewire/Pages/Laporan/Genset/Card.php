@@ -9,6 +9,8 @@ class Card extends Component
 {
     public Genset $genset;
 
+    protected $listeners = ['reload' => '$refresh'];
+
     public function mount(Genset $genset)
     {
         $this->genset = $genset;

@@ -51,7 +51,7 @@
                         <td>{{ $data->logtickets_count }}</td>
                         <td>
                             <div class="flex gap-1 justify-center">
-                                @if ($data->progress == 100 && !$data->done)
+                                @if ($data->pengajuan)
                                     <button class="btn btn-warning btn-xs btn-square"
                                         wire:click="$dispatch('setDone', {ticket: {{ $data->id }}})">
                                         <x-tabler-exclamation-circle class="size-4" />

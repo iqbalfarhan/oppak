@@ -56,7 +56,7 @@
 
     <div class="grid md:grid-cols-3 gap-6">
         <div class="space-y-6">
-            <div class="card divide-y-2 border-base-300">
+            <div class="card card-divider">
                 <div class="card-body space-y-2">
                     <h3 class="font-bold text-lg">Progress ticket ({{ Number::percentage($ticket->progress) }})</h3>
                     <input type="range" min="0" max="100" value="{{ $ticket->progress }}"
@@ -113,7 +113,7 @@
             @endif
         </div>
         <div class="md:col-span-2">
-            <div class="card divide-y-2 divide-base-300">
+            <div class="card card-divider">
                 <div class="card-body">
                     <h3 class="font-bold">Log progress ticket</h3>
                     <div class="py-4 space-y-2">

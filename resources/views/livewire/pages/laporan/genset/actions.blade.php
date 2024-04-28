@@ -4,11 +4,20 @@
         <form class="modal-box" wire:submit="simpan">
             <h3 class="font-bold text-lg">Form input genset</h3>
             <div class="py-6 space-y-2">
-                <div class="avatar">
-                    <div class="w-32 rounded-xl">
-                        <img src="{{ url('noimage.png') }}" />
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Keterangan genset</span>
                     </div>
-                </div>
+                    <input type="file" placeholder="Keterangan genset" class="file-input file-input-bordered"
+                        wire:model="photo" />
+                </label>
+                @if ($photo)
+                    <div class="avatar">
+                        <div class="w-24 rounded-lg">
+                            <img src="{{ $photo->temporaryUrl() }}" alt="">
+                        </div>
+                    </div>
+                @endif
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Keterangan genset</span>
@@ -40,7 +49,7 @@
                     <div class="label">
                         <span class="label-text">Suhu ruangan</span>
                     </div>
-                    <input type="text" placeholder="Type here" class="input input-bordered"
+                    <input type="number" placeholder="Type here" class="input input-bordered"
                         wire:model="form.suhu_ruangan" />
                 </label>
                 <div class="grid grid-cols-2 gap-6">
@@ -48,14 +57,14 @@
                         <div class="label">
                             <span class="label-text">BBM Utama</span>
                         </div>
-                        <input type="text" placeholder="BBM Utama" class="input input-bordered"
+                        <input type="number" placeholder="BBM Utama" class="input input-bordered"
                             wire:model="form.bbm_utama" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">BBM harian</span>
                         </div>
-                        <input type="text" placeholder="BBM harian" class="input input-bordered"
+                        <input type="number" placeholder="BBM harian" class="input input-bordered"
                             wire:model="form.bbm_harian" />
                     </label>
                 </div>

@@ -15,6 +15,7 @@ class GensetForm extends Form
     public $suhu_ruangan;
     public $bbm_utama;
     public $bbm_harian;
+    public $photo;
 
     public ?Genset $genset;
 
@@ -33,7 +34,7 @@ class GensetForm extends Form
 
     public function store()
     {
-        $this->validate([
+        $valid = $this->validate([
             'laporan_id' => 'required',
             'keterangan' => 'required',
             'ruangan_bersih' => 'required',
@@ -43,13 +44,17 @@ class GensetForm extends Form
             'bbm_harian' => 'required',
         ]);
 
-        Genset::create($this->all());
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
+
+        Genset::create($valid);
         $this->reset();
     }
 
     public function update()
     {
-        $this->validate([
+        $valid = $this->validate([
             'laporan_id' => 'required',
             'keterangan' => 'required',
             'ruangan_bersih' => 'required',
@@ -59,7 +64,11 @@ class GensetForm extends Form
             'bbm_harian' => 'required',
         ]);
 
-        $this->genset->update($this->all());
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
+
+        $this->genset->update($valid);
         $this->reset();
     }
 }

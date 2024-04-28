@@ -21,13 +21,16 @@ class Create extends Component
     {
         $valid = $this->validate([
             'uraian' => 'required',
-            'photo' => 'image',
         ]);
 
         $valid['ticket_id'] = $this->ticket->id;
         $valid['user_id'] = auth()->id();
 
         if ($this->photo) {
+            $this->validate([
+                'photo' => 'image',
+            ]);
+
             $photo = $this->photo->hashName('logticket');
             $this->photo->store('logticket');
 

@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gensets', function (Blueprint $table) {
+        Schema::create('rectifiers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('laporan_id')->constrained()->onDelete('cascade');
             $table->string('keterangan');
-            $table->boolean('ruangan_bersih')->default(true);
-            $table->boolean('engine_bersih')->default(true);
-            $table->integer('suhu_ruangan')->default(25);
-            $table->integer('bbm_utama')->default(25);
-            $table->integer('bbm_harian')->default(25);
+            $table->integer('catuan_input');
+            $table->integer('tegangan_output');
+            $table->integer('arus_output');
             $table->string('photo')->nullable();
             $table->timestamps();
         });
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gensets');
+        Schema::dropIfExists('rectifiers');
     }
 };

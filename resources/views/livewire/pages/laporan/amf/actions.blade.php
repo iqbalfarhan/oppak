@@ -1,5 +1,5 @@
 <form class="space-y-6" wire:submit="simpan">
-    <div class="card divide-y-2 divide-base-300">
+    <div class="card card-divider">
         <div class="card-body py-4 bg-base-200/50">
             <h3 class="font-bold">Info AMF</h3>
         </div>
@@ -37,7 +37,7 @@
             </label>
         </div>
     </div>
-    <div class="card divide-y-2 divide-base-300">
+    <div class="card card-divider">
         <div class="card-body py-4 bg-base-200/50">
             <h3 class="font-bold">Arus beban (Ampere)</h3>
         </div>
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div class="card divide-y-2 divide-base-300">
+    <div class="card card-divider">
         <div class="card-body py-4 bg-base-200/50">
             <div class="font-bold">Tegangan (Volt)</div>
         </div>
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-    <div class="card divide-y-2 divide-base-300">
+    <div class="card card-divider">
         <div class="card-body py-4 bg-base-200/50">
             <div class="font-bold">Lainnya</div>
         </div>

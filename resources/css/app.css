@@ -71,4 +71,8 @@
     .btn-base {
         @apply bg-base-100;
     }
+
+    .card-divider {
+        @apply divide-y-2 divide-base-300;
+    }
 }

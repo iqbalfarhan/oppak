@@ -3,7 +3,7 @@
         'title' => 'Detail tamu',
     ])
 
-    <div class="card divide-y-2 divide-base-300">
+    <div class="card card-divider">
         <div class="card-body py-5 bg-base-200/50">
             <div class="card-actions justify-between items-center">
                 <h3 class="text-lg font-bold">{{ $tamu->nama }}</h3>
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="card divide-y-2 divide-base-300">
+    <div class="card card-divider">
         <div class="card-body py-5 bg-base-200/50">
             <div class="card-actions justify-between items-center">
                 <h3 class="text-lg font-bold">Photo kegiatan dan dokumen tamu</h3>
@@ -55,7 +55,7 @@
     </div>
 
     @if ($tamu->keluar == null)
-        <div class="card divide-y-2 divide-base-300">
+        <div class="card card-divider">
             <div class="card-body py-5 bg-base-200/50">
                 <div class="card-actions justify-between items-center">
                     <h3 class="text-lg font-bold">Tamu sudah keluar dari Site / STO</h3>

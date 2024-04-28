@@ -1,3 +1,5 @@
-<div>
-    {{-- The Master doesn't talk, he acts. --}}
+<div class="card card-compact">
+    <div class="card-body">
+        {{ $rectifier }}
+    </div>
 </div>

@@ -34,11 +34,23 @@ class Laporan extends Model
         return $this->hasMany(Genset::class);
     }
 
+    public function baterais(){
+        return $this->hasMany(Baterai::class);
+    }
+
+    public function rectifiers(){
+        return $this->hasMany(Rectifier::class);
+    }
+
     public function amf(){
         return $this->hasOne(Amf::class);
     }
 
     public function temperatur(){
         return $this->hasOne(Temperatur::class);
+    }
+
+    public function bbm(){
+        return $this->hasOne(Bbm::class);
     }
 }
