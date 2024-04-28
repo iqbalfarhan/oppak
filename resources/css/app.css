@@ -75,4 +75,13 @@
     .card-divider {
         @apply divide-y-2 divide-base-300;
     }
+
+    .vertical-header-table {
+        border-collapse: collapse;
+    }
+
+    .vertical-header-table th span {
+        @apply text-center transform -rotate-180 capitalize;
+        writing-mode: vertical-rl;
+    }
 }

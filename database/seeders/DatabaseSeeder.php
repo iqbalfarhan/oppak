@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             SiteSeeder::class,
             TamuSeeder::class,
+            SettingSeeder::class,
             TicketSeeder::class,
             InsidensialSeeder::class,
 
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             GensetSeeder::class,
             AmfSeeder::class,
             BateraiSeeder::class,
+            RectifierSeeder::class,
             TemperaturSeeder::class,
             BbmSeeder::class,
         ]);

@@ -82,7 +82,7 @@
                     <li>
                         <a href="{{ route('setting.index') }}" @class(['active' => Route::is('setting.index')]) wire:navigate>
                             <x-tabler-settings class="size-5" />
-                            <span>Pengaturan</span>
+                            <span>Pengaturan variable</span>
                         </a>
                     </li>
                 @endcan

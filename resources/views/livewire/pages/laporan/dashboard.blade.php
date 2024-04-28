@@ -6,7 +6,7 @@
             <span class="hidden md:flex">Filter tanggal</span>
         </button>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         @foreach ($witels as $witel)
             @livewire('widget.laporan-rutin')
         @endforeach

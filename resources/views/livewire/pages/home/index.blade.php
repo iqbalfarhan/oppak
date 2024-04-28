@@ -7,5 +7,9 @@
     </div>
 
     @livewire('pages.laporan.dashboard')
-    @livewire('pages.insidensial.dashboard')
+
+    <div class="grid md:grid-cols-2 gap-3 md:gap-6">
+        @livewire('pages.insidensial.dashboard')
+        @livewire('pages.pergantian.dashboard')
+    </div>
 </div>
