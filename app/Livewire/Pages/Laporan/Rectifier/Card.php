@@ -9,6 +9,8 @@ class Card extends Component
 {
     public Rectifier $rectifier;
 
+    // protected $listeners = ['reload' => '$refresh'];
+
     public function mount(Rectifier $rectifier)
     {
         $this->rectifier = $rectifier;

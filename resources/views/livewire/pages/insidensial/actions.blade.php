@@ -6,7 +6,7 @@
             <div class="py-4 space-y-2">
                 <div class="flex justify-center">
                     <div class="avatar">
-                        <div class="w-32 rounded-full btn-bordered">
+                        <div class="w-48 rounded-lg btn-bordered">
                             <img src="{{ $photo ? $photo->temporaryUrl() : $oldPhoto ?? url('noimage.png') }}" />
                         </div>
                     </div>

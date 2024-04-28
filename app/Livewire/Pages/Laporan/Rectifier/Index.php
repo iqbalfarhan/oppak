@@ -10,6 +10,8 @@ class Index extends Component
 {
     public Laporan $laporan;
 
+    protected $listeners = ['reload' => '$refresh'];
+
     public function mount(Laporan $laporan)
     {
         $this->laporan = $laporan;

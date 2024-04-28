@@ -37,7 +37,7 @@
                             <div class="flex items-center gap-3">
                                 <div class="avatar"
                                     wire:click="$dispatch('showPreview', {url : '{{ $data->photo }}'})">
-                                    <div class="w-10 rounded-full btn-bordered">
+                                    <div class="w-10 rounded-lg btn-bordered">
                                         <img src="{{ $data->image }}" />
                                     </div>
                                 </div>
