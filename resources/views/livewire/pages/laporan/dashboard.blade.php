@@ -8,7 +8,7 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         @foreach ($witels as $witel)
-            @livewire('widget.laporan-rutin')
+            @livewire('widget.laporan-rutin', ['witel' => $witel])
         @endforeach
     </div>
     @livewire('pages.home.cari-tanggal')
