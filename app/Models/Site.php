@@ -33,4 +33,8 @@ class Site extends Model
     public function getLabelAttribute(){
         return $this->witel ." - ". $this->name. " (".Str::upper($this->listrik).")";
     }
+
+    public function pergantians(){
+        return $this->hasMany(Pergantian::class);
+    }
 }

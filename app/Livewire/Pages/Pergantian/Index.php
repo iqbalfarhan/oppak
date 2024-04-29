@@ -19,7 +19,7 @@ class Index extends Component
             'sites' => Site::when($this->witel, function($site){
                 $site->where('witel', $this->witel);
             })->orderBy('witel')->get(),
-            'perangkats' => Perangkat::pluck('name', 'id')
+            'perangkats' => Perangkat::get()
         ]);
     }
 }

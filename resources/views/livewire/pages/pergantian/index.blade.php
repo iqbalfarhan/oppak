@@ -13,15 +13,10 @@
             <option value="KALTENG">KALTENG</option>
             <option value="KALTARA">KALTARA</option>
         </select>
-        <input type="text" class="input input-bordered" placeholder="Pencarian" />
         <div class="flex-1"></div>
-        <button class="btn btn-primary">
-            <x-tabler-plus class="size-5" />
-            <span>Buat laporan</span>
-        </button>
         <button class="btn btn-primary" wire:click="$dispatch('showPerangkat')">
             <x-tabler-list class="size-5" />
-            <span>List pergantian</span>
+            <span>List perangkat</span>
         </button>
     </div>
 
@@ -31,7 +26,7 @@
                 <th>No</th>
                 <th class="w-full">Witel - Site</th>
                 @foreach ($perangkats as $prkt)
-                    <th class="text-center"><span>{{ $prkt }}</span></th>
+                    <th class="text-center"><span>{{ $prkt->name }}</span></th>
                 @endforeach
             </thead>
             <tbody>
@@ -39,10 +34,18 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $site->label }}</td>
-                        @foreach ($perangkats as $prkt)
+                        @foreach ($perangkats as $perangkat)
+                            @php
+                                $count = $site->pergantians?->where('perangkat_id', $perangkat->id)->count();
+                            @endphp
                             <td>
-                                <button class="btn btn-xs btn-bordered">
-                                    {{ fake()->randomNumber(2) }}
+                                <button @class([
+                                    'btn btn-xs',
+                                    'btn-bordered' => $count,
+                                    'btn-ghost' => $count == 0,
+                                ])
+                                    wire:click="dispatch('showPergantian', {site: {{ $site->id }}, perangkat: {{ $perangkat->id }}})">
+                                    <span @class(['opacity-20' => $count == 0])>{{ $count }}</span>
                                 </button>
                             </td>
                         @endforeach
@@ -53,4 +56,6 @@
     </div>
 
     @livewire('pages.perangkat.index')
+    @livewire('pages.pergantian.show')
+    @livewire('pages.pergantian.actions')
 </div>
