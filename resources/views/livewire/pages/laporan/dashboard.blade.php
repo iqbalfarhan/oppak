@@ -6,9 +6,12 @@
             <span class="hidden md:flex">Filter tanggal</span>
         </button>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         @foreach ($witels as $witel)
-            @livewire('widget.laporan-rutin', ['witel' => $witel])
+            @livewire('widget.laporan-rutin', [
+                'witel' => $witel,
+                'laporan' => isset($laporans[$witel]) ? $laporans[$witel] : [],
+            ])
         @endforeach
     </div>
     @livewire('pages.home.cari-tanggal')

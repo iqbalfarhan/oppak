@@ -38,13 +38,18 @@ class Actions extends Component
             'site' => 'required'
         ]);
 
-        $laporan = Laporan::create([
+        $valid = [
             'site_id' => $this->site->id,
-            'user_id' => $this->user->id,
             'tanggal' => $this->tanggal,
-        ]);
+        ];
 
-        $this->redirect(route('laporan.show', $laporan->id), navigate: true);
+        if (Laporan::where($valid)) {
+            $this->alert('error', 'Sudah membuat laporan');
+        }
+        else{
+            $laporan = Laporan::create($valid);
+            $this->redirect(route('laporan.show', $laporan->id), navigate: true);
+        }
     }
 
     public function mount()
