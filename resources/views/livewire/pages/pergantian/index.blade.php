@@ -19,7 +19,7 @@
             <x-tabler-plus class="size-5" />
             <span>Buat laporan</span>
         </button>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" wire:click="$dispatch('showPerangkat')">
             <x-tabler-list class="size-5" />
             <span>List pergantian</span>
         </button>
@@ -30,75 +30,27 @@
             <thead>
                 <th>No</th>
                 <th class="w-full">Witel - Site</th>
-                <th class="text-center"><span>Filter Oli</span></th>
-                <th class="text-center"><span>Filter Solar</span></th>
-                <th class="text-center"><span>Oli</span></th>
-                <th class="text-center"><span>Water separator</span></th>
-                <th class="text-center"><span>Battery starter</span></th>
-                <th class="text-center"><span>Refill air baterai</span></th>
-                <th class="text-center"><span>Panbel genset</span></th>
-                <th class="text-center"><span>Maintenace AC</span></th>
-                <th class="text-center"><span>Cuci tangki besar</span></th>
-                <th class="text-center"><span>Cuci tangki kecil</span></th>
+                @foreach ($perangkats as $prkt)
+                    <th class="text-center"><span>{{ $prkt }}</span></th>
+                @endforeach
             </thead>
             <tbody>
                 @foreach ($sites as $site)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $site->label }}</td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-xs btn-bordered">
-                                {{ fake()->randomNumber(2) }}
-                            </button>
-                        </td>
+                        @foreach ($perangkats as $prkt)
+                            <td>
+                                <button class="btn btn-xs btn-bordered">
+                                    {{ fake()->randomNumber(2) }}
+                                </button>
+                            </td>
+                        @endforeach
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+
+    @livewire('pages.perangkat.index')
 </div>
