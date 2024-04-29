@@ -3,11 +3,15 @@
         <h3 class="font-bold text-lg">Summary laporan insidensial :</h3>
     </div>
     <div class="table-wrapper">
-        <table class="table">
+        <table class="table table-sm">
             @foreach ($datas as $month => $number)
-                <tr class="text-xs opacity-50 first:opacity-100 first:font-bold first:text-lg">
+                <tr>
                     <td>{{ $month }}</td>
-                    <td>{{ $number }} laporan</td>
+                    <td>:</td>
+                    <td class="w-1/2">
+                        <progress class="progress progress-primary" value="{{ $number }}"
+                            max="{{ max($datas) }}">{{ $number }}</progress>
+                    </td>
                 </tr>
             @endforeach
         </table>
