@@ -45,7 +45,7 @@
                 </label>
 
                 <div class="flex gap-1">
-                    @isset($form->ticket)
+                    @isset($form->ticket->photo)
                         <div class="avatar">
                             <div class="w-32 rounded-lg">
                                 <img src="{{ $form->ticket->image }}" alt="">

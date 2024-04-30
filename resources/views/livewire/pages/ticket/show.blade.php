@@ -133,7 +133,7 @@
                 <div class="card-body">
                     <h3 class="font-bold">Log progress ticket</h3>
                     <div class="py-4 space-y-2">
-                        @foreach ($ticket->logtickets as $log)
+                        @forelse ($ticket->logtickets as $log)
                             <div @class([
                                 'chat',
                                 'chat-start' => !$log->is_me,
@@ -157,7 +157,11 @@
                                     <span>{{ $log->uraian }}</span>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="flex justify-center items-center w-full p-6 bg-base-200/50 opacity-50">
+                                <div>belum ada log ticket</div>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
                 <div class="card-body p-4">

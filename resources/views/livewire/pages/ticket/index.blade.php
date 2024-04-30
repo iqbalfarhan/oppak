@@ -3,17 +3,19 @@
 
     <div class="grid grid-cols-3 gap-6">
         @livewire('widget.ticket', [
+            'number' => $datas->where('done', false)->count(),
             'title' => 'Ticket belum selesai',
             'desc' => 'Jumlah ticket belum selesai',
         ])
         @livewire('widget.ticket', [
             'color' => 'warning',
-            'number' => '12',
+            'number' => $datas->where('pengajuan')->count(),
             'title' => 'Request close',
             'desc' => 'Jumlah ticket yang belum selesai',
         ])
         @livewire('widget.ticket', [
             'color' => 'success',
+            'number' => $datas->where('done')->count(),
             'title' => 'Ticket selesai ',
             'desc' => 'Jumlah ticket selesai',
         ])
