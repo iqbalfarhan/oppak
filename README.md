@@ -29,7 +29,7 @@ Berikut ini adalah beberapa fitur bawaan yang disediakan oleh template starter i
 ```
 cp .env.example .env
 composer install
-pnpm install
+bun install
 php artisan key:generate
 php artisan migrate:fresh --seed
 php artisan storage:link
