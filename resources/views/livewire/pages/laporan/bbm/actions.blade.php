@@ -7,11 +7,11 @@
                     <div class="label">
                         <span class="label-text">Value BBM</span>
                     </div>
-                    <input type="number" class="input input-bordered" wire:model="volume" />
+                    <input type="number" placeholder="Suhu ruangan" class="input input-bordered" wire:model="volume" />
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Satuan Unit</span>
+                        <span class="label-text">Satuan unit suhu</span>
                     </div>
                     <select class="select select-bordered" wire:model.live="satuan">
                         <option value="liter">Liter</option>

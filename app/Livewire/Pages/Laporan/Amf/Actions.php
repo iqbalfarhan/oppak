@@ -29,6 +29,11 @@ class Actions extends Component
 
     public function simpan()
     {
+        if ($this->photo) {
+            $this->form->photo = $this->photo->hashName('amf');
+            $this->photo->store('amf');
+        }
+
         if (isset($this->form->amf)) {
             $this->form->update();
         }
@@ -36,6 +41,7 @@ class Actions extends Component
             $this->form->store();
         }
 
+        $this->reset('photo');
         $this->alert('success', 'Data Amf berhasil disimpan');
     }
 

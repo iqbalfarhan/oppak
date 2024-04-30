@@ -21,6 +21,10 @@ class Actions extends Component
     #[On('createLaporan')]
     public function createLaporan()
     {
+        $user = User::find(auth()->id());
+        $this->user = $user;
+        $this->site = $user->site_id ? Site::find($user->site_id) : null;
+
         $this->show = true;
     }
 
@@ -43,10 +47,11 @@ class Actions extends Component
             'tanggal' => $this->tanggal,
         ];
 
-        if (Laporan::where($valid)) {
+        if (Laporan::where($valid)->count()) {
             $this->alert('error', 'Sudah membuat laporan');
         }
         else{
+            $valid['user_id'] = $this->user->id;
             $laporan = Laporan::create($valid);
             $this->redirect(route('laporan.show', $laporan->id), navigate: true);
         }
@@ -54,10 +59,6 @@ class Actions extends Component
 
     public function mount()
     {
-        $user = User::find(auth()->id());
-
-        $this->user = $user;
-        $this->site = $user->site_id ? Site::find($user->site_id) : null;
         $this->tanggal = date('Y-m-d');
     }
 

@@ -19,14 +19,16 @@ class TicketFactory extends Factory
      */
     public function definition(): array
     {
+        $done = fake()->boolean();
+
         return [
             'site_id' => fake()->randomElement(Site::pluck('id')),
             'user_id' => fake()->randomElement(User::pluck('id')),
             'kode' => Str::random(8),
-            'progress' => fake()->randomNumber(2),
+            'progress' => $done ? 100 : fake()->randomNumber(2),
             'perangkat' => fake()->word(),
             'uraian' => fake()->sentence(),
-            'done' => fake()->boolean(),
+            'done' => $done,
         ];
     }
 }

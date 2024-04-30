@@ -6,15 +6,19 @@ use App\Models\Laporan;
 use App\Models\Temperatur;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Actions extends Component
 {
     use LivewireAlert;
+    use WithFileUploads;
+
     public Laporan $laporan;
     public $rectifier;
     public $metro;
     public $transmisi;
     public $gpon;
+    public $photo;
 
     public function simpan(){
         $valid = $this->validate([
@@ -26,6 +30,11 @@ class Actions extends Component
         ]);
 
         $valid['laporan_id'] = $this->laporan->id;
+
+        if ($this->photo) {
+            $valid['photo'] = $this->photo->hashName('temperatur');
+            $this->photo->store('temperatur');
+        }
 
         Temperatur::updateOrCreate([
             'laporan_id' => $valid['laporan_id']

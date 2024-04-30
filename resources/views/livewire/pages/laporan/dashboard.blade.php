@@ -10,7 +10,7 @@
         @foreach ($witels as $witel)
             @livewire('widget.laporan-rutin', [
                 'witel' => $witel,
-                'laporan' => isset($laporans[$witel]) ? $laporans[$witel] : [],
+                'laporan' => isset($laporans[$witel]) ? $laporans[$witel] : 0,
             ])
         @endforeach
     </div>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('metro');
             $table->integer('transmisi');
             $table->integer('gpon');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

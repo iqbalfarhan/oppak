@@ -9,13 +9,23 @@
                     <span class="label-text">Photo ATS</span>
                 </div>
                 <input type="file" class="file-input file-input-bordered w-full" wire:model.live="photo" />
-                @if ($photo)
-                    <div class="avatar">
-                        <div class="w-24 rounded-xl">
-                            <img src="{{ $photo->temporaryUrl() }}" />
+                <div class="flex gap-1">
+                    @isset($form->amf)
+                        <div class="avatar">
+                            <div class="w-24 rounded-xl">
+                                <img src="{{ $form->amf->image }}" />
+                            </div>
                         </div>
-                    </div>
-                @endif
+                    @endisset
+
+                    @if ($photo)
+                        <div class="avatar">
+                            <div class="w-24 rounded-xl">
+                                <img src="{{ $photo->temporaryUrl() }}" />
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </label>
             <label class="form-control">
                 <div class="label">
@@ -122,7 +132,8 @@
                     <span class="label-text">T-N</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt" wire:model="form.tegangan.T-N" />
+                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt"
+                    wire:model="form.tegangan.T-N" />
             </div>
         </div>
     </div>

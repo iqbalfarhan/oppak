@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Amf extends Model
 {
@@ -16,6 +17,7 @@ class Amf extends Model
         'tegangan',
         'arus',
         'kwh',
+        'photo',
         'jam_jalan_genset',
     ];
 
@@ -28,5 +30,9 @@ class Amf extends Model
 
     public function laporan(){
         return $this->belongsTo(Laporan::class);
+    }
+
+    public function getImageAttribute(){
+        return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
 }

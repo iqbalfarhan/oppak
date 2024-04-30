@@ -21,7 +21,7 @@
 
     <div class="flex flex-col md:flex-row gap-2 justify-between">
         <input type="text" class="input input-bordered" placeholder="Pencarian" />
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" wire:click="$dispatch('createTicket')">
             <x-tabler-plus class="size-5" />
             <span>Buat ticket</span>
         </button>

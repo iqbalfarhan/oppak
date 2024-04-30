@@ -1,7 +1,8 @@
 <div class="card card-compact divide-base-300 divide-y-2">
     <div class="card-body">
         <div class="flex flex-col md:flex-row justify-between md:items-end">
-            <h3 class="text-3xl font-bold">{{ Number::percentage(($laporan / $siteCount) * 100) }}</h3>
+            <h3 class="text-3xl font-bold">
+                {{ Number::percentage(($laporan / $siteCount) * 100) }}</h3>
             <div class="text-xs">{{ $laporan }}/{{ $siteCount }} laporan</div>
         </div>
     </div>

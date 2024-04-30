@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             RectifierSeeder::class,
             TemperaturSeeder::class,
             BbmSeeder::class,
+
+            PerangkatSeeder::class,
         ]);
     }
 }

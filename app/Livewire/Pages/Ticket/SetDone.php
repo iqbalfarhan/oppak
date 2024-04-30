@@ -19,6 +19,7 @@ class SetDone extends Component
 
     public function simpan(){
         $this->ticket->done = true;
+        $this->ticket->pengajuan = false;
         $this->ticket->save();
 
         $this->ticket = null;

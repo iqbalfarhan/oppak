@@ -1,7 +1,8 @@
 <div class="card card-divider">
     <div class="card-body space-y-4">
         <h3 class="font-bold text-xl">Rectifier</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non voluptate commodi recusandae temporibus
+        <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non voluptate commodi recusandae
+            temporibus
             maxime tempora incidunt! Quam fuga sed voluptate commodi enim velit quis ea dolorem nihil minima? At.</p>
     </div>
     <div class="card-body">

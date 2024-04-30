@@ -4,51 +4,71 @@
         <div class="space-y-2">
             <label class="form-control">
                 <div class="label">
+                    <span class="label-text">Photo pengukur suhu</span>
+                    <span class="label-text-alt">Celcius</span>
+                </div>
+                <input type="file" @class([
+                    'file-input file-input-bordered',
+                    'file-input-error' => $errors->first('photo'),
+                ]) wire:model="photo" />
+            </label>
+
+            <div class="flex gap-1">
+                @isset($laporan->temperatur->photo)
+                    <div class="avatar">
+                        <div class="w-32 rounded-lg">
+                            <img src="{{ $laporan->temperatur->image }}" alt="">
+                        </div>
+                    </div>
+                @endisset
+                @if ($photo)
+                    <div class="avatar">
+                        <div class="w-32 rounded-lg">
+                            <img src="{{ $photo->temporaryUrl() }}" alt="">
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <label class="form-control">
+                <div class="label">
                     <span class="label-text">Suhu ruangan rectifier</span>
+                    <span class="label-text-alt">Celcius</span>
                 </div>
-                <div @class([
-                    'input input-bordered flex items-center gap-2',
+                <input type="number" @class([
+                    'input input-bordered',
                     'input-error' => $errors->first('rectifier'),
-                ])>
-                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="rectifier" />
-                    <span class="badge">Celcius</span>
-                </div>
+                ]) placeholder="suhu ruangan" wire:model="rectifier" />
             </label>
             <label class="form-control">
                 <div class="label">
                     <span class="label-text">Suhu ruangan metro</span>
+                    <span class="label-text-alt">Celcius</span>
                 </div>
-                <div @class([
-                    'input input-bordered flex items-center gap-2',
+                <input type="number" @class([
+                    'input input-bordered',
                     'input-error' => $errors->first('metro'),
-                ])>
-                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="metro" />
-                    <span class="badge">Celcius</span>
-                </div>
+                ]) placeholder="suhu ruangan" wire:model="metro" />
             </label>
             <label class="form-control">
                 <div class="label">
                     <span class="label-text">Suhu ruangan transmisi</span>
+                    <span class="label-text-alt">Celcius</span>
                 </div>
-                <div @class([
-                    'input input-bordered flex items-center gap-2',
+                <input type="number" @class([
+                    'input input-bordered',
                     'input-error' => $errors->first('transmisi'),
-                ])>
-                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="transmisi" />
-                    <span class="badge">Celcius</span>
-                </div>
+                ]) placeholder="suhu ruangan" wire:model="transmisi" />
             </label>
             <label class="form-control">
                 <div class="label">
                     <span class="label-text">Suhu ruangan GPON</span>
+                    <span class="label-text-alt">Celcius</span>
                 </div>
-                <div @class([
-                    'input input-bordered flex items-center gap-2',
+                <input type="number" @class([
+                    'input input-bordered',
                     'input-error' => $errors->first('gpon'),
-                ])>
-                    <input type="number" class="grow" placeholder="suhu ruangan" wire:model="gpon" />
-                    <span class="badge">Celcius</span>
-                </div>
+                ]) placeholder="suhu ruangan" wire:model="gpon" />
             </label>
         </div>
 

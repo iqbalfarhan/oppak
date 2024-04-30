@@ -20,6 +20,7 @@ return new class extends Migration
             $table->json('arus')->nullable();
             $table->integer('kwh')->nullable();
             $table->integer('jam_jalan_genset')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

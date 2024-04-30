@@ -62,41 +62,7 @@
                     <input type="range" min="0" max="100" value="{{ $ticket->progress }}"
                         wire:model.live="progress" @class(['range range-sm', 'range-primary' => !$ticket->done]) @disabled($ticket->done) />
                 </div>
-                @if ($ticket->pengajuan)
-                    <div class="card-body space-y-2">
-                        <h3 class="font-bold">Pengajuan sudah dikirim</h3>
-                        <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
-                            ({{ $ticket->user->name }}).
-                        </p>
-                        <div class="card-actions">
-                            <button class="btn btn-info btn-block" wire:click="togglePengajuan">
-                                <x-tabler-arrow-back-up class="size-5" />
-                                <span>Batalkan pengajuan</span>
-                            </button>
-                        </div>
-                    </div>
-                @elseif ($progress == 100)
-                    <div class="card-body space-y-2">
-                        <h3 class="font-bold">Pengajuan close ticket</h3>
-                        <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
-                            ({{ $ticket->user->name }}).
-                        </p>
-                        <div class="card-actions">
-                            <button class="btn btn-primary btn-block" wire:click="togglePengajuan">
-                                <x-tabler-arrow-right class="size-5" />
-                                <span>Ajukan close ticket</span>
-                            </button>
-                        </div>
-                    </div>
-                @else
-                    <div class="card-body py-4">
-                        <p class="text-xs opacity-75">Bisa mengajukan close ticket jika progress sudah 100%.</p>
-                    </div>
-                @endif
-            </div>
-
-            @if ($ticket->done)
-                <div class="card">
+                @if ($ticket->done)
                     <div class="card-body space-y-2">
                         <h3 class="font-bold text-lg">Kembalikan status ke Draft</h3>
                         <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
@@ -109,8 +75,41 @@
                             </button>
                         </div>
                     </div>
-                </div>
-            @endif
+                @else
+                    @if ($ticket->pengajuan)
+                        <div class="card-body space-y-2">
+                            <h3 class="font-bold">Pengajuan sudah dikirim</h3>
+                            <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
+                                ({{ $ticket->user->name }}).
+                            </p>
+                            <div class="card-actions">
+                                <button class="btn btn-info btn-block" wire:click="togglePengajuan">
+                                    <x-tabler-arrow-back-up class="size-5" />
+                                    <span>Batalkan pengajuan</span>
+                                </button>
+                            </div>
+                        </div>
+                    @elseif ($progress == 100)
+                        <div class="card-body space-y-2">
+                            <h3 class="font-bold">Pengajuan close ticket</h3>
+                            <p class="text-sm">Ini akan mengirim pengajuan close ticket kepembuat ticket
+                                ({{ $ticket->user->name }}).
+                            </p>
+                            <div class="card-actions">
+                                <button class="btn btn-primary btn-block" wire:click="togglePengajuan">
+                                    <x-tabler-arrow-right class="size-5" />
+                                    <span>Ajukan close ticket</span>
+                                </button>
+                            </div>
+                        </div>
+                    @else
+                        <div class="card-body py-4">
+                            <p class="text-xs opacity-75">Bisa mengajukan close ticket jika progress sudah 100%.</p>
+                        </div>
+                    @endif
+                @endif
+            </div>
+
         </div>
         <div class="md:col-span-2">
             <div class="card card-divider">

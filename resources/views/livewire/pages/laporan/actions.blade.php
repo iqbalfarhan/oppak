@@ -7,7 +7,7 @@
                 <table class="table">
                     <tr>
                         <th>Pembuat laporan</th>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user?->name }}</td>
                     </tr>
                     <tr>
                         <th>Tanggal laporan</th>

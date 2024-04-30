@@ -23,16 +23,6 @@ class Show extends Component
     ];
     public Laporan $laporan;
 
-    public function toggleDone()
-    {
-        $newDone = !$this->laporan->done;
-        $this->laporan->update([
-            'done' => $newDone
-        ]);
-
-        $this->alert('success', 'Status laporan berhasil disimpan');
-    }
-
     public function mount(Laporan $laporan)
     {
         $this->laporan = $laporan;

@@ -10,7 +10,7 @@ class LaporanRutin extends Component
     public $witel;
     public $laporan = 0;
 
-    public function mount($witel){
+    public function mount($witel = "null", $laporan = 0){
         $this->witel = $witel;
     }
 

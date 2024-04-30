@@ -38,12 +38,12 @@
         <div class="table-wrapper">
             <table class="table text-center">
                 <thead>
-                    <th>Genset</th>
-                    <th>AMF</th>
-                    <th>Baterai</th>
-                    <th>Rectifier</th>
-                    <th>Temperatur</th>
-                    <th>BBM</th>
+                    <th class="w-1/6">Genset</th>
+                    <th class="w-1/6">AMF</th>
+                    <th class="w-1/6">Baterai</th>
+                    <th class="w-1/6">Rectifier</th>
+                    <th class="w-1/6">Temperatur</th>
+                    <th class="w-1/6">BBM</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -88,18 +88,20 @@
             </table>
         </div>
     </div>
-    <div class="card-body space-y-4">
-        <h3 class="font-bold text-xl">Selesai membuat laporan</h3>
-        <p class="text-sm">Sebelum merubah status laporan, harap untuk memastikan untuk mengisi semua form yang
-            tersedia (genset, amf, baterai, rectifier,
-            temperatur dan
-            bbm). kemudian klik tombol di bawah ini untuk merubah status laporan menjadi selesai.
-        </p>
-        <div class="card-actions">
-            <button class="btn btn-primary" wire:click="toggleDone" wire:loading.attr="disabled">
-                <x-tabler-check class="size-5" />
-                <span>Laporan sudah selesai</span>
-            </button>
+    @if ($laporan->done == false)
+        <div class="card-body space-y-4">
+            <h3 class="font-bold text-xl">Selesai membuat laporan</h3>
+            <p class="text-sm">Sebelum merubah status laporan, harap untuk memastikan untuk mengisi semua form yang
+                tersedia (genset, amf, baterai, rectifier,
+                temperatur dan
+                bbm). kemudian klik tombol di bawah ini untuk merubah status laporan menjadi selesai.
+            </p>
+            <div class="card-actions">
+                <button class="btn btn-primary" wire:click="toggleDone" wire:loading.attr="disabled">
+                    <x-tabler-check class="size-5" />
+                    <span>Laporan sudah selesai</span>
+                </button>
+            </div>
         </div>
-    </div>
+    @endif
 </div>
