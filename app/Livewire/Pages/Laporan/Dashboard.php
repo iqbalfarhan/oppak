@@ -12,9 +12,9 @@ class Dashboard extends Component
     {
         return view('livewire.pages.laporan.dashboard', [
             'witels' => Site::$witels,
-            'laporans' => Laporan::whereDate('created_at', now())->get()->groupBy('site.witel')->map(function ($group) {
-                return $group->count();
-            })->toArray()
+            // 'laporans' => Laporan::whereDate('created_at', now())->get()->groupBy('site.witel')->map(function ($group) {
+            //     return $group->count();
+            // })->toArray()
         ]);
     }
 }

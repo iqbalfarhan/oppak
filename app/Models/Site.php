@@ -34,6 +34,10 @@ class Site extends Model
         return $this->witel ." - ". $this->name. " (".Str::upper($this->listrik).")";
     }
 
+    public function laporans(){
+        return $this->hasMany(Laporan::class);
+    }
+
     public function pergantians(){
         return $this->hasMany(Pergantian::class);
     }
