@@ -35,8 +35,8 @@
                 <th>No</th>
                 <th>Kode ticket</th>
                 <th>Pembuat ticket</th>
-                <th>Site / STO</th>
                 <th>Percentage</th>
+                <th>Uraian</th>
                 <th>Log</th>
                 <th class="text-center">Actions</th>
             </thead>
@@ -53,9 +53,21 @@
                                 {{ $data->kode }}
                             </a>
                         </td>
-                        <td>{{ $data->user->name }}</td>
-                        <td>{{ $data->site->label }}</td>
+                        <td>
+                            <div class="flex gap-3 items-center">
+                                <div class="avatar">
+                                    <div class="w-8 bg-base-300 rounded-lg">
+                                        <img src="{{ $data->image }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-start">
+                                    <div>{{ $data->user->name }}</div>
+                                    <div class="text-xs opacity-75">({{ $data->site->label }})</div>
+                                </div>
+                            </div>
+                        </td>
                         <td>{{ Number::percentage($data->progress) }}</td>
+                        <td class="whitespace-normal min-w-52 max-w-80">{{ $data->uraian }}</td>
                         <td>{{ $data->logtickets_count }}</td>
                         <td>
                             <div class="flex gap-1 justify-center">
