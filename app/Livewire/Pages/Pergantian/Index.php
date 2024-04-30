@@ -13,6 +13,15 @@ class Index extends Component
 
     protected $listeners = ['reload' => '$refresh'];
 
+    public function mount()
+    {
+        $user = auth()->user();
+
+        if($user->site_id){
+            $this->witel = $user->site->witel;
+        }
+    }
+
     public function render()
     {
         return view('livewire.pages.pergantian.index', [

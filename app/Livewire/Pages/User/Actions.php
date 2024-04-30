@@ -95,7 +95,7 @@ class Actions extends Component
         $roles = auth()->user()->hasRole('superadmin') ? Role::pluck('name') : Role::whereNot('name', 'superadmin')->pluck('name');
         return view('livewire.pages.user.actions', [
             'roles' => $roles,
-            'sites' => Site::pluck('name', 'id'),
+            'sites' => Site::get()->groupBy('witel'),
         ]);
     }
 }

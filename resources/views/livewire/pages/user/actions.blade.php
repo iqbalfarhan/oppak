@@ -50,15 +50,16 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Site/STO</span>
+                        <span class="label-text">Lokasi Site/STO</span>
                     </div>
-                    <select type="text" @class([
-                        'select select-bordered',
-                        'select-error' => $errors->first('form.site_id'),
-                    ]) wire:model="form.site_id">
-                        <option value="">Pilih site/sto</option>
-                        @foreach ($sites as $siteid => $sitename)
-                            <option value="{{ $siteid }}">{{ $sitename }}</option>
+                    <select class="select select-bordered" wire:model="form.site_id">
+                        <option value="">Pilih site</option>
+                        @foreach ($sites as $witel => $site)
+                            <optgroup label="{{ $witel }}">
+                                @foreach ($site as $item)
+                                    <option value="{{ $item->id }}">{{ $item->label }}</option>
+                                @endforeach
+                            </optgroup>
                         @endforeach
                     </select>
                 </label>

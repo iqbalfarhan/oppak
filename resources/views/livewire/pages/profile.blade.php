@@ -28,6 +28,21 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
+                        <span class="label-text">Lokasi Site/STO</span>
+                    </div>
+                    <select class="select select-bordered" wire:model="site_id">
+                        <option value="">Pilih site</option>
+                        @foreach ($sites as $witel => $site)
+                            <optgroup label="{{ $witel }}">
+                                @foreach ($site as $item)
+                                    <option value="{{ $item->id }}">{{ $item->label }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
                         <span class="label-text">Password</span>
                     </div>
                     <input type="password" class="input input-bordered" wire:model="password"

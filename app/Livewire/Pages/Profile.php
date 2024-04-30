@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Models\Site;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -16,6 +17,7 @@ class Profile extends Component
     public $name;
     public $email;
     public $password;
+    public $site_id;
     public User $user;
 
     public function mount(){
@@ -24,6 +26,7 @@ class Profile extends Component
         $this->user = $user;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->site_id = $user->site_id;
     }
 
     public function simpan(){
@@ -31,6 +34,7 @@ class Profile extends Component
             'user' => 'required',
             'name' => 'required',
             'email' => 'required',
+            'site_id' => '',
         ]);
 
         if ($this->password) {
@@ -48,15 +52,14 @@ class Profile extends Component
             $valid['photo'] = $this->photo->hashName('user');
         }
 
-        // dd($valid);
-
         $this->user->update($valid);
-
         $this->alert('success', 'Data berhasil disimpan');
     }
 
     public function render()
     {
-        return view('livewire.pages.profile');
+        return view('livewire.pages.profile', [
+            'sites' => Site::get()->groupBy('witel'),
+        ]);
     }
 }
