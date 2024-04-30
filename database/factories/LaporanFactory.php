@@ -19,10 +19,16 @@ class LaporanFactory extends Factory
      */
     public function definition(): array
     {
+        $tanggal = implode("-", [
+            2024,
+            04,
+            rand(1, 30)
+        ]);
+
         return [
             'site_id' => fake()->randomElement(Site::pluck('id')),
             'user_id' => fake()->randomElement(User::pluck('id')),
-            'tanggal' => fake()->date('Y-m-d'),
+            'tanggal' => $tanggal,
             'done' => fake()->boolean(),
         ];
     }

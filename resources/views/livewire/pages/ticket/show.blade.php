@@ -76,7 +76,7 @@
                         wire:model.live="progress" @class([
                             'range range-sm',
                             'range-primary' => !$ticket->done,
-                            'range-primary' => $ticket->pengajuan,
+                            'range-primary' => !$ticket->pengajuan,
                         ]) @disabled($ticket->done || $ticket->pengajuan) />
                 </div>
                 @if ($ticket->done)
@@ -139,15 +139,15 @@
                                 'chat-start' => !$log->is_me,
                                 'chat-end' => $log->is_me,
                             ])>
-                                <div @class(['chat-image avatar'])>
+                                <div @class(['chat-image avatar tooltip tooltip-sm tooltip-success']) data-tip="{{ Str::limit($log->user->name, 10) }}">
                                     <div class="w-10 rounded-full bg-base-300">
                                         <img src="{{ $log->user->image }}" alt="">
                                     </div>
                                 </div>
-                                <div class="chat-header">
+                                {{-- <div class="chat-header">
                                     {{ $log->user->name }}
                                     <time class="text-xs opacity-50">{{ $log->created_at->diffForHumans() }}</time>
-                                </div>
+                                </div> --}}
                                 <div class="chat-bubble flex flex-col gap-2">
                                     @if ($log->photo)
                                         <img src="{{ $log->image }}"

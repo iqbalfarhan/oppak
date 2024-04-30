@@ -15,15 +15,15 @@ class UserSeeder extends Seeder
     {
         $user = User::factory()->create([
             'name' => 'Administrator',
-            'email' => 'admin@gmail.com',
-            'password' => 'admin'
+            'username' => 'admin',
+            'password' => 'adminoke'
         ]);
         $user->assignRole('superadmin');
 
         $user = User::factory()->create([
-            'name' => 'User Contoh',
-            'email' => 'user@gmail.com',
-            'password' => 'user'
+            'name' => 'Iqbal Farhan Syuhada',
+            'username' => 'iqbal',
+            'password' => 'adminoke'
         ]);
         $user->assignRole('user');
 

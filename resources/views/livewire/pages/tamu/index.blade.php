@@ -28,7 +28,7 @@
                             <button class="flex gap-3 items-center"
                                 wire:click="$dispatch('previewTamu', {tamu: {{ $data->id }}})">
                                 <div @class(['avatar', 'placeholder' => !$data->images])>
-                                    <div class="w-8 bg-base-300 rounded-full">
+                                    <div class="w-8 bg-base-300 rounded-lg">
                                         @if ($data->images)
                                             <img src="{{ Storage::url($data->images[0]) }}" alt="">
                                         @else

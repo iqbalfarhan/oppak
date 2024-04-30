@@ -35,7 +35,7 @@ class Show extends Component
     public function render()
     {
         return view('livewire.pages.pergantian.show', [
-            'datas' => isset($this->site) && isset($this->perangkat) ? Pergantian::where('site_id', $this->site->id)->where('perangkat_id', $this->perangkat->id)->latest()->get() : []
+            'datas' => isset($this->site) && isset($this->perangkat) ? Pergantian::where('site_id', $this->site->id)->where('perangkat_id', $this->perangkat->id)->latest('tanggal')->get() : collect([])
         ]);
     }
 }

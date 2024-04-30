@@ -12,6 +12,11 @@
     </div>
 
     <div class="table-wrapper">
+        @if ($datas->hasPages())
+            <div class="p-3 border-b-2 border-base-300">
+                {{ $datas->links() }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <th>No</th>

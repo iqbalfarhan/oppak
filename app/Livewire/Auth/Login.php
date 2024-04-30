@@ -9,13 +9,13 @@ use Livewire\Component;
 class Login extends Component
 {
     use LivewireAlert;
-    public $email = "admin@gmail.com";
-    public $password = "admin";
+    public $username = "admin";
+    public $password = "adminoke";
 
     public function login()
     {
         $valid = $this->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 

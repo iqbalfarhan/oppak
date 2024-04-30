@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class Pergantian extends Model
@@ -44,4 +45,11 @@ class Pergantian extends Model
     public function getImageAttribute(){
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
+
+    public function getNextActionAttribute()
+    {
+        $month = $this->site->listrik == "pln" ? $this->perangkat->durasi_pln : $this->perangkat->durasi_solar_cell;
+        return $this->tanggal->addMonths((int)$month);
+    }
+
 }

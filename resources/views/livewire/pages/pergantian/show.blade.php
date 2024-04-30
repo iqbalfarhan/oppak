@@ -20,10 +20,12 @@
                             <td>{{ $site?->listrik == 'pln' ? $perangkat?->durasi_pln : $perangkat?->durasi_solar_cell }}
                                 bulan</td>
                         </tr>
-                        <tr>
-                            <td>Pergantian selanjutnya</td>
-                            <td>{{ date('d F Y') }}</td>
-                        </tr>
+                        @if (count($datas) != 0)
+                            <tr>
+                                <td>Pergantian selanjutnya</td>
+                                <td class="text-warning">{{ $datas->first()->next_action->format('d F Y') }}</td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
 

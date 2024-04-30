@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Laporan;
+use App\Models\Site;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,6 @@ class LaporanSeeder extends Seeder
      */
     public function run(): void
     {
-        Laporan::factory(10)->create();
+        Laporan::factory(Site::count() * 10)->create();
     }
 }

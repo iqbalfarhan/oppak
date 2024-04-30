@@ -9,11 +9,11 @@ use Livewire\Component;
 class LaporanRutin extends Component
 {
     public $witel;
-    public $laporan = 0;
+    public $laporan;
 
     public function loadLaporan()
     {
-        $this->laporan = Laporan::whereHas('site', function($site){
+        $this->laporan = Laporan::where('tanggal', date('Y-m-d'))->whereHas('site', function($site){
             $site->where('witel', $this->witel);
         })->count();
     }

@@ -33,8 +33,8 @@
                 <p class="text-sm line-clamp-2">Input tamu sebelum masuk ke site atau STO. Input nama, nomor
                     identitas, perusahaan, nomor telepon dan keperluan kunjungan.</p>
                 <div class="card-actions">
-                    <button class="btn btn-primary btn-sm gap-1" wire:click="$dispatch('createTamu')">
-                        <x-tabler-plus class="size-4" />
+                    <button class="btn btn-primary gap-1" wire:click="$dispatch('createTamu')">
+                        <x-tabler-plus class="size-5" />
                         <span>Input visitor</span>
                     </button>
                 </div>
@@ -49,8 +49,8 @@
                 <p class="text-sm line-clamp-2">Lihat semua data tamu. filter data tamu dengan tanggal, nama tamu,
                     perusahaan, nomor telepon dan keperluan tamu. Klik untuk masuk riwayat tamu.</p>
                 <div class="card-actions">
-                    <a href="{{ route('tamu.index') }}" class="btn btn-primary btn-sm gap-1" wire:navigate>
-                        <x-tabler-list class="size-4" />
+                    <a href="{{ route('tamu.index') }}" class="btn btn-primary gap-1" wire:navigate>
+                        <x-tabler-list class="size-5" />
                         <span>Riwayat visitor</span>
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                 @forelse ($datas->whereNull('keluar') as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->site->name }}</td>
+                        <td>{{ $data->site->label }}</td>
                         <td>
                             <div class="flex -space-x-3 rtl:space-x-reverse">
                                 @foreach ($data->images as $gambar)
@@ -88,7 +88,7 @@
                         </td>
                         <td>
                             <a href="{{ route('tamu.show', $data) }}" class="btn btn-xs btn-bordered" wire:navigate>
-                                <span>{{ $data->nama }}</span>
+                                <span>{{ Str::limit($data->nama, 15) }}</span>
                             </a>
                         </td>
                         <td>{{ Str::limit($data->keperluan, 30) }}</td>
