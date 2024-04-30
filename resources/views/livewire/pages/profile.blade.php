@@ -22,9 +22,22 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Email address</span>
+                        <span class="label-text">Username</span>
                     </div>
-                    <input type="email" placeholder="Type here" class="input input-bordered" wire:model="email" />
+                    <input type="email" placeholder="Type here" class="input input-bordered" wire:model="username" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Nomor telepon</span>
+                    </div>
+                    <input type="text" placeholder="Type here" class="input input-bordered" wire:model="notelp" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Telegram ID</span>
+                    </div>
+                    <input type="text" placeholder="Type here" class="input input-bordered"
+                        wire:model="telegram_id" />
                 </label>
                 <label class="form-control">
                     <div class="label">

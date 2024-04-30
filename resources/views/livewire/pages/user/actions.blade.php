@@ -16,13 +16,33 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Alamat email</span>
+                        <span class="label-text">Username login</span>
                     </div>
                     <input type="email" @class([
                         'input input-bordered',
-                        'input-error' => $errors->first('form.email'),
-                    ]) wire:model="form.email"
-                        placeholder="Alamat email" />
+                        'input-error' => $errors->first('form.username'),
+                    ]) wire:model="form.username"
+                        placeholder="Username login" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Nomor telepon</span>
+                    </div>
+                    <input type="email" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.notelp'),
+                    ]) wire:model="form.notelp"
+                        placeholder="Nomor telepon" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Telegram ID</span>
+                    </div>
+                    <input type="email" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.telegram_id'),
+                    ]) wire:model="form.telegram_id"
+                        placeholder="Telegram ID" />
                 </label>
                 <label class="form-control">
                     <div class="label">

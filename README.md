@@ -4,7 +4,7 @@ Template starter aplikasi ini ditujukan sebagai template code dasar sebelum memb
 
 -   [Laravel 11 : membutuhkan minimal PHP 8.2](https://laravel.com/docs/11.x)
 -   [Livewire 3 : sebagai frontent laravel 11](https://livewire.laravel.com/)
--   [PNPM : sebagai nodejs package manager](https://pnpm.io/id/)
+-   [Bun : sebagai nodejs package manager](https://bun.sh)
 -   [Tailwindcss : sebagai css entity](https://tailwindcss.com/docs/guides/laravel)
 -   [Daisyui : thema bawaan menggunakan tailwindcss](https://daisyui.com/components/)
 -   [Adminer : database management system](https://github.com/onecentlin/laravel-adminer)

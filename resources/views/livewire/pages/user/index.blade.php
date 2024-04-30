@@ -18,6 +18,7 @@
                 <th>No</th>
                 <th>Nama lengkap user</th>
                 <th>Site/STO</th>
+                <th>Kontak</th>
                 <th>Role</th>
                 <th class="text-center">Active</th>
                 @canany(['user.resetpassword', 'user.edit', 'user.delete'])
@@ -37,11 +38,17 @@
                                 </div>
                                 <div class="flex flex-col">
                                     <span>{{ $data->name }}</span>
-                                    <span class="text-xs">{{ $data->email }}</span>
+                                    <span class="text-xs opacity-70">{{ $data->username }}</span>
                                 </div>
                             </div>
                         </td>
                         <td>{{ $data->site?->label }}</td>
+                        <td>
+                            <div class="flex flex-col">
+                                <span>{{ $data->notelp }}</span>
+                                <span class="text-xs opacity-70">{{ $data->telegram_id }}</span>
+                            </div>
+                        </td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>
                             <div class="flex justify-center">

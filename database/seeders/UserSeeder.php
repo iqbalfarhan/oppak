@@ -13,16 +13,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::factory()->create([
-            'name' => 'Administrator',
+        $user = User::updateOrCreate([
             'username' => 'admin',
+        ], [
+            'name' => 'Administrator',
             'password' => 'adminoke'
         ]);
         $user->assignRole('superadmin');
 
-        $user = User::factory()->create([
-            'name' => 'Iqbal Farhan Syuhada',
+        $user = User::updateOrCreate([
             'username' => 'iqbal',
+        ], [
+            'name' => 'Iqbal Farhan Syuhada',
             'password' => 'adminoke'
         ]);
         $user->assignRole('user');

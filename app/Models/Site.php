@@ -38,6 +38,10 @@ class Site extends Model
         return $this->hasMany(Laporan::class);
     }
 
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
     public function pergantians(){
         return $this->hasMany(Pergantian::class);
     }

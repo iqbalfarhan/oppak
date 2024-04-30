@@ -14,7 +14,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.site.index', [
-            'datas' => Site::get()
+            'datas' => Site::withCount('users')->get()
         ]);
     }
 }

@@ -18,6 +18,8 @@
                 <th>Witel</th>
                 <th>Nama site</th>
                 <th>Listrik</th>
+                <th>Label</th>
+                <th>Users</th>
                 <td class="text-center">Action</td>
             </thead>
             <tbody>
@@ -27,6 +29,8 @@
                         <td>{{ $data->witel }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->listrik }}</td>
+                        <td>{{ $data->label }}</td>
+                        <td>{{ $data->users_count }} user</td>
                         <td>
                             <div class="flex gap-1 justify-center">
                                 @can('site.edit')

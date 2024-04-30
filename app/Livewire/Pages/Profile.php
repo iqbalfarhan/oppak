@@ -11,11 +11,13 @@ use Livewire\WithFileUploads;
 
 class Profile extends Component
 {
-     use WithFileUploads, LivewireAlert;
+    use WithFileUploads, LivewireAlert;
 
     public $photo;
     public $name;
-    public $email;
+    public $username;
+    public $notelp;
+    public $telegram_id;
     public $password;
     public $site_id;
     public User $user;
@@ -25,7 +27,9 @@ class Profile extends Component
 
         $this->user = $user;
         $this->name = $user->name;
-        $this->email = $user->email;
+        $this->username = $user->username;
+        $this->telegram_id = $user->telegram_id;
+        $this->notelp = $user->notelp;
         $this->site_id = $user->site_id;
     }
 
@@ -33,7 +37,9 @@ class Profile extends Component
         $valid = $this->validate([
             'user' => 'required',
             'name' => 'required',
-            'email' => 'required',
+            'notelp' => 'required',
+            'username' => '',
+            'telegram_id' => '',
             'site_id' => '',
         ]);
 

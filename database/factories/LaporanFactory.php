@@ -21,7 +21,7 @@ class LaporanFactory extends Factory
     {
         $tanggal = implode("-", [
             2024,
-            04,
+            date('M'),
             rand(1, 30)
         ]);
 
