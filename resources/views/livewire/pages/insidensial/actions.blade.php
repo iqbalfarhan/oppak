@@ -22,8 +22,12 @@
                     <div class="label">
                         <span class="label-text">Kategori laporan</span>
                     </div>
-                    <input type="text" placeholder="Kategori laporan" class="input input-bordered"
-                        wire:model="form.kategori" />
+                    <select class="select select-bordered" wire:model="form.kategori">
+                        <option value="">Pilih kategori</option>
+                        @foreach ($kategories as $kategory)
+                            <option value="{{ $kategory }}">{{ $kategory }}</option>
+                        @endforeach
+                    </select>
                 </label>
                 <label class="form-control">
                     <div class="label">

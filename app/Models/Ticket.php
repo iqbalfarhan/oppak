@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Ticket extends Model
 {
@@ -17,7 +18,8 @@ class Ticket extends Model
         'perangkat',
         'uraian',
         'done',
-        'pengajuan'
+        'pengajuan',
+        'photo',
     ];
 
     public function user()
@@ -33,5 +35,9 @@ class Ticket extends Model
     public function logtickets()
     {
         return $this->hasMany(Logticket::class);
+    }
+
+    public function getImageAttribute(){
+        return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
 }

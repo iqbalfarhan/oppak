@@ -50,7 +50,8 @@
                                     <td>
                                         <div class="flex gap-3">
                                             <div>
-                                                <div class="avatar">
+                                                <div class="avatar"
+                                                    wire:click="$dispatch('showPreview', {url:'{{ $data->photo }}'})">
                                                     <div class="w-10 rounded-lg">
                                                         <img src="{{ $data->image }}">
                                                     </div>

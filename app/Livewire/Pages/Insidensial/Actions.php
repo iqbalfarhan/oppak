@@ -69,6 +69,8 @@ class Actions extends Component
 
     public function render()
     {
-        return view('livewire.pages.insidensial.actions');
+        return view('livewire.pages.insidensial.actions', [
+            'kategories' => Insidensial::$kategories,
+        ]);
     }
 }

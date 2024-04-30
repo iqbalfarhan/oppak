@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('uraian');
             $table->boolean('done')->default(false);
             $table->boolean('pengajuan')->default(false);
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

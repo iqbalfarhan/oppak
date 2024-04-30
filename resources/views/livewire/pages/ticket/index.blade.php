@@ -64,6 +64,10 @@
                                     </button>
                                 @endif
                                 <button class="btn btn-bordered btn-xs btn-square"
+                                    wire:click="$dispatch('editTicket', {ticket: {{ $data->id }}})">
+                                    <x-tabler-edit class="size-4" />
+                                </button>
+                                <button class="btn btn-bordered btn-xs btn-square"
                                     wire:click="$dispatch('deleteTicket', {ticket: {{ $data->id }}})">
                                     <x-tabler-trash class="size-4" />
                                 </button>

@@ -18,6 +18,16 @@ class Insidensial extends Model
         'photo',
     ];
 
+    public static $kategories = [
+        'GENSET',
+        'RECTIFIER',
+        'ATS',
+        'AC',
+        'GROUNDING',
+        'LAMPU',
+        'LAIN-LAIN'
+    ];
+
     public function site()
     {
         return $this->belongsTo(Site::class);

@@ -51,6 +51,19 @@
                 <td>:</td>
                 <td>{{ $ticket->pengajuan ? 'Sudah diajukan' : 'Belum diajukan' }}</td>
             </tr>
+            @if ($ticket->photo)
+                <tr>
+                    <td>Photo</td>
+                    <td>:</td>
+                    <td>
+                        <div class="avatar">
+                            <div class="w-32 rounded-lg">
+                                <img src="{{ $ticket->image }}" alt="">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            @endif
         </table>
     </div>
 
@@ -60,7 +73,11 @@
                 <div class="card-body space-y-2">
                     <h3 class="font-bold text-lg">Progress ticket ({{ Number::percentage($ticket->progress) }})</h3>
                     <input type="range" min="0" max="100" value="{{ $ticket->progress }}"
-                        wire:model.live="progress" @class(['range range-sm', 'range-primary' => !$ticket->done]) @disabled($ticket->done) />
+                        wire:model.live="progress" @class([
+                            'range range-sm',
+                            'range-primary' => !$ticket->done,
+                            'range-primary' => $ticket->pengajuan,
+                        ]) @disabled($ticket->done || $ticket->pengajuan) />
                 </div>
                 @if ($ticket->done)
                     <div class="card-body space-y-2">

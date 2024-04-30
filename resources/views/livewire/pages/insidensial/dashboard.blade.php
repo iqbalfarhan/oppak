@@ -3,9 +3,9 @@
         <h3 class="font-bold text-lg">Summary laporan insidensial :</h3>
     </div>
     <div class="table-wrapper">
-        <table class="table table-sm">
+        <table class="table">
             @foreach ($datas as $month => $number)
-                <tr>
+                <tr class="opacity-50 first:opacity-100">
                     <td>{{ $month }}</td>
                     <td>:</td>
                     <td class="w-1/2">

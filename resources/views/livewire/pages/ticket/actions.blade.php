@@ -8,7 +8,7 @@
                     <div class="label">
                         <span class="label-text">Lokasi Site/STO</span>
                     </div>
-                    <select type="text" placeholder="Type here" class="select select-bordered">
+                    <select class="select select-bordered" wire:model="form.site_id">
                         <option value="">Pilih site</option>
                         @foreach ($sites as $witel => $site)
                             <optgroup label="{{ $witel }}">
@@ -23,7 +23,7 @@
                     <div class="label">
                         <span class="label-text">Perangkat</span>
                     </div>
-                    <select type="text" placeholder="Type here" class="select select-bordered">
+                    <select class="select select-bordered" wire:model="form.perangkat">
                         <option value="">Pilih perangkat</option>
                         @foreach ($perangkats as $prkt)
                             <option value="{{ $prkt }}">{{ $prkt }}</option>
@@ -34,14 +34,32 @@
                     <div class="label">
                         <span class="label-text">Uraian permasalahan</span>
                     </div>
-                    <textarea placeholder="tuliskan uraian masalah" class="textarea textarea-bordered"></textarea>
+                    <textarea placeholder="tuliskan uraian masalah" class="textarea textarea-bordered" wire:model="form.uraian"></textarea>
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Uraian permasalahan</span>
+                        <span class="label-text">Photo eviden</span>
                     </div>
-                    <input type="file" placeholder="Type here" class="file-input file-input-bordered" />
+                    <input type="file" placeholder="Type here" class="file-input file-input-bordered"
+                        wire:model="photo" />
                 </label>
+
+                <div class="flex gap-1">
+                    @isset($form->ticket)
+                        <div class="avatar">
+                            <div class="w-32 rounded-lg">
+                                <img src="{{ $form->ticket->image }}" alt="">
+                            </div>
+                        </div>
+                    @endisset
+                    @if ($photo)
+                        <div class="avatar">
+                            <div class="w-32 rounded-lg">
+                                <img src="{{ $photo->temporaryUrl() }}" alt="">
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>

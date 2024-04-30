@@ -9,9 +9,7 @@ class Index extends Component
 {
     public $no = 1;
 
-    protected $listeners = [
-        'reload' => '$refresh'
-    ];
+    protected $listeners = ['reload' => '$refresh'];
 
     public function render()
     {
