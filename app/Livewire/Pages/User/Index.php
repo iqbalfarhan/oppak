@@ -18,7 +18,7 @@ class Index extends Component
             'user' => auth()->user(),
             'datas' => User::when($this->cari, function($user){
                 $user->where('name', 'like', "%{$this->cari}%")
-                ->orWhere('email', 'like', "%{$this->cari}%");
+                ->orWhere('username', 'like', "%{$this->cari}%");
             })->orderBy('active', 'desc')->get()
         ]);
     }

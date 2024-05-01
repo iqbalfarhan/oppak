@@ -33,7 +33,7 @@ class UserForm extends Form
     public function store(){
         $valid = $this->validate([
             'name' => 'required',
-            'username' => 'required|username',
+            'username' => 'required',
             'role' => 'required',
             'password' => 'required|min:8',
             'notelp' => '',
@@ -51,7 +51,7 @@ class UserForm extends Form
     public function update(){
         $valid = $this->validate([
             'name' => 'required',
-            'username' => 'required|username',
+            'username' => 'required',
             'role' => 'required',
             'notelp' => '',
             'telegram_id' => '',

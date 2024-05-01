@@ -18,7 +18,7 @@
                     <div class="label">
                         <span class="label-text">Username login</span>
                     </div>
-                    <input type="email" @class([
+                    <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.username'),
                     ]) wire:model="form.username"
@@ -28,7 +28,7 @@
                     <div class="label">
                         <span class="label-text">Nomor telepon</span>
                     </div>
-                    <input type="email" @class([
+                    <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.notelp'),
                     ]) wire:model="form.notelp"
@@ -38,7 +38,7 @@
                     <div class="label">
                         <span class="label-text">Telegram ID</span>
                     </div>
-                    <input type="email" @class([
+                    <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.telegram_id'),
                     ]) wire:model="form.telegram_id"

@@ -24,7 +24,7 @@
                     <div class="label">
                         <span class="label-text">Username</span>
                     </div>
-                    <input type="email" placeholder="Type here" class="input input-bordered" wire:model="username" />
+                    <input type="text" placeholder="Type here" class="input input-bordered" wire:model="username" />
                 </label>
                 <label class="form-control">
                     <div class="label">
