@@ -64,29 +64,31 @@
             <h3 class="text-xl font-bold">Genset</h3>
             <div class="grid md:grid-cols-2 gap-6">
                 @foreach ($laporan->gensets as $key => $genset)
-                    <div class="card card-compact card-divider">
-                        <div class="card-body">
-                            <div class="flex flex-col md:flex-row gap-4">
-                                <div>
-                                    <div class="avatar"
-                                        wire:click="$dispatch('showPreview', {url: '{{ $genset->photo }}'})">
-                                        <div class="w-24 rounded-lg">
-                                            <img src="{{ $genset->gambar }}" alt="Shoes" class="h-fit" />
+                    <div>
+                        <div class="card card-compact card-divider">
+                            <div class="card-body">
+                                <div class="flex flex-col md:flex-row gap-4">
+                                    <div>
+                                        <div class="avatar"
+                                            wire:click="$dispatch('showPreview', {url: '{{ $genset->photo }}'})">
+                                            <div class="w-24 rounded-lg">
+                                                <img src="{{ $genset->gambar }}" alt="Shoes" class="h-fit" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span class="text-lg font-semibold">Genset {{ $key + 1 }}</span>
-                                    <p>{{ $genset->label }}</p>
+                                    <div class="flex flex-col">
+                                        <span class="text-lg font-semibold">Genset {{ $key + 1 }}</span>
+                                        <p>{{ $genset->label }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        @foreach ($genset->bateraistarters as $key => $bs)
-                            <div class="card-body">
-                                <p class="text-sm">Baterai starter {{ $key + 1 }} : {{ $bs->label }}</p>
-                            </div>
-                        @endforeach
+                            @foreach ($genset->bateraistarters as $key => $bs)
+                                <div class="card-body">
+                                    <p class="text-sm">Baterai starter {{ $key + 1 }} : {{ $bs->label }}</p>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 @endforeach
             </div>
