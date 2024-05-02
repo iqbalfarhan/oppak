@@ -68,8 +68,7 @@
         <table class="table">
             <thead>
                 <th>No</th>
-                <th>Witel</th>
-                <th>STO / Site</th>
+                <th>Witel dan STO</th>
                 <th>Kegiatan</th>
                 <th>Nama Tamu</th>
                 <th>Keperluan</th>
@@ -80,11 +79,15 @@
                 @forelse ($datas->whereNull('keluar') as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->site->witel }}</td>
-                        <td>{{ $data->site->name }}</td>
+                        <td>
+                            <div class="flex flex-col">
+                                <div>{{ $data->site->witel }}</div>
+                                <div class="text-xs opacity-70">{{ $data->site->name }}</div>
+                            </div>
+                        </td>
                         <td>
                             <div class="flex -space-x-3 rtl:space-x-reverse">
-                                @foreach ($data->images as $gambar)
+                                @foreach (Arr::take($data->images, 4) as $gambar)
                                     <div class="avatar"
                                         wire:click="$dispatch('showPreview', {url : '{{ $gambar }}'})">
                                         <div class="w-6 rounded-full btn-bordered">

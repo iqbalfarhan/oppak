@@ -1,19 +1,26 @@
 <div>
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
-        <form class="modal-box max-w-sm" wire:submit="simpan">
+        <form class="modal-box max-w-xl" wire:submit="simpan">
             <h3 class="font-bold text-lg">Upload photo</h3>
-            <div class="py-6 flex flex-col items-center gap-4">
-                <div class="avatar">
-                    <div class="max-w-48 btn-bordered rounded-lg">
-                        <img src="{{ $photo ? $photo->temporaryUrl() : url('nouser.jpg') }}" />
+            <div class="py-6 flex flex-col gap-4">
+                @if ($photo)
+                    <div class="flex flex-wrap">
+                        @foreach ($photo as $image)
+                            <div class="avatar">
+                                <div class="max-w-32 btn-bordered rounded-lg">
+                                    <img src="{{ $image->temporaryUrl() }}" />
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                </div>
-                <label class="form-control w-full max-w-xs">
+                @endif
+                <label class="form-control">
                     <input type="file" @class([
-                        'file-input file-input-bordered w-full',
+                        'file-input file-input-bordered',
                         'file-input-error' => $errors->first('photo'),
-                    ]) wire:model.live="photo" />
+                    ]) wire:model.live="photo" accept="image/*"
+                        multiple />
                     @error('photo')
                         <div class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>

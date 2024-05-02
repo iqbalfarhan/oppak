@@ -26,10 +26,12 @@ class AddPhoto extends Component
     public function simpan()
     {
         $this->validate([
-            'photo' => 'required'
+            'photo.*' => 'required'
         ]);
 
-        $this->photo->store('tamu/'.$this->tamu->id);
+        foreach ($this->photo as $photo) {
+            $photo->store('tamu/'.$this->tamu->id);
+        }
 
         $this->dispatch('reload');
         $this->alert('success', 'Berhasil menambahkan berkas');

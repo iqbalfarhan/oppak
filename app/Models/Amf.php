@@ -17,8 +17,8 @@ class Amf extends Model
         'tegangan',
         'arus',
         'kwh',
-        'photo',
         'jam_jalan_genset',
+        'photo',
     ];
 
     protected function casts(){

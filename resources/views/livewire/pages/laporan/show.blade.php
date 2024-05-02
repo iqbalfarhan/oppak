@@ -92,18 +92,57 @@
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card card-divider">
         <div class="card-body space-y-4">
             <h3 class="text-xl font-bold">AMF</h3>
-            <div class="flex flex-col md:flex-row gap-6">
-                <div>
-                    <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->amf->photo }}'})">
-                        <div class="w-24 rounded-lg">
-                            <img src="{{ $laporan->amf->image }}" alt="Shoes" class="h-fit" />
-                        </div>
-                    </div>
+            <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->amf->photo }}'})">
+                <div class="w-24 rounded-lg">
+                    <img src="{{ $laporan->amf->image }}" alt="Shoes" class="h-fit" />
                 </div>
-                <p>{{ $laporan->amf->label }}</p>
+            </div>
+        </div>
+        <div class="card-body py-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="flex flex-col">
+                    <div class="text-xs opacity-50">Kebersihan ruangan</div>
+                    <div>Ruangan {{ $laporan->amf->ruangan_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="text-xs opacity-50">Kebersihan engine</div>
+                    <div>Engine {{ $laporan->amf->engine_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body py-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                @foreach ($laporan->amf->tegangan as $key => $value)
+                    <div class="flex flex-col">
+                        <div class="text-xs opacity-50">Tegangan {{ $key }}</div>
+                        <div>{{ $value }} volt</div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="card-body py-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                @foreach ($laporan->amf->arus as $key => $value)
+                    <div class="flex flex-col">
+                        <div class="text-xs opacity-50">arus {{ $key }}</div>
+                        <div>{{ $value }} volt</div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="card-body py-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="flex flex-col">
+                    <div class="text-xs opacity-50">Penggunaan listrik</div>
+                    <div>{{ $laporan->amf->kwh }} Kwh</div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="text-xs opacity-50">Jam jalan genset</div>
+                    <div>{{ $laporan->amf->jam_jalan_genset }} jam</div>
+                </div>
             </div>
         </div>
     </div>
@@ -111,10 +150,10 @@
         <div class="card-body space-y-4">
             <h3 class="text-xl font-bold">Baterai</h3>
             <div class="grid md:grid-cols-2 gap-6">
-                @foreach ($laporan->baterais as $baterai)
+                @foreach ($laporan->baterais as $key => $baterai)
                     <div class="card card-compact">
                         <div class="card-body">
-                            <div class="flex gap-3">
+                            <div class="flex gap-4">
                                 <div>
                                     <div class="avatar"
                                         wire:click="$dispatch('showPreview', {url: '{{ $baterai->photo }}'})">
@@ -123,7 +162,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p>{{ $baterai->label }}</p>
+                                <div class="flex flex-col">
+                                    <span class="text-lg font-semibold">Baterai {{ $key + 1 }}</span>
+                                    {{ $baterai->label }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,10 +177,10 @@
         <div class="card-body space-y-4">
             <h3 class="text-xl font-bold">Rectifier</h3>
             <div class="grid md:grid-cols-2 gap-6">
-                @foreach ($laporan->rectifiers as $rectifier)
+                @foreach ($laporan->rectifiers as $key => $rectifier)
                     <div class="card card-compact">
                         <div class="card-body">
-                            <div class="flex gap-3">
+                            <div class="flex gap-4">
                                 <div>
                                     <div class="avatar"
                                         wire:click="$dispatch('showPreview', {url: '{{ $rectifier->photo }}'})">
@@ -147,7 +189,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p>{{ $rectifier->label }}</p>
+                                <div class="flex flex-col">
+                                    <span class="text-lg font-semibold">Rectifier {{ $key + 1 }}</span>
+                                    {{ $rectifier->label }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +239,8 @@
                 <h3 class="text-xl font-bold">Bahan bakar minyak</h3>
                 <div class="flex flex-col md:flex-row gap-3">
                     <div>
-                        <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->bbm->photo }}'})">
+                        <div class="avatar"
+                            wire:click="$dispatch('showPreview', {url: '{{ $laporan->bbm->photo }}'})">
                             <div class="w-24 rounded-lg">
                                 <img src="{{ $laporan->bbm->image }}" alt="Shoes" class="h-fit" />
                             </div>
