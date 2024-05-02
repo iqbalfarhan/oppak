@@ -48,7 +48,7 @@
                         <td>{{ $no++ }}</td>
                         <td>
                             <a href="{{ route('ticket.show', $data) }}" @class([
-                                'btn btn-xs uppercase font-mono',
+                                'btn btn-xs uppercase btn-block',
                                 'btn-success' => $data->done,
                                 'btn-bordered' => !$data->done,
                             ])>
