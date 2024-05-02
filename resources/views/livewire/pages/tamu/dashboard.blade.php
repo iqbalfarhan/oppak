@@ -86,11 +86,11 @@
                             </div>
                         </td>
                         <td>
-                            <div class="flex -space-x-3 rtl:space-x-reverse">
+                            <div class="flex -space-x-5 rtl:space-x-reverse">
                                 @foreach (Arr::take($data->images, 4) as $gambar)
                                     <div class="avatar"
                                         wire:click="$dispatch('showPreview', {url : '{{ $gambar }}'})">
-                                        <div class="w-6 rounded-full btn-bordered">
+                                        <div class="w-10 rounded-full btn-bordered">
                                             <img src="{{ Storage::url($gambar) }}" />
                                         </div>
                                     </div>
