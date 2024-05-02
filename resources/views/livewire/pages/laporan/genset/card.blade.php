@@ -38,13 +38,13 @@
                     </button>
                 @endcan
                 <div class="flex gap-1">
-                    @can('laporan.genset.edit', $post)
+                    @can('laporan.genset.edit')
                         <button class="btn btn-sm btn-bordered gap-1 btn-square"
                             wire:click="$dispatch('editGenset', {genset:{{ $genset->id }}})">
                             <x-tabler-edit class="size-4" />
                         </button>
                     @endcan
-                    @can('laporan.genset.delete', $post)
+                    @can('laporan.genset.delete')
                         <button class="btn btn-sm btn-bordered gap-1 btn-square"
                             wire:click="$dispatch('deleteGenset', {genset:{{ $genset->id }}})">
                             <x-tabler-trash class="size-4" />

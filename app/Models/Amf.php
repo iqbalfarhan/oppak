@@ -35,4 +35,22 @@ class Amf extends Model
     public function getImageAttribute(){
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
+
+    public function getLabelAttribute(){
+
+        $tegangan = [];
+        if ($this->tegangan) {
+                foreach ($this->tegangan as $key => $value) {
+                $tegangan[] = $key . ":" . $value;
+            }
+        }
+        return implode(", ", [
+            $this->ruangan_bersih ? "Ruangan bersih" : "Ruangan tidak bersih",
+            $this->engine_bersih ? "Engine bersih" : "Engine tidak bersih",
+            "tegangan :".implode(", ", $tegangan),
+            "arus RST :".implode(", ", $this->arus ?? []),
+            "KWH : ".$this->kwh,
+            "Jam jalan genset : ".$this->jam_jalan_genset,
+        ]);
+    }
 }

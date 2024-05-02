@@ -11,19 +11,20 @@
                 dengan tanggal yang dipilih dan klik tombol selanjutnya.</p>
         </div>
         <div class="card-body bg-base-200/50 py-4">
-            <form class="card-actions justify-between" wire:submit="filter">
+            <form action="{{ route('print.laporan') }}" class="card-actions justify-between" method="post">
+                @csrf
                 <div class="join btn-bordered">
                     <input type="date" @class([
                         'join-item input',
                         'input-error' => $errors->first('tanggal.0'),
-                    ]) wire:model="tanggal.0">
+                    ]) name="tanggal[]">
                     <div class="join-item btn btn-circle">
                         <x-tabler-arrow-right class="size-5" />
                     </div>
                     <input type="date" @class([
                         'join-item input',
                         'input-error' => $errors->first('tanggal.1'),
-                    ]) wire:model="tanggal.1">
+                    ]) name="tanggal[]">
                 </div>
                 <button class="btn btn-primary">
                     <x-tabler-arrow-right class="size-5" />

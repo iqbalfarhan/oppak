@@ -37,8 +37,8 @@ class Profile extends Component
         $valid = $this->validate([
             'user' => 'required',
             'name' => 'required',
-            'notelp' => 'required',
-            'username' => '',
+            'username' => 'required',
+            'notelp' => '',
             'telegram_id' => '',
             'site_id' => '',
         ]);

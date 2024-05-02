@@ -87,6 +87,12 @@ class PermissionSeeder extends Seeder
             'site.create'                               => [],
             'site.edit'                                 => [],
             'site.delete'                               => [],
+
+            'tamu.index'                                => [],
+            'tamu.create'                               => [],
+            'tamu.edit'                                 => [],
+            'tamu.delete'                               => [],
+            'tamu.setkeluar'                            => [],
         ];
 
         foreach ($datas as $data => $roles) {

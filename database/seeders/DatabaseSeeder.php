@@ -24,12 +24,6 @@ class DatabaseSeeder extends Seeder
             InsidensialSeeder::class,
 
             LaporanSeeder::class,
-            GensetSeeder::class,
-            AmfSeeder::class,
-            BateraiSeeder::class,
-            RectifierSeeder::class,
-            TemperaturSeeder::class,
-            BbmSeeder::class,
 
             PerangkatSeeder::class,
         ]);

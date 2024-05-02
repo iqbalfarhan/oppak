@@ -17,6 +17,8 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
+    Route::middleware('can:print.laporan')->post('/print/laporan', [\App\Http\Controllers\PrintController::class, 'laporan'])->name('print.laporan');
+
     Route::middleware('can:home')->get('/home', \App\Livewire\Pages\Home\Index::class)->name('home');
     Route::middleware('can:profile')->get('/profile', \App\Livewire\Pages\Profile::class)->name('profile');
     Route::middleware('can:about')->get('/about', \App\Livewire\Pages\About::class)->name('about');

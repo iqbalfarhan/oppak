@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Bbm;
+use App\Models\Laporan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,6 @@ class BbmSeeder extends Seeder
      */
     public function run(): void
     {
-        Bbm::factory(10)->create();
+        Bbm::factory(Laporan::count())->create();
     }
 }

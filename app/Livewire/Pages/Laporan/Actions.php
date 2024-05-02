@@ -53,7 +53,7 @@ class Actions extends Component
         else{
             $valid['user_id'] = $this->user->id;
             $laporan = Laporan::create($valid);
-            $this->redirect(route('laporan.show', $laporan->id), navigate: true);
+            $this->redirect(route('laporan.edit', $laporan->id), navigate: true);
         }
     }
 

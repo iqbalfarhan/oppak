@@ -34,4 +34,13 @@ class Baterai extends Model
     public function getImageAttribute(){
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
+
+    public function getLabelAttribute(){
+        return implode(", ", [
+            'elektrolit '. $this->elektrolit,
+            'tegangan total bank '. implode(', ', $this->tegangan),
+            'Bj Cell '. $this->bj_cell,
+            'Bj pilot cell bank '. implode(', ', $this->bj_pilot_cell_bank),
+        ]);
+    }
 }

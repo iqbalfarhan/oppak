@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Laporan;
 use App\Models\Temperatur;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,6 +14,6 @@ class TemperaturSeeder extends Seeder
      */
     public function run(): void
     {
-        Temperatur::factory(1)->create();
+        Temperatur::factory(Laporan::count())->create();
     }
 }
