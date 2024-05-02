@@ -7,7 +7,11 @@
                 'bg-success' => $color == 'success',
                 'bg-warning' => $color == 'warning',
             ])>
-                <span>{{ $number }}</span>
+                <span @class([
+                    'text-base-content' => $color == 'base',
+                    'text-success-content' => $color == 'success',
+                    'text-warning-content' => $color == 'warning',
+                ])>{{ $number }}</span>
             </div>
         </div>
         <div class="flex flex-col flex-1">

@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Pages\Laporan;
 
+use App\Exports\LaporanExport;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Download extends Component
 {
@@ -14,7 +16,7 @@ class Download extends Component
             'tanggal.1' => 'required',
         ]);
 
-        dd($this->tanggal);
+        return Excel::download(new LaporanExport($this->tanggal), 'laporan'.uniqid().'.xlsx');
     }
 
     public function render()

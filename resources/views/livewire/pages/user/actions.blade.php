@@ -1,7 +1,7 @@
 <div>
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
-        <form class="modal-box max-w-xl" wire:submit="simpan">
+        <form class="modal-box max-w-2xl" wire:submit="simpan">
             <div class="card-title">Form user</div>
             <div class="py-4 grid md:grid-cols-2 gap-x-4 gap-y-1">
                 <label class="form-control">

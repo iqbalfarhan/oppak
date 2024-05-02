@@ -12,14 +12,14 @@ class Register extends Component
     use LivewireAlert;
 
     public $name;
-    public $email;
+    public $username;
     public $password;
 
     public function register()
     {
         $valid = $this->validate([
             'name' => 'required',
-            'email' => 'required|unique:users,email',
+            'username' => 'required|unique:users,username',
             'password' => 'required',
         ]);
 

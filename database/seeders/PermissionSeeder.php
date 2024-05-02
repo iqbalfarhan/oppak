@@ -88,6 +88,7 @@ class PermissionSeeder extends Seeder
             'site.edit'                                 => [],
             'site.delete'                               => [],
 
+            'tamu.dashboard'                            => [],
             'tamu.index'                                => [],
             'tamu.create'                               => [],
             'tamu.edit'                                 => [],

@@ -23,40 +23,46 @@
         ])
     </div>
 
-    <div class="grid md:grid-cols-2 gap-3 md:gap-6">
-        <div class="card">
-            <div class="card-body space-y-2">
-                <div class="text-lg font-semibold flex justify-between">
-                    <span>Input visitor</span>
-                    <x-tabler-plus class="size-5" />
+    @canany(['tamu.create', 'tamu.index'])
+        <div class="grid md:grid-cols-2 gap-3 md:gap-6">
+            @can('tamu.create')
+                <div class="card">
+                    <div class="card-body space-y-2">
+                        <div class="text-lg font-semibold flex justify-between">
+                            <span>Input visitor</span>
+                            <x-tabler-plus class="size-5" />
+                        </div>
+                        <p class="text-sm line-clamp-2">Input tamu sebelum masuk ke site atau STO. Input nama, nomor
+                            identitas, perusahaan, nomor telepon dan keperluan kunjungan.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary gap-1" wire:click="$dispatch('createTamu')">
+                                <x-tabler-plus class="size-5" />
+                                <span>Input visitor</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-sm line-clamp-2">Input tamu sebelum masuk ke site atau STO. Input nama, nomor
-                    identitas, perusahaan, nomor telepon dan keperluan kunjungan.</p>
-                <div class="card-actions">
-                    <button class="btn btn-primary gap-1" wire:click="$dispatch('createTamu')">
-                        <x-tabler-plus class="size-5" />
-                        <span>Input visitor</span>
-                    </button>
+            @endcan
+            @can('tamu.index')
+                <div class="card">
+                    <div class="card-body space-y-2">
+                        <div class="text-lg font-semibold flex justify-between">
+                            <span>Riwayat visitor</span>
+                            <x-tabler-list class="size-5" />
+                        </div>
+                        <p class="text-sm line-clamp-2">Lihat semua data tamu. filter data tamu dengan tanggal, nama tamu,
+                            perusahaan, nomor telepon dan keperluan tamu. Klik untuk masuk riwayat tamu.</p>
+                        <div class="card-actions">
+                            <a href="{{ route('tamu.index') }}" class="btn btn-primary gap-1" wire:navigate>
+                                <x-tabler-list class="size-5" />
+                                <span>Riwayat visitor</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endcan
         </div>
-        <div class="card">
-            <div class="card-body space-y-2">
-                <div class="text-lg font-semibold flex justify-between">
-                    <span>Riwayat visitor</span>
-                    <x-tabler-list class="size-5" />
-                </div>
-                <p class="text-sm line-clamp-2">Lihat semua data tamu. filter data tamu dengan tanggal, nama tamu,
-                    perusahaan, nomor telepon dan keperluan tamu. Klik untuk masuk riwayat tamu.</p>
-                <div class="card-actions">
-                    <a href="{{ route('tamu.index') }}" class="btn btn-primary gap-1" wire:navigate>
-                        <x-tabler-list class="size-5" />
-                        <span>Riwayat visitor</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endcanany
 
     <div class="table-wrapper">
         <table class="table">

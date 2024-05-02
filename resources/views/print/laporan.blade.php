@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
     <head>
         <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 
     <body>
         <table class="table table-xs text-xs">
-            <thead>
+            <thead class="text-center">
                 <tr>
                     <th rowspan="2">No</th>
                     <th rowspan="2">Tanggal</th>
@@ -40,10 +40,10 @@
                         <td>{{ $data->user->name }}</td>
                         <td>{{ $data->site->witel }}</td>
                         <td>{{ $data->site->name }}</td>
-                        <td>{!! $data->gensets ? implode('<hr>', $data->gensets->pluck('label')->toArray()) : '' !!}</td>
+                        <td>{!! $data->gensets ? implode('<br>', $data->gensets->pluck('label')->toArray()) : '' !!}</td>
                         <td>{{ $data->amf?->label }}</td>
-                        <td>{!! $data->baterais ? implode('<hr>', $data->baterais->pluck('label')->toArray()) : '' !!}</td>
-                        <td>{!! $data->rectifiers ? implode('<hr>', $data->rectifiers->pluck('label')->toArray()) : '' !!}</td>
+                        <td>{!! $data->baterais ? implode('<br>', $data->baterais->pluck('label')->toArray()) : '' !!}</td>
+                        <td>{!! $data->rectifiers ? implode('<br>', $data->rectifiers->pluck('label')->toArray()) : '' !!}</td>
                         <td>{{ $data->temperatur?->rectifier }}</td>
                         <td>{{ $data->temperatur?->metro }}</td>
                         <td>{{ $data->temperatur?->transmisi }}</td>

@@ -46,7 +46,6 @@
                 @endcan
             </ul>
         </li>
-
     @endcanany
     @canany(['laporan.index', 'insidensial.index', 'pergantian.index'])
         <li>
@@ -81,7 +80,7 @@
             </ul>
         </li>
     @endcanany
-    @canany(['user.index', 'permission.index', 'database', 'setting.index', 'tamu.index', 'site.index'])
+    @canany(['user.index', 'permission.index', 'database', 'setting.index', 'site.index'])
         <li>
             <h2 class="menu-title">Pengaturan</h2>
             <ul>
@@ -127,7 +126,7 @@
                 @endcan
             </ul>
         </li>
-    @endcan
+    @endcanany
     <li>
         <h2 class="menu-title">Lainnya</h2>
         <ul>

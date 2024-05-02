@@ -11,10 +11,11 @@
             </label>
             <label @class([
                 'input input-bordered flex items-center gap-2',
-                'input-error' => $errors->first('email'),
+                'input-error' => $errors->first('username'),
             ])>
                 <x-tabler-at class="size-5" />
-                <input type="email" class="grow" placeholder="Username" wire:model="email" autocomplete="email" />
+                <input type="text" class="grow" placeholder="Username" wire:model="username"
+                    autocomplete="username" />
             </label>
             <label @class([
                 'input input-bordered flex items-center gap-2',

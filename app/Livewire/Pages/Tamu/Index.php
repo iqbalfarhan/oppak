@@ -13,7 +13,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.tamu.index', [
-            'datas' => Tamu::get()
+            'datas' => Tamu::orderBy('keluar')->latest('created_at')->get()
         ]);
     }
 }

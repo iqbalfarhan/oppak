@@ -9,8 +9,8 @@ use Livewire\Component;
 class Login extends Component
 {
     use LivewireAlert;
-    public $username = "admin";
-    public $password = "adminoke";
+    public $username;
+    public $password;
 
     public function login()
     {
