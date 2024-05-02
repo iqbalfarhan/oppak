@@ -14,4 +14,5 @@
         @endforeach
     </div>
     @livewire('pages.home.cari-tanggal')
+    @livewire('pages.laporan.listbywitel')
 </div>

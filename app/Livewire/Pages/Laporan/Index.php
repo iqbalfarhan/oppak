@@ -18,7 +18,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.laporan.index', [
-            'datas' => Laporan::latest('tanggal')->paginate(50)
+            'datas' => Laporan::where('user_id', auth()->id())->latest('tanggal')->paginate(50)
         ]);
     }
 }
