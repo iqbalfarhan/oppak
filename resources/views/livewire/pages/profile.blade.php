@@ -3,7 +3,7 @@
         'title' => 'Edit Profile',
     ])
 
-    <div class="card max-w-xl mx-auto card-divider">
+    <div class="card max-w-2xl mx-auto card-divider">
         <form class="card-body" wire:submit="simpan">
             <div class="flex w-full justify-center">
                 <div class="avatar" onclick="document.getElementById('pickPhoto').click()">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <input type="file" wire:model="photo" id="pickPhoto" class="hidden" accept="iamge/*">
-            <div class="py-6 grid md:grid-cols-2 gap-x-4 gap-y-1">
+            <div class="py-6 grid md:grid-cols-2 gap-x-6 gap-y-2">
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Nama lengkap</span>

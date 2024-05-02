@@ -31,6 +31,7 @@
                             <td>Status</td>
                             <td>:</td>
                             <td @class([
+                                'font-bold',
                                 'text-warning' => !$laporan->done,
                                 'text-success' => $laporan->done,
                             ])>{{ $laporan->done ? 'Done' : 'Draft' }}</td>
