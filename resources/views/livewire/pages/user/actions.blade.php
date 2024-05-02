@@ -1,9 +1,9 @@
 <div>
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
-        <form class="modal-box max-w-sm" wire:submit="simpan">
+        <form class="modal-box max-w-xl" wire:submit="simpan">
             <div class="card-title">Form user</div>
-            <div class="py-4 space-y-2">
+            <div class="py-4 grid md:grid-cols-2 gap-x-4 gap-y-1">
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Nama user</span>
@@ -43,16 +43,6 @@
                         'input-error' => $errors->first('form.telegram_id'),
                     ]) wire:model="form.telegram_id"
                         placeholder="Telegram ID" />
-                </label>
-                <label class="form-control">
-                    <div class="label">
-                        <span class="label-text">Password</span>
-                    </div>
-                    <input type="password" @class([
-                        'input input-bordered',
-                        'input-error' => $errors->first('form.password'),
-                    ]) wire:model="form.password"
-                        placeholder="isi bila ingin merubah password" />
                 </label>
                 <label class="form-control">
                     <div class="label">

@@ -20,7 +20,9 @@
                 <th>Listrik</th>
                 <th>Label</th>
                 <th>Users</th>
-                <td class="text-center">Action</td>
+                @canany(['site.edit', 'site.delete'])
+                    <th class="text-center">Action</th>
+                @endcanany
             </thead>
             <tbody>
                 @foreach ($datas as $data)
@@ -31,22 +33,24 @@
                         <td>{{ $data->listrik }}</td>
                         <td>{{ $data->label }}</td>
                         <td>{{ $data->users_count }} user</td>
-                        <td>
-                            <div class="flex gap-1 justify-center">
-                                @can('site.edit')
-                                    <button class="btn btn-bordered btn-xs btn-square"
-                                        wire:click="$dispatch('editSite', {site: {{ $data->id }}})">
-                                        <x-tabler-edit class="size-4" />
-                                    </button>
-                                @endcan
-                                @can('site.delete')
-                                    <button class="btn btn-bordered btn-xs btn-square"
-                                        wire:click="$dispatch('deleteSite', {site: {{ $data->id }}})">
-                                        <x-tabler-trash class="size-4" />
-                                    </button>
-                                @endcan
-                            </div>
-                        </td>
+                        @canany(['site.edit', 'site.delete'])
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('site.edit')
+                                        <button class="btn btn-bordered btn-xs btn-square"
+                                            wire:click="$dispatch('editSite', {site: {{ $data->id }}})">
+                                            <x-tabler-edit class="size-4" />
+                                        </button>
+                                    @endcan
+                                    @can('site.delete')
+                                        <button class="btn btn-bordered btn-xs btn-square"
+                                            wire:click="$dispatch('deleteSite', {site: {{ $data->id }}})">
+                                            <x-tabler-trash class="size-4" />
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        @endcanany
                     </tr>
                 @endforeach
             </tbody>

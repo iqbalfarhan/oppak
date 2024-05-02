@@ -5,10 +5,12 @@
 
     <div class="flex flex-col md:flex-row justify-between gap-2">
         <input type="date" class="input input-bordered">
-        <button class="btn btn-primary" wire:click="$dispatch('createLaporan')">
-            <x-tabler-plus class="size-5" />
-            <span>Buat laporan rutin</span>
-        </button>
+        @can('laporan.create')
+            <button class="btn btn-primary" wire:click="$dispatch('createLaporan')">
+                <x-tabler-plus class="size-5" />
+                <span>Buat laporan rutin</span>
+            </button>
+        @endcan
     </div>
 
     <div class="table-wrapper">
@@ -24,7 +26,9 @@
                 <th>Pelapor</th>
                 <th>Site</th>
                 <th>status</th>
-                <th class="text-center">Actions</th>
+                @canany(['laporan.edit', 'laporan.delete', 'laporan.show'])
+                    <th class="text-center">Actions</th>
+                @endcanany
             </thead>
             <tbody>
                 @forelse ($datas as $data)
@@ -40,18 +44,30 @@
                                 'badge-warning' => !$data->done,
                             ])>{{ $data->done ? 'Done' : 'Draft' }}</badge>
                         </td>
-                        <td>
-                            <div class="flex gap-1 justify-center">
-                                <a href="{{ route('laporan.show', $data) }}" class="btn btn-xs btn-square btn-bordered"
-                                    wire:navigate>
-                                    <x-tabler-edit class="size-4" />
-                                </a>
-                                <button class="btn btn-xs btn-square btn-bordered"
-                                    wire:click="$dispatch('deleteLaporan', {laporan: {{ $data->id }}})">
-                                    <x-tabler-trash class="size-4" />
-                                </button>
-                            </div>
-                        </td>
+                        @canany(['laporan.edit', 'laporan.delete', 'laporan.show'])
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('laporan.show')
+                                        <a href="{{ route('laporan.show', $data) }}" class="btn btn-xs btn-square btn-bordered"
+                                            wire:navigate>
+                                            <x-tabler-folder class="size-4" />
+                                        </a>
+                                    @endcan
+                                    @can('laporan.edit')
+                                        <a href="{{ route('laporan.edit', $data) }}" class="btn btn-xs btn-square btn-bordered"
+                                            wire:navigate>
+                                            <x-tabler-edit class="size-4" />
+                                        </a>
+                                    @endcan
+                                    @can('laporan.delete')
+                                        <button class="btn btn-xs btn-square btn-bordered"
+                                            wire:click="$dispatch('deleteLaporan', {laporan: {{ $data->id }}})">
+                                            <x-tabler-trash class="size-4" />
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        @endcanany
                     </tr>
                 @empty
                     <tr>

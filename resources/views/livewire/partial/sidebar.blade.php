@@ -1,80 +1,85 @@
 <ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6" data-theme="dark">
-    <li>
-        <h2 class="menu-title">Dashboard</h2>
-        <ul>
-            @can('home')
-                <li>
-                    <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
-                        <x-tabler-calendar class="size-5" />
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-            @endcan
-            @can('tamu.dashboard')
-                <li>
-                    <a href="{{ route('tamu.dashboard') }}" @class([
-                        'active' => Route::is([
-                            'tamu.dashboard',
-                            'tamu.index',
-                            'tamu.create',
-                            'tamu.show',
-                        ]),
-                    ]) wire:navigate>
-                        <x-tabler-users class="size-5" />
-                        <span>Buku Tamu</span>
-                    </a>
-                </li>
-            @endcan
-            @can('ticket.index')
-                <li>
-                    <a href="{{ route('ticket.index') }}" @class([
-                        'active' => Route::is(['ticket.index', 'ticket.show']),
-                    ]) wire:navigate>
-                        <x-tabler-ticket class="size-5" />
-                        <span>Ticketing</span>
-                    </a>
-                </li>
-            @endcan
-            @can('laporan.download')
-                <li>
-                    <a href="{{ route('laporan.download') }}" @class(['active' => Route::is('laporan.download')]) wire:navigate>
-                        <x-tabler-download class="size-5" />
-                        <span>Download Laporan</span>
-                    </a>
-                </li>
-            @endcan
-        </ul>
-    </li>
-    <li>
-        <h2 class="menu-title">Buat Laporan</h2>
-        <ul>
-            @can('laporan.index')
-                <li>
-                    <a href="{{ route('laporan.index') }}" @class(['active' => Route::is(['laporan.index', 'laporan.show'])]) wire:navigate>
-                        <x-tabler-file-plus class="size-5" />
-                        <span>Laporan Rutin</span>
-                    </a>
-                </li>
-            @endcan
-            @can('insidensial.index')
-                <li>
-                    <a href="{{ route('insidensial.index') }}" @class(['active' => Route::is('insidensial.index')]) wire:navigate>
-                        <x-tabler-users class="size-5" />
-                        <span>Laporan Insidensial</span>
-                    </a>
-                </li>
-            @endcan
-            @can('pergantian.index')
-                <li>
-                    <a href="{{ route('pergantian.index') }}" @class(['active' => Route::is('pergantian.index')]) wire:navigate>
-                        <x-tabler-switch-2 class="size-5" />
-                        <span>Pergantian Rutin</span>
-                    </a>
-                </li>
-            @endcan
-        </ul>
-    </li>
-    @canany(['user.index', 'permission.index', 'database', 'setting.index', 'tamu.index'])
+    @canany(['home', 'tamu.dashboard', 'ticket.index', 'laporan.download'])
+        <li>
+            <h2 class="menu-title">Dashboard</h2>
+            <ul>
+                @can('home')
+                    <li>
+                        <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
+                            <x-tabler-calendar class="size-5" />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('tamu.dashboard')
+                    <li>
+                        <a href="{{ route('tamu.dashboard') }}" @class([
+                            'active' => Route::is([
+                                'tamu.dashboard',
+                                'tamu.index',
+                                'tamu.create',
+                                'tamu.show',
+                            ]),
+                        ]) wire:navigate>
+                            <x-tabler-users class="size-5" />
+                            <span>Buku Tamu</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('ticket.index')
+                    <li>
+                        <a href="{{ route('ticket.index') }}" @class([
+                            'active' => Route::is(['ticket.index', 'ticket.show']),
+                        ]) wire:navigate>
+                            <x-tabler-ticket class="size-5" />
+                            <span>Ticketing</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('laporan.download')
+                    <li>
+                        <a href="{{ route('laporan.download') }}" @class(['active' => Route::is('laporan.download')]) wire:navigate>
+                            <x-tabler-download class="size-5" />
+                            <span>Download Laporan</span>
+                        </a>
+                    </li>
+                @endcan
+            </ul>
+        </li>
+
+    @endcanany
+    @canany(['laporan.index', 'insidensial.index', 'pergantian.index'])
+        <li>
+            <h2 class="menu-title">Buat Laporan</h2>
+            <ul>
+                @can('laporan.index')
+                    <li>
+                        <a href="{{ route('laporan.index') }}" @class(['active' => Route::is(['laporan.index', 'laporan.show'])]) wire:navigate>
+                            <x-tabler-file-plus class="size-5" />
+                            <span>Laporan Rutin</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('insidensial.index')
+                    <li>
+                        <a href="{{ route('insidensial.index') }}" @class(['active' => Route::is('insidensial.index')]) wire:navigate>
+                            <x-tabler-users class="size-5" />
+                            <span>Laporan Insidensial</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('pergantian.index')
+                    <li>
+                        <a href="{{ route('pergantian.index') }}" @class(['active' => Route::is('pergantian.index')]) wire:navigate>
+                            <x-tabler-switch-2 class="size-5" />
+                            <span>Pergantian Rutin</span>
+                        </a>
+                    </li>
+                @endcan
+            </ul>
+        </li>
+    @endcanany
+    @canany(['user.index', 'permission.index', 'database', 'setting.index', 'tamu.index', 'site.index'])
         <li>
             <h2 class="menu-title">Pengaturan</h2>
             <ul>
@@ -82,7 +87,7 @@
                     <li>
                         <a href="{{ route('setting.index') }}" @class(['active' => Route::is('setting.index')]) wire:navigate>
                             <x-tabler-settings class="size-5" />
-                            <span>Pengaturan variable</span>
+                            <span>Pengaturan Variable</span>
                         </a>
                     </li>
                 @endcan

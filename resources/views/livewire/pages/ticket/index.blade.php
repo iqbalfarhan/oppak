@@ -38,7 +38,9 @@
                 <th>Percentage</th>
                 <th>Uraian</th>
                 <th>Log</th>
-                <th class="text-center">Actions</th>
+                @canany(['ticket.edit', 'ticket.delete'])
+                    <th class="text-center">Actions</th>
+                @endcanany
             </thead>
             <tbody>
                 @foreach ($datas as $data)
@@ -69,24 +71,32 @@
                         <td>{{ Number::percentage($data->progress) }}</td>
                         <td class="whitespace-normal min-w-52 max-w-80">{{ $data->uraian }}</td>
                         <td>{{ $data->logtickets_count }}</td>
-                        <td>
-                            <div class="flex gap-1 justify-center">
-                                @if ($data->pengajuan)
-                                    <button class="btn btn-warning btn-xs btn-square"
-                                        wire:click="$dispatch('setDone', {ticket: {{ $data->id }}})">
-                                        <x-tabler-exclamation-circle class="size-4" />
-                                    </button>
-                                @endif
-                                <button class="btn btn-bordered btn-xs btn-square"
-                                    wire:click="$dispatch('editTicket', {ticket: {{ $data->id }}})">
-                                    <x-tabler-edit class="size-4" />
-                                </button>
-                                <button class="btn btn-bordered btn-xs btn-square"
-                                    wire:click="$dispatch('deleteTicket', {ticket: {{ $data->id }}})">
-                                    <x-tabler-trash class="size-4" />
-                                </button>
-                            </div>
-                        </td>
+                        @canany(['ticket.edit', 'ticket.delete'])
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('ticket.setdone')
+                                        @if ($data->pengajuan)
+                                            <button class="btn btn-warning btn-xs btn-square"
+                                                wire:click="$dispatch('setDone', {ticket: {{ $data->id }}})">
+                                                <x-tabler-exclamation-circle class="size-4" />
+                                            </button>
+                                        @endif
+                                    @endcan
+                                    @can('ticket.edit')
+                                        <button class="btn btn-bordered btn-xs btn-square"
+                                            wire:click="$dispatch('editTicket', {ticket: {{ $data->id }}})">
+                                            <x-tabler-edit class="size-4" />
+                                        </button>
+                                    @endcan
+                                    @can('ticket.delete')
+                                        <button class="btn btn-bordered btn-xs btn-square"
+                                            wire:click="$dispatch('deleteTicket', {ticket: {{ $data->id }}})">
+                                            <x-tabler-trash class="size-4" />
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        @endcanany
                     </tr>
                 @endforeach
             </tbody>

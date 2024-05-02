@@ -20,7 +20,7 @@
         </div>
         <div class="card-actions">
             <button class="btn btn-primary">
-                <x-tabler-login class="size-5" />
+                <x-tabler-login class="size-5" wire:loading.class="loading" />
                 <span>Login</span>
             </button>
         </div>

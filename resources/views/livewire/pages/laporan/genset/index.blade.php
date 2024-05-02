@@ -7,12 +7,14 @@
     </div>
     <div class="card-body">
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="col-span-full">
-                <button class="btn btn-primary" wire:click="$dispatch('createGenset', {laporan: {{ $laporan->id }}})">
-                    <x-tabler-plus class="size-5" />
-                    <span>Tambah genset</span>
-                </button>
-            </div>
+            @can('laporan.genset.create')
+                <div class="col-span-full">
+                    <button class="btn btn-primary" wire:click="$dispatch('createGenset', {laporan: {{ $laporan->id }}})">
+                        <x-tabler-plus class="size-5" />
+                        <span>Tambah genset</span>
+                    </button>
+                </div>
+            @endcan
 
             @foreach ($datas as $data)
                 <div wire:key="{{ $data->id }}">

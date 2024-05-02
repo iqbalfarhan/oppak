@@ -13,9 +13,9 @@
     </div>
 
     @if ($page == 'summary')
-        @livewire('pages.laporan.summary.show', ['laporan' => $laporan])
+        @livewire('pages.laporan.summary.index', ['laporan' => $laporan])
     @elseif ($page == 'genset')
-        @livewire('pages.laporan.genset.show', ['laporan' => $laporan])
+        @livewire('pages.laporan.genset.index', ['laporan' => $laporan])
     @elseif ($page == 'amf')
         @livewire('pages.laporan.amf.actions', ['laporan' => $laporan])
     @elseif ($page == 'baterai')

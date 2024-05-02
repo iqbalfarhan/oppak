@@ -3,7 +3,7 @@
         'title' => 'Edit Profile',
     ])
 
-    <div class="card max-w-sm mx-auto">
+    <div class="card max-w-xl mx-auto card-divider">
         <form class="card-body" wire:submit="simpan">
             <div class="flex w-full justify-center">
                 <div class="avatar" onclick="document.getElementById('pickPhoto').click()">
@@ -13,37 +13,52 @@
                 </div>
             </div>
             <input type="file" wire:model="photo" id="pickPhoto" class="hidden" accept="iamge/*">
-            <div class="py-6 space-y-3">
+            <div class="py-6 grid md:grid-cols-2 gap-x-4 gap-y-1">
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Nama lengkap</span>
                     </div>
-                    <input type="text" placeholder="Type here" class="input input-bordered" wire:model="name" />
+                    <input type="text" placeholder="Type here" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('name'),
+                    ]) wire:model="name" />
                 </label>
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Username</span>
                     </div>
-                    <input type="text" placeholder="Type here" class="input input-bordered" wire:model="username" />
+                    <input type="text" placeholder="Type here" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('username'),
+                    ]) wire:model="username" />
                 </label>
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Nomor telepon</span>
                     </div>
-                    <input type="text" placeholder="Type here" class="input input-bordered" wire:model="notelp" />
+                    <input type="text" placeholder="Type here" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('notelp'),
+                    ]) wire:model="notelp" />
                 </label>
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Telegram ID</span>
                     </div>
-                    <input type="text" placeholder="Type here" class="input input-bordered"
+                    <input type="text" placeholder="Type here" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('telegram_id'),
+                    ])
                         wire:model="telegram_id" />
                 </label>
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Lokasi Site/STO</span>
                     </div>
-                    <select class="select select-bordered" wire:model="site_id">
+                    <select @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('site_id'),
+                    ]) wire:model="site_id">
                         <option value="">Pilih site</option>
                         @foreach ($sites as $witel => $site)
                             <optgroup label="{{ $witel }}">
@@ -58,7 +73,10 @@
                     <div class="label">
                         <span class="label-text">Password</span>
                     </div>
-                    <input type="password" class="input input-bordered" wire:model="password"
+                    <input type="password" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('password'),
+                    ]) wire:model="password"
                         placeholder="Isi untuk merubah password" />
                 </label>
             </div>
@@ -69,9 +87,6 @@
                 </button>
             </div>
         </form>
-    </div>
-
-    <div class="card max-w-sm mx-auto">
         <div class="card-body">
             <h3 class="card-title">Hapus akun</h3>
             <p class="py-2 text-sm opacity-50">
@@ -80,7 +95,7 @@
             </p>
             <div class="card-actions">
                 <button class="btn btn-error" wire:click="$dispatch('deleteAccount', {user: {{ $user->id }}})">
-                    <x-tabler-trash class="size-5" />
+                    <x-tabler-trash class="size-5" wire:loading.class="loading" />
                     <span>Hapus akun saya</span>
                 </button>
             </div>

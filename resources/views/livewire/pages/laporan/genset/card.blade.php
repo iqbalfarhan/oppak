@@ -27,23 +27,31 @@
             </p>
         </div>
     @endforeach
-    <div class="card-body space-y-4 bg-base-200/50">
-        <div class="card-actions justify-between">
-            <button class="btn btn-bordered btn-sm gap-1"
-                wire:click="$dispatch('createBateraistarter', {genset : {{ $genset->id }}})">
-                <x-tabler-plus class="size-4" />
-                <span>Baterai starter</span>
-            </button>
-            <div class="flex gap-1">
-                <button class="btn btn-sm btn-bordered gap-1 btn-square"
-                    wire:click="$dispatch('editGenset', {genset:{{ $genset->id }}})">
-                    <x-tabler-edit class="size-4" />
-                </button>
-                <button class="btn btn-sm btn-bordered gap-1 btn-square"
-                    wire:click="$dispatch('deleteGenset', {genset:{{ $genset->id }}})">
-                    <x-tabler-trash class="size-4" />
-                </button>
+    @canany(['laporan.genset.edit', 'laporan.genset.delete', 'laporan.genset.bateraistarter.create'])
+        <div class="card-body space-y-4 bg-base-200/50">
+            <div class="card-actions justify-between">
+                @can('laporan.genset.bateraistarter.create')
+                    <button class="btn btn-bordered btn-sm gap-1"
+                        wire:click="$dispatch('createBateraistarter', {genset : {{ $genset->id }}})">
+                        <x-tabler-plus class="size-4" />
+                        <span>Baterai starter</span>
+                    </button>
+                @endcan
+                <div class="flex gap-1">
+                    @can('laporan.genset.edit', $post)
+                        <button class="btn btn-sm btn-bordered gap-1 btn-square"
+                            wire:click="$dispatch('editGenset', {genset:{{ $genset->id }}})">
+                            <x-tabler-edit class="size-4" />
+                        </button>
+                    @endcan
+                    @can('laporan.genset.delete', $post)
+                        <button class="btn btn-sm btn-bordered gap-1 btn-square"
+                            wire:click="$dispatch('deleteGenset', {genset:{{ $genset->id }}})">
+                            <x-tabler-trash class="size-4" />
+                        </button>
+                    @endcan
+                </div>
             </div>
         </div>
-    </div>
+    @endcanany
 </div>

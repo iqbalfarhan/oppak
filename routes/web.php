@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware('can:laporan.index')->get('/laporan', \App\Livewire\Pages\Laporan\Index::class)->name('laporan.index');
     Route::middleware('can:laporan.download')->get('/laporan/download', \App\Livewire\Pages\Laporan\Download::class)->name('laporan.download');
     Route::middleware('can:laporan.show')->get('/laporan/{laporan}', \App\Livewire\Pages\Laporan\Show::class)->name('laporan.show');
+    Route::middleware('can:laporan.edit')->get('/laporan/{laporan}/edit', \App\Livewire\Pages\Laporan\Edit::class)->name('laporan.edit');
 
     Route::middleware('can:insidensial.index')->get('/insidensial', \App\Livewire\Pages\Insidensial\Index::class)->name('insidensial.index');
 

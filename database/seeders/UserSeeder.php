@@ -14,12 +14,20 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $user = User::updateOrCreate([
+            'username' => 'super',
+        ], [
+            'name' => 'Super Administrator',
+            'password' => 'adminoke'
+        ]);
+        $user->assignRole('superadmin');
+
+        $user = User::updateOrCreate([
             'username' => 'admin',
         ], [
             'name' => 'Administrator',
             'password' => 'adminoke'
         ]);
-        $user->assignRole('superadmin');
+        $user->assignRole('admin');
 
         $user = User::updateOrCreate([
             'username' => 'iqbal',

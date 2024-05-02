@@ -14,10 +14,12 @@
             <option value="KALTARA">KALTARA</option>
         </select>
         <div class="flex-1"></div>
-        <button class="btn btn-primary" wire:click="$dispatch('showPerangkat')">
-            <x-tabler-list class="size-5" />
-            <span>List perangkat</span>
-        </button>
+        @can('perangkat.index')
+            <button class="btn btn-primary" wire:click="$dispatch('showPerangkat')">
+                <x-tabler-list class="size-5" />
+                <span>List perangkat</span>
+            </button>
+        @endcan
     </div>
 
     <div class="table-wrapper">

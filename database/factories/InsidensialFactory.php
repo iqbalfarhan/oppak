@@ -18,10 +18,20 @@ class InsidensialFactory extends Factory
      */
     public function definition(): array
     {
+        $kategories = [
+            'GENSET',
+            'RECTIFIER',
+            'ATS',
+            'AC',
+            'GROUNDING',
+            'LAMPU',
+            'LAIN-LAIN'
+        ];
+
         return [
             'site_id' => fake()->randomElement(Site::pluck('id')),
             'user_id' => fake()->randomElement(User::pluck('id')),
-            'kategori' => fake()->word(),
+            'kategori' => fake()->randomElement($kategories),
             'uraian' => fake()->sentence(),
         ];
     }

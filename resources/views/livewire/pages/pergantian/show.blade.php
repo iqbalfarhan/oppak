@@ -29,11 +29,13 @@
                     </table>
                 </div>
 
-                <button class="btn btn-primary"
-                    wire:click="$dispatch('createPergantian', { site: {{ $site?->id }}, perangkat: {{ $perangkat?->id }} })">
-                    <x-tabler-plus class="size-5" />
-                    <span>Input pergantian rutin</span>
-                </button>
+                @can('pergantian.create')
+                    <button class="btn btn-primary"
+                        wire:click="$dispatch('createPergantian', { site: {{ $site?->id }}, perangkat: {{ $perangkat?->id }} })">
+                        <x-tabler-plus class="size-5" />
+                        <span>Input pergantian rutin</span>
+                    </button>
+                @endcan
 
                 <div class="table-wrapper">
                     <table class="table">
@@ -42,7 +44,9 @@
                             <th>Tanggal</th>
                             <th>Site</th>
                             <th>Keterangan</th>
-                            <th class="text-center">Actions</th>
+                            @canany(['pergantian.edit', 'pergantian.delete'])
+                                <th class="text-center">Actions</th>
+                            @endcanany
                         </thead>
                         <tbody>
                             @forelse ($datas as $data)
@@ -67,18 +71,24 @@
                                     </td>
                                     <td class="whitespace-normal md:max-w-72 min-w-72 text-xs">{{ $data->keterangan }}
                                     </td>
-                                    <td>
-                                        <div class="flex gap-1 justify-center">
-                                            <button class="btn btn-xs btn-square btn-bordered"
-                                                wire:click="$dispatch('editPergantian', {pergantian: {{ $data->id }}})">
-                                                <x-tabler-edit class="size-4" />
-                                            </button>
-                                            <button class="btn btn-xs btn-square btn-bordered"
-                                                wire:click="$dispatch('deletePergantian', {pergantian: {{ $data->id }}})">
-                                                <x-tabler-trash class="size-4" />
-                                            </button>
-                                        </div>
-                                    </td>
+                                    @canany(['pergantian.edit', 'pergantian.delete'])
+                                        <td>
+                                            <div class="flex gap-1 justify-center">
+                                                @can('pergantian.edit')
+                                                    <button class="btn btn-xs btn-square btn-bordered"
+                                                        wire:click="$dispatch('editPergantian', {pergantian: {{ $data->id }}})">
+                                                        <x-tabler-edit class="size-4" />
+                                                    </button>
+                                                @endcan
+                                                @can('pergantian.delete')
+                                                    <button class="btn btn-xs btn-square btn-bordered"
+                                                        wire:click="$dispatch('deletePergantian', {pergantian: {{ $data->id }}})">
+                                                        <x-tabler-trash class="size-4" />
+                                                    </button>
+                                                @endcan
+                                            </div>
+                                        </td>
+                                    @endcanany
                                 </tr>
                             @empty
                                 <tr>

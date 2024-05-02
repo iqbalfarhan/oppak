@@ -81,4 +81,11 @@
         @apply text-center transform -rotate-180 capitalize;
         writing-mode: vertical-rl;
     }
+
+    .grid {
+        .input,
+        .select {
+            @apply w-full;
+        }
+    }
 }

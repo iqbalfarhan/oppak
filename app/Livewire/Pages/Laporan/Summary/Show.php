@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Pages\Laporan;
+namespace App\Livewire\Pages\Laporan\Summary;
 
 use App\Models\Laporan;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class Summary extends Component
+class Show extends Component
 {
     use LivewireAlert;
 
@@ -29,6 +29,6 @@ class Summary extends Component
 
     public function render()
     {
-        return view('livewire.pages.laporan.summary');
+        return view('livewire.pages.laporan.summary.show');
     }
 }
