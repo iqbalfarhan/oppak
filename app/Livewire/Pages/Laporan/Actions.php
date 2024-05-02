@@ -32,8 +32,9 @@ class Actions extends Component
     public function deleteLaporan(Laporan $laporan)
     {
         $laporan->delete();
-        $this->dispatch('reload');
-        $this->alert('success', 'Laporan deleted');
+        // $this->dispatch('reload');
+        $this->flash('success', 'Laporan deleted');
+        $this->redirect(route('laporan.index'), true);
     }
 
     public function simpan()

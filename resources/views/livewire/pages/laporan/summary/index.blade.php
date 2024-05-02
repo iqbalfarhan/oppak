@@ -27,7 +27,10 @@
                     <tr>
                         <td>Status</td>
                         <td>:</td>
-                        <td>{{ $laporan->done ? 'Done' : 'Draft' }}</td>
+                        <td @class([
+                            'text-warning' => !$laporan->done,
+                            'text-success' => $laporan->done,
+                        ])>{{ $laporan->done ? 'Done' : 'Draft' }}</td>
                     </tr>
                 </tbody>
             </table>

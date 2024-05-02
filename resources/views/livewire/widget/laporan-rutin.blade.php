@@ -1,5 +1,5 @@
 <div class="card card-compact divide-base-300 divide-y-2" wire:init="loadLaporan">
-    <div class="card-body">
+    <div class="card-body cursor-pointer" wire:click="$dispatch('listbywitel', {witel:'{{ $witel }}'})">
         <div class="flex flex-col md:flex-row justify-between md:items-end">
             <h3 class="text-3xl font-bold" wire:loading.class="loading">
                 {{ Number::percentage(($laporan / $siteCount) * 100) }}</h3>

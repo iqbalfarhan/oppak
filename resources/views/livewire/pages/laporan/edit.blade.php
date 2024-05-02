@@ -1,6 +1,5 @@
 <div class="page-wrapper">
-    @livewire('partial.header', ['title' => 'Detail laporan'])
-
+    @livewire('partial.header', ['title' => 'Edit laporan'])
 
     <div role="tablist" class="tabs tabs-boxed bg-base-300/50 p-2 btn-bordered overflow-x-auto">
         @foreach ($pageList as $key => $list)

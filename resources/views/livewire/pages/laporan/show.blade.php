@@ -1,30 +1,219 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Detail laporan'])
 
+    <div class="card card-divider">
+        <div class="card-body space-y-4">
+            <h3 class="text-xl font-bold">Summary laporan</h3>
+            <div class="table-wrapper">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Pembuat laporan</td>
+                            <td>:</td>
+                            <td>{{ $laporan->user->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal laporan</td>
+                            <td>:</td>
+                            <td>{{ $laporan->tanggal->format('d F Y') }}</td>
+                        </tr>
+                        <tr>
+                            <td>Witel Site / STO</td>
+                            <td>:</td>
+                            <td>{{ $laporan->site->label }}</td>
+                        </tr>
+                        <tr>
+                            <td>Waktu laporan</td>
+                            <td>:</td>
+                            <td>{{ $laporan->created_at }}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>:</td>
+                            <td @class([
+                                'text-warning' => !$laporan->done,
+                                'text-success' => $laporan->done,
+                            ])>{{ $laporan->done ? 'Done' : 'Draft' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @canany(['laporan.edit', 'laporan.delete'])
+            <div class="card-body bg-base-200/50 py-4 flex-row-reverse">
+                <div class="card-actions">
+                    @can('laporan.edit')
+                        <a href="{{ route('laporan.edit', $laporan) }}" class="btn btn-bordered btn-sm gap-2" wire:navigate>
+                            <x-tabler-edit class="size-4" />
+                            <span>Edit</span>
+                        </a>
+                    @endcan
+                    @can('laporan.delete')
+                        <button class="btn btn-bordered btn-sm gap-2"
+                            wire:click="$dispatch('deleteLaporan', {laporan:{{ $laporan->id }}})">
+                            <x-tabler-trash class="size-4" />
+                            <span>Delete</span>
+                        </button>
+                    @endcan
+                </div>
+            </div>
+        @endcanany
+    </div>
+    <div class="card">
+        <div class="card-body space-y-4">
+            <h3 class="text-xl font-bold">Genset</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                @foreach ($laporan->gensets as $key => $genset)
+                    <div class="card card-compact card-divider">
+                        <div class="card-body">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <div>
+                                    <div class="avatar"
+                                        wire:click="$dispatch('showPreview', {url: '{{ $genset->photo }}'})">
+                                        <div class="w-24 rounded-lg">
+                                            <img src="{{ $genset->gambar }}" alt="Shoes" class="h-fit" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-lg font-semibold">Genset {{ $key + 1 }}</span>
+                                    <p>{{ $genset->label }}</p>
+                                </div>
+                            </div>
+                        </div>
 
-    <div role="tablist" class="tabs tabs-boxed bg-base-300/50 p-2 btn-bordered overflow-x-auto">
-        @foreach ($pageList as $key => $list)
-            <button role="tab" @class([
-                'tab capitalize h-10 cursor-pointer',
-                'tab-active font-bold' => $page == $key,
-            ])
-                wire:click="$set('page', '{{ $key }}')">{{ $list }}</button>
-        @endforeach
+                        @foreach ($genset->bateraistarters as $key => $bs)
+                            <div class="card-body">
+                                <p class="text-sm">Baterai starter {{ $key + 1 }} : {{ $bs->label }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body space-y-4">
+            <h3 class="text-xl font-bold">AMF</h3>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div>
+                    <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->amf->photo }}'})">
+                        <div class="w-24 rounded-lg">
+                            <img src="{{ $laporan->amf->image }}" alt="Shoes" class="h-fit" />
+                        </div>
+                    </div>
+                </div>
+                <p>{{ $laporan->amf->label }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body space-y-4">
+            <h3 class="text-xl font-bold">Baterai</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                @foreach ($laporan->baterais as $baterai)
+                    <div class="card card-compact">
+                        <div class="card-body">
+                            <div class="flex gap-3">
+                                <div>
+                                    <div class="avatar"
+                                        wire:click="$dispatch('showPreview', {url: '{{ $baterai->photo }}'})">
+                                        <div class="w-24 rounded-lg">
+                                            <img src="{{ $baterai->image }}" alt="Shoes" class="h-fit" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>{{ $baterai->label }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body space-y-4">
+            <h3 class="text-xl font-bold">Rectifier</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                @foreach ($laporan->rectifiers as $rectifier)
+                    <div class="card card-compact">
+                        <div class="card-body">
+                            <div class="flex gap-3">
+                                <div>
+                                    <div class="avatar"
+                                        wire:click="$dispatch('showPreview', {url: '{{ $rectifier->photo }}'})">
+                                        <div class="w-24 rounded-lg">
+                                            <img src="{{ $rectifier->image }}" alt="Shoes" class="h-fit" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>{{ $rectifier->label }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card">
+            <div class="card-body space-y-4">
+                <h3 class="text-xl font-bold">Temperatur ruangan</h3>
+                <div class="flex flex-col md:flex-row gap-3">
+                    <div>
+                        <div class="avatar"
+                            wire:click="$dispatch('showPreview', {url: '{{ $laporan->temperatur->photo }}'})">
+                            <div class="w-24 rounded-lg">
+                                <img src="{{ $laporan->temperatur->image }}" alt="Shoes" class="h-fit" />
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-xs">
+                        <tr>
+                            <td>Ruang rectifier</td>
+                            <td>{{ $laporan->temperatur->rectifier }} Celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Ruang metro</td>
+                            <td>{{ $laporan->temperatur->metro }} Celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Ruang transmisi</td>
+                            <td>{{ $laporan->temperatur->transmisi }} Celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Ruang gpon</td>
+                            <td>{{ $laporan->temperatur->gpon }} Celcius</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body space-y-4">
+                <h3 class="text-xl font-bold">Bahan bakar minyak</h3>
+                <div class="flex flex-col md:flex-row gap-3">
+                    <div>
+                        <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->bbm->photo }}'})">
+                            <div class="w-24 rounded-lg">
+                                <img src="{{ $laporan->bbm->image }}" alt="Shoes" class="h-fit" />
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-xs h-fit">
+                        <tr>
+                            <td>Volume BBM</td>
+                            <td>{{ $laporan->bbm->volume }}</td>
+                        </tr>
+                        <tr>
+                            <td>Satuan</td>
+                            <td>{{ $laporan->bbm->satuan }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
-    @if ($page == 'summary')
-        @livewire('pages.laporan.summary.show', ['laporan' => $laporan])
-    @elseif ($page == 'genset')
-        @livewire('pages.laporan.genset.show', ['laporan' => $laporan])
-    @elseif ($page == 'amf')
-        @livewire('pages.laporan.amf.actions', ['laporan' => $laporan])
-    @elseif ($page == 'baterai')
-        @livewire('pages.laporan.baterai.index', ['laporan' => $laporan])
-    @elseif ($page == 'rectifier')
-        @livewire('pages.laporan.rectifier.index', ['laporan' => $laporan])
-    @elseif ($page == 'temperatur')
-        @livewire('pages.laporan.temperatur.actions', ['laporan' => $laporan])
-    @elseif ($page == 'bbm')
-        @livewire('pages.laporan.bbm.actions', ['laporan' => $laporan])
-    @endif
+    @livewire('pages.laporan.actions')
 </div>

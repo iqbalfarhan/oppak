@@ -17,4 +17,20 @@ class Bateraistarter extends Model
         'elektrolit',
         'kencang',
     ];
+
+    public function genset()
+    {
+        return $this->belongsTo(Genset::class);
+    }
+
+    public function getLabelAttribute()
+    {
+        return implode(', ', [
+            "tegangan " . $this->tegangan . " volt",
+            "bj cell " .$this->bj_cell ,
+            "bj pilot cell " . $this->bj_pilot_cell,
+            "elektrolit " . $this->elektrolit,
+            "kabel " . $this->kencang ? 'kencang' : 'tidak kencang'
+        ]);
+    }
 }

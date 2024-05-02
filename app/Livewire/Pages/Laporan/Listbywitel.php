@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Listbywitel extends Component
 {
-    public $show = true;
+    public $show = false;
     public $witel;
 
     #[On('listbywitel')]

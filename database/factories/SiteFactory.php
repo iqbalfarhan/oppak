@@ -17,7 +17,7 @@ class SiteFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => strtoupper(fake()->sentence(2)),
+            'name' => strtoupper(fake()->words(2, true)),
             'witel' => fake()->randomElement(['BALIKPAPAN', 'SAMARINDA', 'KALBAR', 'KALSEL', 'KALTENG', 'KALTARA']),
         ];
     }

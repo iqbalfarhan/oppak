@@ -62,6 +62,7 @@
         <table class="table">
             <thead>
                 <th>No</th>
+                <th>Witel</th>
                 <th>STO / Site</th>
                 <th>Kegiatan</th>
                 <th>Nama Tamu</th>
@@ -73,7 +74,8 @@
                 @forelse ($datas->whereNull('keluar') as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->site->label }}</td>
+                        <td>{{ $data->site->witel }}</td>
+                        <td>{{ $data->site->name }}</td>
                         <td>
                             <div class="flex -space-x-3 rtl:space-x-reverse">
                                 @foreach ($data->images as $gambar)

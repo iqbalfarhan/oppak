@@ -7,7 +7,7 @@
         </button>
         <div class="flex flex-col flex-1">
             <div class="text-lg font-bold">{{ $user->name }}</div>
-            <div class="text-sm">{{ $user->email }}</div>
+            <div class="text-sm">{{ $user->getRoleNames()->first() }}</div>
         </div>
         <div class="hidden lg:flex">
             <a href="{{ route('profile') }}" class="btn btn-sm btn-bordered" wire:navigate>

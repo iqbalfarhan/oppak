@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', $lang ?? app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', $lang ?? app()->getLocale()) }}" data-theme="dark">
 
     <head>
         <meta charset="utf-8">
@@ -27,16 +27,16 @@
 
         @guest
             <div class="flex flex-col gap-6 items-center justify-center h-screen bg-base-300">
-                <div class="font-extrabold text-5xl mb-4 text-neutral">{{ config('app.name') }}</div>
+                <div class="font-extrabold text-5xl mb-4 text-base-content">{{ config('app.name') }}</div>
 
                 {{ $slot }}
 
                 @if (Route::is('register'))
-                    <p class="text-sm opacity-50">Sudah punya akun? <a href="{{ route('login') }}"
+                    <p class="text-sm opacity-50 text-base-content">Sudah punya akun? <a href="{{ route('login') }}"
                             @class(['link'])>Masuk</a></p>
                 @elseif (Route::is('login'))
                     @if (Route::has('register'))
-                        <p class="text-sm opacity-50">Belum punya akun? <a href="{{ route('register') }}"
+                        <p class="text-sm opacity-50 text-base-content">Belum punya akun? <a href="{{ route('register') }}"
                                 @class(['link'])>Daftar</a></p>
                     @endif
                 @endif

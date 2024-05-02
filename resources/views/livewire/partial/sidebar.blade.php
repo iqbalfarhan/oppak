@@ -54,7 +54,9 @@
             <ul>
                 @can('laporan.index')
                     <li>
-                        <a href="{{ route('laporan.index') }}" @class(['active' => Route::is(['laporan.index', 'laporan.show'])]) wire:navigate>
+                        <a href="{{ route('laporan.index') }}" @class([
+                            'active' => Route::is(['laporan.index', 'laporan.show', 'laporan.edit']),
+                        ]) wire:navigate>
                             <x-tabler-file-plus class="size-5" />
                             <span>Laporan Rutin</span>
                         </a>

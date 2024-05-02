@@ -13,18 +13,24 @@
     </div>
     @foreach ($genset->bateraistarters as $key => $bs)
         <div class="card-body space-y-1 group">
-            <p class="text-xs">
-                <span class="font-bold">Battery starter {{ $key + 1 }} :</span>
-                tegangan {{ $bs->tegangan }} volt,
-                bj_cell {{ $bs->bj_cell }},
-                bj_pilot_cell {{ $bs->bj_pilot_cell }},
-                elektrolit {{ $bs->elektrolit }},
-                kekencangan kabel {{ $bs->kencang ? 'kencang' : 'tidak kencang' }}.
-                <button class="link text-primary opacity-0 group-hover:opacity-100"
-                    wire:click="$dispatch('editBateraistarter', {bateraistarter: {{ $bs->id }}})">edit</button>
-                <button class="link text-primary opacity-0 group-hover:opacity-100"
-                    wire:click="$dispatch('deleteBateraistarter', {bateraistarter: {{ $bs->id }}})">delete</button>
-            </p>
+            <div class="flex">
+
+                <p class="text-xs">
+                    <span class="font-bold">Battery starter {{ $key + 1 }} :</span>
+                    {{ $bs->label }}
+                </p>
+
+                <div class="flex gap-1">
+                    <button class="btn btn-xs btn-bordered btn-square opacity-0 group-hover:opacity-100"
+                        wire:click="$dispatch('editBateraistarter', {bateraistarter: {{ $bs->id }}})">
+                        <x-tabler-edit class="size-4" />
+                    </button>
+                    <button class="btn btn-xs btn-bordered btn-square opacity-0 group-hover:opacity-100"
+                        wire:click="$dispatch('deleteBateraistarter', {bateraistarter: {{ $bs->id }}})">
+                        <x-tabler-trash class="size-4" />
+                    </button>
+                </div>
+            </div>
         </div>
     @endforeach
     @canany(['laporan.genset.edit', 'laporan.genset.delete', 'laporan.genset.bateraistarter.create'])

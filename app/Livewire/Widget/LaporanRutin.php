@@ -15,7 +15,7 @@ class LaporanRutin extends Component
     {
         $this->laporan = Laporan::where('tanggal', date('Y-m-d'))->whereHas('site', function($site){
             $site->where('witel', $this->witel);
-        })->count();
+        })->where('done', true)->count();
     }
 
     public function mount($witel = "null")
