@@ -4,7 +4,7 @@
     ])
 
     @if ($ticket->done)
-        <div class="card card-compact bg-success">
+        <div class="card card-compact bg-success text-success-content">
             <div class="card-body">
                 <div class="flex items-center gap-3">
                     <x-tabler-circle-check />
