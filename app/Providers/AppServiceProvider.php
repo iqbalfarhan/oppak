@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Tamu;
+use App\Models\Ticket;
 use App\Observers\TamuObserver;
+use App\Observers\TicketObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Tamu::observe(TamuObserver::class);
+        Ticket::observe(TicketObserver::class);
     }
 }

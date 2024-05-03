@@ -51,26 +51,16 @@ trait TelegramTrait
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function sendPhoto($photo, $caption = '')
+    public function sendPhoto($photoUrl, $caption = "")
     {
         $client = new Client();
-
         $response = $client->post(
             'https://api.telegram.org/bot' . $this->botToken . '/sendPhoto',
             [
-                'multipart' => [
-                    [
-                        'name' => 'chat_id',
-                        'contents' => $this->chatId
-                    ],
-                    [
-                        'name' => 'photo',
-                        'contents' => fopen($photo, 'r')
-                    ],
-                    [
-                        'name' => 'caption',
-                        'contents' => $caption
-                    ]
+                'form_params' => [
+                    'chat_id' => $this->chatId,
+                    'photo' => $photoUrl,
+                    'caption' => $caption
                 ]
             ]
         );
