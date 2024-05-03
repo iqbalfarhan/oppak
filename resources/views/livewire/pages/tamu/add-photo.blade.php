@@ -14,6 +14,9 @@
                             </div>
                         @endforeach
                     </div>
+                @else
+                    <p class="text-sm">Silakan pilih photo sebagai eviden pekerjaan tamu. bisa upload lebih dari 1
+                        gambar.</p>
                 @endif
                 <label class="form-control">
                     <input type="file" @class([

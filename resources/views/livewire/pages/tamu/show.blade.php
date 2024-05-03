@@ -43,7 +43,7 @@
             <div class="flex flex-wrap gap-2">
                 @forelse ($tamu->images as $item)
                     <div class="avatar" wire:click="$dispatch('showPreview', {url : '{{ $item }}'})">
-                        <div class="w-32 rounded-xl btn-bordered">
+                        <div class="w-24 rounded-xl btn-bordered">
                             <img src="{{ Storage::url($item) }}" />
                         </div>
                     </div>
