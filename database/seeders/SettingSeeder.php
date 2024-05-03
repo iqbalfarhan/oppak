@@ -14,10 +14,12 @@ class SettingSeeder extends Seeder
     public function run(): void
     {
         $datas = [
-            'TELEGRAM_GROUP_ID_LAPORAN_RUTIN' => fake()->randomNumber(8),
-            'TELEGRAM_GROUP_ID_LAPORAN_INSIDENSIAL' => fake()->randomNumber(8),
-            'TELEGRAM_GROUP_ID_LAPORAN_PERGANTIAN_RUTIN' => fake()->randomNumber(8),
-            'TELEGRAM_GROUP_ID_LAPORAN_TESTING' => fake()->randomNumber(8),
+            'TELEGRAM_BOT_TOKEN' => null,
+            'TELEGRAM_GROUP_ID_LAPORAN_RUTIN' => null,
+            'TELEGRAM_GROUP_ID_INSIDENSIAL' => null,
+            'TELEGRAM_GROUP_ID_PERGANTIAN_RUTIN' => null,
+            'TELEGRAM_GROUP_ID_TICKETING' => null,
+            'TELEGRAM_GROUP_ID_BUKU_TAMU' => null,
         ];
 
         foreach ($datas as $key => $value) {

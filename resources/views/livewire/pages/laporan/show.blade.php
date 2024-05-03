@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="card-body py-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Kebersihan ruangan</div>
                     <div>Ruangan {{ $laporan->amf->ruangan_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
@@ -117,7 +117,7 @@
             </div>
         </div>
         <div class="card-body py-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($laporan->amf->tegangan as $key => $value)
                     <div class="flex flex-col">
                         <div class="text-xs opacity-50">Tegangan {{ $key }}</div>
@@ -127,7 +127,7 @@
             </div>
         </div>
         <div class="card-body py-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($laporan->amf->arus as $key => $value)
                     <div class="flex flex-col">
                         <div class="text-xs opacity-50">arus {{ $key }}</div>
@@ -137,7 +137,7 @@
             </div>
         </div>
         <div class="card-body py-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Penggunaan listrik</div>
                     <div>{{ $laporan->amf->kwh }} Kwh</div>

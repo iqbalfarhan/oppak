@@ -15,7 +15,7 @@
                 <div class="modal-action justify-between">
                     <button wire:click="closeModal" class="btn btn-ghost">Close</button>
                     <a href="{{ route('tamu.show', $tamu) }}" class="btn btn-primary" wire:navigate>
-                        <x-tabler-list class="size-5" />
+                        <x-tabler-list class="size-5" wire:loading.class="loading" />
                         <span>Detail tamu</span>
                     </a>
                 </div>

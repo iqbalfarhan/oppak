@@ -20,8 +20,19 @@ class Edit extends Component
         "rectifier" => "Rectifier",
         "temperatur" => "Temperatur",
         "bbm" => "BBM",
+        "selesai" => "Selesai",
     ];
     public Laporan $laporan;
+
+    public function toggleDone()
+    {
+        $newDone = !$this->laporan->done;
+        $this->laporan->update([
+            'done' => $newDone
+        ]);
+
+        $this->alert('success', 'Status laporan berhasil disimpan');
+    }
 
     public function mount(Laporan $laporan)
     {

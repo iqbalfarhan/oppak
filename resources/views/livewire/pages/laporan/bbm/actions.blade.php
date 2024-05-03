@@ -2,7 +2,7 @@
     <form class="card-body space-y-4" wire:submit="simpan">
         <h3 class="font-bold text-xl">BBM</h3>
         <div class="space-y-2">
-            <div class="grid grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 gap-2 md:gap-6">
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Value BBM</span>

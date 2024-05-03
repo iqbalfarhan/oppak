@@ -28,6 +28,7 @@
                         <td>Status</td>
                         <td>:</td>
                         <td @class([
+                            'font-bold',
                             'text-warning' => !$laporan->done,
                             'text-success' => $laporan->done,
                         ])>{{ $laporan->done ? 'Done' : 'Draft' }}</td>
@@ -91,20 +92,5 @@
             </table>
         </div>
     </div>
-    @if ($laporan->done == false)
-        <div class="card-body space-y-4">
-            <h3 class="font-bold text-xl">Selesai membuat laporan</h3>
-            <p class="text-sm">Sebelum merubah status laporan, harap untuk memastikan untuk mengisi semua form yang
-                tersedia (genset, amf, baterai, rectifier,
-                temperatur dan
-                bbm). kemudian klik tombol di bawah ini untuk merubah status laporan menjadi selesai.
-            </p>
-            <div class="card-actions">
-                <button class="btn btn-primary" wire:click="toggleDone" wire:loading.attr="disabled">
-                    <x-tabler-check class="size-5" />
-                    <span>Laporan sudah selesai</span>
-                </button>
-            </div>
-        </div>
-    @endif
+
 </div>

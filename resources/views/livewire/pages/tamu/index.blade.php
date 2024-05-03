@@ -4,10 +4,10 @@
     <div class="flex flex-col md:flex-row justify-between gap-1">
         <input type="text" class="input input-bordered" placeholder="Pencarian">
         <input type="date" class="input input-bordered">
-        <a href="{{ route('tamu.create') }}" class="btn btn-primary" wire:navigate>
+        <button class="btn btn-primary" wire:click="$dispatch('createTamu')">
             <x-tabler-plus class="size-5" />
             <span>Input tamu</span>
-        </a>
+        </button>
     </div>
 
     <div class="table-wrapper">

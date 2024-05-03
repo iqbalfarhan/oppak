@@ -43,4 +43,15 @@ class Tamu extends Model
     public function getImagesAttribute(){
         return Storage::allFiles('tamu/'.$this->id);
     }
+
+    public function getLabelAttribute():String
+    {
+        return implode(".\n", [
+            'Tamu dengan nama : '. $this->nama,
+            'dari Perusahaan : '. $this->perusahaan,
+            'Masuk ke site/STO : '. $this->site->label,
+            'tanggal : '. $this->masuk->format('d F Y H:i'),
+            'dengan keperluan : '. $this->keperluan,
+        ]);
+    }
 }
