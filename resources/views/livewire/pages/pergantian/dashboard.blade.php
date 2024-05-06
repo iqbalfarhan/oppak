@@ -1,10 +1,9 @@
-<div class="flex flex-col gap-4">
-    <div class="flex justify-between gap-1 items-end">
-        <h3 class="font-bold text-lg">Summary pergantian rutin :</h3>
+<div class="card card-compact card-divider">
+    <div class="card-body bg-base-200/50 py-0">
+        <h3 class="font-bold text-md">Summary pergantian rutin :</h3>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <div class="card-title">22 perangkat sudah harus diganti</div>
-        </div>
+    <div class="card-body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis numquam suscipit officiis debitis
+        quod, dolore beatae eius nihil sint inventore ullam maiores est voluptatem cumque. Enim sapiente nobis iusto.
     </div>
 </div>

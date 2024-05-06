@@ -43,5 +43,6 @@ berikut ini adalah cara untuk menginsatall oppak di server
 -   harap pastikan versi php sudah 8.2 atau diatasnya, sudah install composer, dan sudah menginstall mysql-server
 -   clone dari repositori git atau mendapatkan source code oppak ke lokasi web server biasanya /var/www
 -   masuk ke directory oppak kemudian jalankan `composer install`
+-   jalankan `cp .env.example .env`
 -   jalankan `php artisan oppak:install`
 -   kemudian buka aplikasi di ip atau localhost
