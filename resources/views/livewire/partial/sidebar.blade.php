@@ -11,6 +11,16 @@
                         </a>
                     </li>
                 @endcan
+                @can('ticket.index')
+                    <li>
+                        <a href="{{ route('ticket.index') }}" @class([
+                            'active' => Route::is(['ticket.index', 'ticket.show']),
+                        ]) wire:navigate>
+                            <x-tabler-ticket class="size-5" />
+                            <span>Ticketing</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('tamu.dashboard')
                     <li>
                         <a href="{{ route('tamu.dashboard') }}" @class([
@@ -23,16 +33,6 @@
                         ]) wire:navigate>
                             <x-tabler-users class="size-5" />
                             <span>Buku Tamu</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('ticket.index')
-                    <li>
-                        <a href="{{ route('ticket.index') }}" @class([
-                            'active' => Route::is(['ticket.index', 'ticket.show']),
-                        ]) wire:navigate>
-                            <x-tabler-ticket class="size-5" />
-                            <span>Ticketing</span>
                         </a>
                     </li>
                 @endcan
@@ -84,11 +84,11 @@
         <li>
             <h2 class="menu-title">Pengaturan</h2>
             <ul>
-                @can('setting.index')
+                @can('site.index')
                     <li>
-                        <a href="{{ route('setting.index') }}" @class(['active' => Route::is('setting.index')]) wire:navigate>
-                            <x-tabler-settings class="size-5" />
-                            <span>Pengaturan Variable</span>
+                        <a href="{{ route('site.index') }}" @class(['active' => Route::is('site.index')]) wire:navigate>
+                            <x-tabler-building class="size-5" />
+                            <span>Site Management</span>
                         </a>
                     </li>
                 @endcan
@@ -100,11 +100,11 @@
                         </a>
                     </li>
                 @endcan
-                @can('site.index')
+                @can('setting.index')
                     <li>
-                        <a href="{{ route('site.index') }}" @class(['active' => Route::is('site.index')]) wire:navigate>
-                            <x-tabler-building class="size-5" />
-                            <span>Site Management</span>
+                        <a href="{{ route('setting.index') }}" @class(['active' => Route::is('setting.index')]) wire:navigate>
+                            <x-tabler-settings class="size-5" />
+                            <span>Pengaturan Variable</span>
                         </a>
                     </li>
                 @endcan

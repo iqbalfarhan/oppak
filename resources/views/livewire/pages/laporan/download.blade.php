@@ -4,7 +4,7 @@
     ])
     <div class="card card-divider">
         <div class="card-body space-y-4">
-            <div class="card-title font-bold">Download laporan</div>
+            <div class="card-title font-bold">Download laporan rutin</div>
             <p class="text-sm">Untuk mendownload data laporan rutin, silakan untuk memilih terlebih dulu tanggal awal dan
                 tanggal akhir
                 kemudian klik selanjutnya. Jika ingin mendownload 1 tanggal saja, isi tanggal awal dan tanggal akhir
@@ -31,27 +31,5 @@
                 </button>
             </form>
         </div>
-        {{-- <div class="card-body bg-base-200/50 py-4">
-            <form action="{{ route('print.laporan') }}" class="card-actions justify-between" method="post">
-                @csrf
-                <div class="join btn-bordered">
-                    <input type="date" @class([
-                        'join-item input',
-                        'input-error' => $errors->first('tanggal.0'),
-                    ]) name="tanggal[]">
-                    <div class="join-item btn btn-circle">
-                        <x-tabler-arrow-right class="size-5" />
-                    </div>
-                    <input type="date" @class([
-                        'join-item input',
-                        'input-error' => $errors->first('tanggal.1'),
-                    ]) name="tanggal[]">
-                </div>
-                <button class="btn btn-primary">
-                    <x-tabler-arrow-right class="size-5" />
-                    <span>Selanjutnya</span>
-                </button>
-            </form>
-        </div> --}}
     </div>
 </div>
