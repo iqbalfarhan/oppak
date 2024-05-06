@@ -32,7 +32,7 @@
                 @endforeach
             </thead>
             <tbody>
-                @foreach ($sites as $site)
+                @forelse ($sites as $site)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $site->label }}</td>
@@ -52,7 +52,11 @@
                             </td>
                         @endforeach
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="100%">@livewire('partial.nocontent')</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

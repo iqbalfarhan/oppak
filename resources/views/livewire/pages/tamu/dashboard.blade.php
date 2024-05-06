@@ -120,7 +120,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="100%" class="text-center">Tidak ada tamu</td>
+                        <td colspan="100%">@livewire('partial.nocontent')</td>
                     </tr>
                 @endforelse
             </tbody>

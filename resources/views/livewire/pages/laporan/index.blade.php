@@ -71,7 +71,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="100%">Belum ada laporan </td>
+                        <td colspan="100%">@livewire('partial.nocontent')</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Symfony\Component\Console\Helper\ProgressBar;
 
@@ -29,23 +31,15 @@ class OppakInstallCommand extends Command
     public function handle()
     {
         $artisantorun = [
-            "migrate:fresh",
-            "db:seed",
+            "migrate:fresh --seed",
             "key:generate",
             "storage:link",
         ];
 
-        $output = new ConsoleOutput();
+        $this->withProgressBar($artisantorun, function($command){
+            $this->call($command);
+        });
 
-        $spinner = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
-        $index = 0;
-
-        foreach ($artisantorun as $command) {
-            $output->write("\r" . $spinner[$index % count($spinner)] . ' Running ' . $command . ' command...    ');
-            Artisan::call($command);
-            $index++;
-        }
-
-        $output->write("\r" . '✔️ All commands completed successfully!' . "\n");
+        $this->info("oppak instalation finished");
     }
 }

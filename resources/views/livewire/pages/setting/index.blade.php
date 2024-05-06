@@ -23,7 +23,7 @@
                 @endcanany
             </thead>
             <tbody>
-                @foreach ($datas as $data)
+                @forelse ($datas as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->key }}</td>
@@ -48,7 +48,11 @@
                             </td>
                         @endcanany
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="100%">@livewire('partial.nocontent')</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
