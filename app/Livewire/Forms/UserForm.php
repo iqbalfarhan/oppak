@@ -35,12 +35,12 @@ class UserForm extends Form
             'name' => 'required',
             'username' => 'required',
             'role' => 'required',
-            'password' => 'required|min:8',
             'notelp' => '',
             'telegram_id' => '',
         ]);
 
-        $valid['site_id'] = $this->site_id == "" ? null : $this->site_id;
+        $valid['password'] = "password";
+        $valid['site_id'] = $this->site_id != "" ? $this->site_id : NULL;
 
         $user = User::create($valid);
         $user->syncRoles($this->role);
@@ -57,7 +57,7 @@ class UserForm extends Form
             'telegram_id' => '',
         ]);
 
-        $valid['site_id'] = $this->site_id == "" ? null : $this->site_id;
+        $valid['site_id'] = $this->site_id != "" ? $this->site_id : NULL;
 
         if ($this->password) {
             $this->validate([

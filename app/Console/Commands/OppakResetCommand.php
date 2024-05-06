@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Prompts\Output\ConsoleOutput;
 
 class OppakResetCommand extends Command
@@ -28,23 +29,15 @@ class OppakResetCommand extends Command
     public function handle()
     {
         $artisantorun = [
-            "db:seed RoleSeeder",
-            "db:seed PermissionSeeder",
-            "db:seed UserSeeder",
-            "db:seed SettingSeeder",
+            "migrate:fresh",
+            "db:seed",
+            "oppak:reset-storage"
         ];
 
-        $output = new ConsoleOutput();
-
-        $spinner = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
-        $index = 0;
-
-        foreach ($artisantorun as $command) {
-            $output->write("\r" . $spinner[$index % count($spinner)] . ' Running ' . $command . ' command...    ');
+        $this->withProgressBar($artisantorun, function($command){
             Artisan::call($command);
-            $index++;
-        }
+        });
 
-        $output->write("\r" . '✔️ All commands completed successfully!' . "\n");
+        $this->newLine();
     }
 }

@@ -14,7 +14,8 @@ class TamuObserver
     public function created(Tamu $tamu): void
     {
         $setting = Setting::where('key', 'TELEGRAM_GROUP_ID_BUKU_TAMU')->first();
-        if ($setting) {
+
+        if (!is_null($setting->value)) {
             $this->setChatId($setting->value);
             $this->setParseMode("markdown");
 

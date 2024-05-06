@@ -31,15 +31,18 @@ class OppakInstallCommand extends Command
     public function handle()
     {
         $artisantorun = [
-            "migrate:fresh --seed",
+            "migrate",
             "key:generate",
             "storage:link",
         ];
 
         $this->withProgressBar($artisantorun, function($command){
-            $this->call($command);
+            sleep(1);
+            Artisan::call($command);
         });
 
         $this->info("oppak instalation finished");
+
+        $this->call('db:seed');
     }
 }

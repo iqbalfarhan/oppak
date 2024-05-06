@@ -43,7 +43,13 @@ class Create extends Component
             $this->show = false;
         }
         else{
-            $this->form->site_id = Site::first()->id;
+            if (auth()->user()->site) {
+                $this->form->site_id = auth()->user()->site->id;
+            }
+            else{
+                $this->alert('error', 'Penginput belum memilih lokasi kerja');
+            }
+
             $this->form->masuk = now()->format('Y-m-d H:i:s');
 
             $this->form->validate();
