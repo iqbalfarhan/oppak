@@ -10,7 +10,7 @@ class SiteForm extends Form
 {
     public $name;
     public $witel;
-    public $listrik;
+    public $listrik = "pln";
     public ?Site $site;
 
     public function setSite(Site $site)

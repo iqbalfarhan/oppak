@@ -60,7 +60,6 @@ class Actions extends Component
     public function render()
     {
         return view('livewire.pages.site.actions', [
-            'witels' => Site::$witels,
             'listrik' => Site::$listrik,
         ]);
     }

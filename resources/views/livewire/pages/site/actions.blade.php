@@ -8,15 +8,11 @@
                     <div class="label">
                         <span class="label-text">Witel</span>
                     </div>
-                    <select type="text" placeholder="Type here" @class([
-                        'select select-bordered w-full',
-                        'select-error' => $errors->first('form.witel'),
-                    ]) wire:model="form.witel">
-                        <option value="">Pilih witel</option>
-                        @foreach ($witels as $witel)
-                            <option value="{{ $witel }}">{{ $witel }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" placeholder="Type here" @class([
+                        'input input-bordered w-full',
+                        'input-error' => $errors->first('form.witel'),
+                    ])
+                        wire:model="form.witel" />
                     @error('form.witel')
                         <div class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>

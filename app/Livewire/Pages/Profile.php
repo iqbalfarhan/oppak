@@ -5,6 +5,8 @@ namespace App\Livewire\Pages;
 use App\Models\Site;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -51,11 +53,17 @@ class Profile extends Component
         }
 
         if ($this->photo) {
-            $this->validate([
-                'photo' => 'image',
-            ]);
-            $this->photo->store('user');
-            $valid['photo'] = $this->photo->hashName('user');
+            $gambar = $this->photo;
+
+            $path = $gambar->hashName('user');
+            $image = Image::make($gambar)->resize(50, 50, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            Storage::put($path, (string) $image->encode());
+
+            $valid['photo'] = $path;
         }
 
         $this->user->update($valid);
