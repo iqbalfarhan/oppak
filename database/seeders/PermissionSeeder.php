@@ -63,6 +63,7 @@ class PermissionSeeder extends Seeder
             'insidensial.create'                        => ['admin'],
             'insidensial.edit'                          => ['admin'],
             'insidensial.delete'                        => ['admin'],
+            'insidensial.show'                          => ['admin'],
 
             'ticket.index'                              => ['admin'],
             'ticket.create'                             => ['admin'],
@@ -77,16 +78,19 @@ class PermissionSeeder extends Seeder
             'pergantian.index'                          => ['admin'],
             'pergantian.create'                         => ['admin'],
             'pergantian.edit'                           => ['admin'],
+            'pergantian.show'                           => ['admin'],
             'pergantian.delete'                         => ['admin'],
 
             'perangkat.index'                           => ['admin'],
             'perangkat.create'                          => ['admin'],
             'perangkat.edit'                            => ['admin'],
+            'perangkat.show'                            => ['admin'],
             'perangkat.delete'                          => ['admin'],
 
             'site.index'                                => ['admin'],
             'site.create'                               => ['admin'],
             'site.edit'                                 => ['admin'],
+            'site.show'                                 => ['admin'],
             'site.delete'                               => ['admin'],
 
             'tamu.dashboard'                            => ['admin'],
