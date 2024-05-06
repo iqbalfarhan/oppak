@@ -2,16 +2,25 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
 
-class SiteImport implements ToCollection
+use App\Models\Site;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+
+class SiteImport implements ToModel, WithHeadingRow
 {
-    /**
-    * @param Collection $collection
-    */
-    public function collection(Collection $collection)
+    public function model(array $row)
     {
-        //
+        return Site::updateOrCreate([
+            'witel' => $row['witel'],
+            'name' => $row['name'],
+        ],[
+            'listrik' => $row['listrik'],
+        ]);
+    }
+
+    public function headingRow(): int
+    {
+        return 1;
     }
 }

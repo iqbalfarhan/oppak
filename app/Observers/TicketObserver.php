@@ -14,7 +14,8 @@ class TicketObserver
     public function created(Ticket $ticket): void
     {
         $setting = Setting::where('key', 'TELEGRAM_GROUP_ID_TICKETING')->first();
-        if ($setting) {
+
+        if ($setting && !is_null($setting->value)) {
             $this->setChatId($setting->value);
             $this->setParseMode("markdown");
             $text = $this->generateText("Ticket dibuat", $ticket->label);

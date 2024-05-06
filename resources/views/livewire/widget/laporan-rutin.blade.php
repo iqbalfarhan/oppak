@@ -2,7 +2,12 @@
     <div class="card-body cursor-pointer" wire:click="$dispatch('listbywitel', {witel:'{{ $witel }}'})">
         <div class="flex flex-col md:flex-row justify-between md:items-end">
             <h3 class="text-3xl font-bold" wire:loading.class="loading">
-                {{ Number::percentage(($laporan / $siteCount) * 100) }}</h3>
+                @if ($siteCount != 0)
+                    {{ Number::percentage(($laporan / $siteCount) * 100) }}
+                @else
+                    0%
+                @endif
+            </h3>
             <div class="text-xs">{{ $laporan }}/{{ $siteCount }} laporan</div>
         </div>
     </div>

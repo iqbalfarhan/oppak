@@ -70,6 +70,6 @@ trait TelegramTrait
 
     protected function getBotTokenFromDatabase():String
     {
-        return Setting::where('key', 'TELEGRAM_BOT_TOKEN')->first()->value;
+        return Setting::where('key', 'TELEGRAM_BOT_TOKEN')->first()->value ?? "";
     }
 }

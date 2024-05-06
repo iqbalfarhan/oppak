@@ -2,8 +2,14 @@
     @livewire('partial.header', ['title' => 'Site management'])
 
     <div class="flex flex-col md:flex-row gap-2 justify-between">
-        <input type="text" class="input input-bordered" placeholder="Pencarian">
+        <div class="flex-1">
+            <input type="text" class="input input-bordered" placeholder="Pencarian">
+        </div>
         @can('site.create')
+            <button class="btn btn-primary" wire:click="$dispatch('importSite')">
+                <x-tabler-database-import class="size-5" />
+                <span>Import</span>
+            </button>
             <button class="btn btn-primary" wire:click="$dispatch('createSite')">
                 <x-tabler-plus class="size-5" />
                 <span>Tambah site</span>
@@ -58,4 +64,5 @@
     </div>
 
     @livewire('pages.site.actions')
+    @livewire('pages.site.import')
 </div>

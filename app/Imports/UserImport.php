@@ -2,16 +2,34 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use App\Models\Site;
+use App\Models\User;
+use Illuminate\Support\Facades\Password;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class UserImport implements ToCollection
+class UserImport implements ToModel, WithHeadingRow
 {
-    /**
-    * @param Collection $collection
-    */
-    public function collection(Collection $collection)
+    public function model(array $row)
     {
-        //
+        $site = Site::where('name', $row['nama_site'])->first();
+
+        $user = User::updateOrCreate([
+            'name' => $row['name'],
+            'username' => $row['username'],
+        ],[
+            'password' => $row['password'],
+            'notelp' => $row['notelp'],
+            'telegram_id' => $row['telegram_id'],
+            'site_id' => $site ? $site->id : NULL,
+        ]);
+
+        $user->assignRole($row['role'] ?? 'user');
+        return;
+    }
+
+    public function headingRow(): int
+    {
+        return 1;
     }
 }

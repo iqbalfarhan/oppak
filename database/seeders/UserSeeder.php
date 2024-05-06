@@ -20,23 +20,5 @@ class UserSeeder extends Seeder
             'password' => 'adminoke'
         ]);
         $user->assignRole('superadmin');
-
-        $user = User::updateOrCreate([
-            'username' => 'admin',
-        ], [
-            'name' => 'Administrator',
-            'password' => 'adminoke'
-        ]);
-        $user->assignRole('admin');
-
-        $user = User::updateOrCreate([
-            'username' => 'iqbal',
-        ], [
-            'name' => 'Iqbal Farhan Syuhada',
-            'password' => 'adminoke'
-        ]);
-        $user->assignRole('user');
-
-        User::factory(10)->create()->each(fn($user) => $user->assignRole('user'));
     }
 }
