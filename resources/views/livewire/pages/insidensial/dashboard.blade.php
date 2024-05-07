@@ -7,7 +7,11 @@
             <table class="table">
                 @forelse ($datas as $month => $number)
                     <tr class="opacity-50 first:opacity-100">
-                        <td>{{ $month }}</td>
+                        <td>
+                            <div class="tooltip" data-tip="{{ $number }} laporan">
+                                {{ $month }}
+                            </div>
+                        </td>
                         <td>:</td>
                         <td class="w-1/2">
                             <progress class="progress progress-primary" value="{{ $number }}"
