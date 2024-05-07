@@ -6,12 +6,9 @@
     <div class="flex flex-col md:flex-row gap-1">
         <select type="text" class="select select-bordered" placeholder="Pencarian" wire:model.live="witel">
             <option value="">PILIH WITEL</option>
-            <option value="BALIKPAPAN">BALIKPAPAN</option>
-            <option value="SAMARINDA">SAMARINDA</option>
-            <option value="KALBAR">KALBAR</option>
-            <option value="KALSEL">KALSEL</option>
-            <option value="KALTENG">KALTENG</option>
-            <option value="KALTARA">KALTARA</option>
+            @foreach ($witels as $wtl)
+                <option value="{{ $wtl }}">{{ $wtl }}</option>
+            @endforeach
         </select>
         <div class="flex-1"></div>
         @can('perangkat.index')

@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Models\Site;
 use App\Models\User;
+use App\Traits\ImageManipulateTrait;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -13,7 +14,7 @@ use Livewire\WithFileUploads;
 
 class Profile extends Component
 {
-    use WithFileUploads, LivewireAlert;
+    use WithFileUploads, LivewireAlert, ImageManipulateTrait;
 
     public $photo;
     public $name;
@@ -54,12 +55,8 @@ class Profile extends Component
 
         if ($this->photo) {
             $gambar = $this->photo;
-
             $path = $gambar->hashName('user');
-            $image = Image::make($gambar)->resize(50, 50, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $image = $this->manipulate($gambar, 300);
 
             Storage::put($path, (string) $image->encode());
 

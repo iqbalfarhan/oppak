@@ -1,7 +1,7 @@
 <div>
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
-        <form class="modal-box max-w-sm" wire:submit="import">
+        <form class="modal-box" wire:submit="import">
             <h3 class="font-bold text-lg">Import data Site/STO</h3>
             <div class="py-4 space-y-4">
                 <p class="text-sm">Buat sebuah file untuk import data site dengan format seperti gambar dibawah. Pilih

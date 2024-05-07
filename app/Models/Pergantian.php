@@ -27,6 +27,10 @@ class Pergantian extends Model
         ];
     }
 
+    protected $appends = [
+            'next_action'
+        ];
+
     public function site()
     {
         return $this->belongsTo(Site::class);

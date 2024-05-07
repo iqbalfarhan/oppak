@@ -3,12 +3,12 @@
         <div class="flex flex-col md:flex-row justify-between md:items-end">
             <h3 class="text-3xl font-bold" wire:loading.class="loading">
                 @if ($siteCount != 0)
-                    {{ Number::percentage(($laporan / $siteCount) * 100) }}
+                    {{ Number::percentage(($laporan / $days_count / $siteCount) * 100) }}
                 @else
-                    0%
+                    {{ Number::percentage(0) }}
                 @endif
             </h3>
-            <div class="text-xs">{{ $laporan }}/{{ $siteCount }} laporan</div>
+            <div class="text-xs">{{ round($laporan) }}/{{ $siteCount * $days_count }} laporan</div>
         </div>
     </div>
     <div class="card-body py-0 bg-base-200/50">

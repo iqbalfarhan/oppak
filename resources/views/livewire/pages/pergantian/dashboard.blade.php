@@ -1,16 +1,22 @@
-<div class="card card-divider">
-    <div class="card-body py-4 bg-base-200/50">
-        <div class="flex justify-between items-center">
-            <h3 class="font-bold text-lg">Pergantian rutin</h3>
-            <button class="btn btn-sm btn-ghost gap-1">
-                <span>Lihat detail</span>
-                <x-tabler-arrow-right class="size-4" />
-            </button>
+<div class="card card-divider card-compact">
+    <div class="card-body flex flex-row gap-4 items-center bg-base-200/50">
+        <div class="flex flex-col flex-1 items-center">
+            <div class="text-lg font-bold">Pergantian rutin</div>
+            <div class="text-xs line-clamp-1">Reminder pergantian hari ini</div>
         </div>
     </div>
-    <div class="card-body space-y-4 text-sm py-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem facere earum voluptatum illo, distinctio alias
-        quod voluptatem cumque sunt commodi. Aliquid, totam quisquam. Accusamus ratione adipisci assumenda labore
-        commodi nihil.
-    </div>
+    @foreach ($datas as $site => $data)
+        <div class="card-body">
+            <h2 class="font-bold">{{ $data->first()->site->label }}</h2>
+            <div class="flex flex-col">
+                @foreach ($data as $pergantian)
+                    <div class="text-xs">
+                        {{ $pergantian->perangkat->name }}
+                        <span class="text-xs opacity-50">(Terakhir tanggal
+                            {{ $pergantian->tanggal->format('d F Y') }})</span>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
 </div>

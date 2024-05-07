@@ -8,10 +8,13 @@ use Livewire\Component;
 class CariTanggal extends Component
 {
     public $show = false;
-    public $isRange = false;
+    public $isRange = true;
 
     public $tanggal;
-    public $range = [];
+    public $range = [
+        "2024-05-06",
+        "2024-05-07",
+    ];
 
     #[On('filterTanggal')]
     public function filterTanggal(){
@@ -25,7 +28,6 @@ class CariTanggal extends Component
                 'range.1' => 'required'
             ]);
 
-            dd($this->range);
             $this->dispatch('rangeTanggal', $this->range);
         }
         else{
@@ -33,8 +35,7 @@ class CariTanggal extends Component
                 'tanggal' => 'required'
             ]);
 
-            dd($this->tanggal);
-            $this->dispatch('tanggal', $this->tanggal);
+            $this->dispatch('setTanggal', $this->tanggal);
         }
         $this->show = false;
     }
