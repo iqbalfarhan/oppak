@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Laporan\Bbm;
 
 use App\Models\Bbm;
 use App\Models\Laporan;
+use App\Traits\ImageManipulateTrait;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -12,6 +13,7 @@ class Actions extends Component
 {
     use LivewireAlert;
     use WithFileUploads;
+    use ImageManipulateTrait;
 
     public $photo;
     public $gambar;
@@ -28,8 +30,8 @@ class Actions extends Component
         ]);
 
         if ($this->photo) {
-            $valid['photo'] = $this->photo->hashName('bbm');
-            $this->photo->store('bbm');
+            $path = $this->manipulate($this->photo, $this->laporan->path);
+            $valid['photo'] = $path;
         }
 
         Bbm::updateOrCreate([

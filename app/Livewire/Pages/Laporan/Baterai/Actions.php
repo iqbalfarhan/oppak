@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Laporan\Baterai;
 use App\Livewire\Forms\BateraiForm;
 use App\Models\Baterai;
 use App\Models\Laporan;
+use App\Traits\ImageManipulateTrait;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -14,15 +15,18 @@ class Actions extends Component
 {
     use LivewireAlert;
     use WithFileUploads;
+    use ImageManipulateTrait;
 
     public $show = false;
     public $photo;
 
     public ?BateraiForm $form;
+    public ?Laporan $laporan;
 
     #[On("createBaterai")]
     public function createBaterai(Laporan $laporan)
     {
+        $this->laporan = $laporan;
         $this->show = true;
         $this->form->laporan_id = $laporan->id;
     }
@@ -31,6 +35,7 @@ class Actions extends Component
     public function editBaterai(Baterai $baterai)
     {
         $this->show = true;
+        $this->laporan = $baterai->laporan;
         $this->form->setBaterai($baterai);
     }
 
@@ -45,8 +50,8 @@ class Actions extends Component
     public function simpan()
     {
         if ($this->photo) {
-            $this->form->photo = $this->photo->hashName('baterai');
-            $this->photo->store('baterai');
+            $path = $this->manipulate($this->photo, $this->laporan->path);
+            $this->form->photo = $path;
         }
 
         if (isset($this->form->baterai)) {

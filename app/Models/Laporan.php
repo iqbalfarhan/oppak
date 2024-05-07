@@ -53,4 +53,9 @@ class Laporan extends Model
     public function bbm(){
         return $this->hasOne(Bbm::class);
     }
+
+    public function getPathAttribute()
+    {
+        return "laporan/".$this->created_at->format("Ymd")."/".$this->id;
+    }
 }

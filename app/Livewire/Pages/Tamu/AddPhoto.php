@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Tamu;
 
 use App\Models\Tamu;
+use App\Traits\ImageManipulateTrait;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -12,6 +13,7 @@ class AddPhoto extends Component
 {
     use WithFileUploads;
     use LivewireAlert;
+    use ImageManipulateTrait;
     public $photo;
     public $show = false;
     public Tamu $tamu;
@@ -30,7 +32,7 @@ class AddPhoto extends Component
         ]);
 
         foreach ($this->photo as $photo) {
-            $photo->store('tamu/'.$this->tamu->id);
+            $this->manipulate($photo, 'tamu/'.$this->tamu->id);
         }
 
         $this->dispatch('reload');

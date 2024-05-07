@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Laporan\Temperatur;
 
 use App\Models\Laporan;
 use App\Models\Temperatur;
+use App\Traits\ImageManipulateTrait;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -12,6 +13,7 @@ class Actions extends Component
 {
     use LivewireAlert;
     use WithFileUploads;
+    use ImageManipulateTrait;
 
     public Laporan $laporan;
     public $rectifier;
@@ -32,8 +34,8 @@ class Actions extends Component
         $valid['laporan_id'] = $this->laporan->id;
 
         if ($this->photo) {
-            $valid['photo'] = $this->photo->hashName('temperatur');
-            $this->photo->store('temperatur');
+            $path = $this->manipulate($this->photo, $this->laporan->path);
+            $valid['photo'] = $path;
         }
 
         Temperatur::updateOrCreate([

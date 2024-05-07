@@ -15,8 +15,15 @@
                     <div class="label">
                         <span class="label-text">Photo laporan</span>
                     </div>
-                    <input type="file" placeholder="Type here" class="file-input file-input-bordered"
-                        wire:model="photo" />
+                    <input type="file" placeholder="Type here" @class([
+                        'file-input file-input-bordered',
+                        'file-input-error' => $errors->first('photo'),
+                    ]) wire:model="photo" />
+                    @error('photo')
+                        <div class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </div>
+                    @enderror
                 </label>
                 <label class="form-control">
                     <div class="label">

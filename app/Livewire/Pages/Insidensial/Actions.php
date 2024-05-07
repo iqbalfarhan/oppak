@@ -5,6 +5,8 @@ namespace App\Livewire\Pages\Insidensial;
 use App\Livewire\Forms\InsidensialForm;
 use App\Models\Insidensial;
 use App\Models\Site;
+use App\Traits\ImageManipulateTrait;
+use Illuminate\Support\Facades\Storage;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -12,7 +14,7 @@ use Livewire\WithFileUploads;
 
 class Actions extends Component
 {
-    use LivewireAlert, WithFileUploads;
+    use LivewireAlert, WithFileUploads, ImageManipulateTrait;
     public $photo;
     public $oldPhoto;
     public $show = false;
@@ -43,9 +45,8 @@ class Actions extends Component
     public function simpan()
     {
         if (isset($this->photo)) {
-            $photo = $this->photo->hashName('insidensial');
-            $this->photo->store('insidensial');
-            $this->form->photo = $photo;
+            $image = $this->manipulate($this->photo, folder:'insidensial');
+            $this->form->photo = $image;
         }
 
         if (isset($this->form->insidensial)) {

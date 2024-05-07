@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Ticket;
 use App\Livewire\Forms\TicketForm;
 use App\Models\Site;
 use App\Models\Ticket;
+use App\Traits\ImageManipulateTrait;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
@@ -15,6 +16,7 @@ class Actions extends Component
 {
     use LivewireAlert;
     use WithFileUploads;
+    use ImageManipulateTrait;
 
     public TicketForm $form;
     public $show;
@@ -46,8 +48,8 @@ class Actions extends Component
     public function simpan()
     {
         if ($this->photo) {
-            $this->form->photo = $this->photo->hashName('ticket');
-            $this->photo->store('ticket');
+            $image = $this->manipulate($this->photo, 'ticket');
+            $this->form->photo = $image;
         }
 
         if (isset($this->form->ticket)) {

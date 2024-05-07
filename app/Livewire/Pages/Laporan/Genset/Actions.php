@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Laporan\Genset;
 use App\Livewire\Forms\GensetForm;
 use App\Models\Genset;
 use App\Models\Laporan;
+use App\Traits\ImageManipulateTrait;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -14,16 +15,19 @@ class Actions extends Component
 {
     use LivewireAlert;
     use WithFileUploads;
+    use ImageManipulateTrait;
 
     public $show = false;
 
     public GensetForm $form;
+    public ?Laporan $laporan;
     public $photo;
     public $genset;
 
     #[On('createGenset')]
     public function createGenset(Laporan $laporan)
     {
+        $this->laporan = $laporan;
         $this->show = true;
         $this->form->laporan_id = $laporan->id;
     }
@@ -32,6 +36,7 @@ class Actions extends Component
     public function editGenset(Genset $genset)
     {
         $this->show = true;
+        $this->laporan = $genset->laporan;
         $this->form->setGenset($genset);
     }
 
@@ -46,10 +51,8 @@ class Actions extends Component
     public function simpan()
     {
         if ($this->photo) {
-            $filename = $this->photo->hashName('baterai');
-            $this->photo->store('baterai');
-
-            $this->form->photo = $filename;
+            $path = $this->manipulate($this->photo, $this->laporan->path);
+            $this->form->photo = $path;
         }
 
         if (isset($this->form->genset)) {

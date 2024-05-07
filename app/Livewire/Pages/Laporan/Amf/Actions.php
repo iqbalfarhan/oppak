@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Laporan\Amf;
 
 use App\Livewire\Forms\AmfForm;
 use App\Models\Laporan;
+use App\Traits\ImageManipulateTrait;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -12,6 +13,7 @@ class Actions extends Component
 {
     use WithFileUploads;
     use LivewireAlert;
+    use ImageManipulateTrait;
 
     public $photo;
     public AmfForm $form;
@@ -30,8 +32,8 @@ class Actions extends Component
     public function simpan()
     {
         if ($this->photo) {
-            $this->form->photo = $this->photo->hashName('amf');
-            $this->photo->store('amf');
+            $image = $this->manipulate($this->photo, $this->laporan->path);
+            $this->form->photo = $image;
         }
 
         if (isset($this->form->amf)) {
@@ -41,7 +43,7 @@ class Actions extends Component
             $this->form->store();
         }
 
-        $this->reset('photo');
+        $this->photo = null;
         $this->alert('success', 'Data Amf berhasil disimpan');
     }
 

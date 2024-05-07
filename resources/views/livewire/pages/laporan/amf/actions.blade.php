@@ -9,8 +9,8 @@
                     <span class="label-text">Photo ATS</span>
                 </div>
                 <input type="file" class="file-input file-input-bordered w-full" wire:model.live="photo" />
-                <div class="flex gap-1">
-                    @isset($form->amf)
+                <div class="flex gap-2">
+                    @isset($form->amf->photo)
                         <div class="avatar">
                             <div class="w-24 rounded-xl">
                                 <img src="{{ $form->amf->image }}" />

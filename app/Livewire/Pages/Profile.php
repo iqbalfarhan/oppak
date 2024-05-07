@@ -54,12 +54,7 @@ class Profile extends Component
         }
 
         if ($this->photo) {
-            $gambar = $this->photo;
-            $path = $gambar->hashName('user');
-            $image = $this->manipulate($gambar, 300);
-
-            Storage::put($path, (string) $image->encode());
-
+            $path = $this->manipulate($this->photo, 'user');
             $valid['photo'] = $path;
         }
 
