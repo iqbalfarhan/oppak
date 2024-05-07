@@ -8,13 +8,10 @@ use Livewire\Component;
 class CariTanggal extends Component
 {
     public $show = false;
-    public $isRange = true;
+    public $isRange = false;
 
     public $tanggal;
-    public $range = [
-        "2024-05-06",
-        "2024-05-07",
-    ];
+    public $range = [];
 
     #[On('filterTanggal')]
     public function filterTanggal(){
