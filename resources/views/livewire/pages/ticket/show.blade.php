@@ -147,21 +147,17 @@
                                 'chat-start' => !$log->is_me,
                                 'chat-end' => $log->is_me,
                             ])>
+                                @if ($log->photo)
+                                    <img src="{{ $log->image }}"
+                                        wire:click="$dispatch('showPreview', {url:'{{ $log->photo }}'})"
+                                        class="rounded-lg max-w-40 max-h-40 my-0.5" />
+                                @endif
                                 <div @class(['chat-image avatar tooltip tooltip-sm tooltip-success']) data-tip="{{ Str::limit($log->user->name, 10) }}">
                                     <div class="w-10 rounded-full bg-base-300">
                                         <img src="{{ $log->user->image }}" alt="">
                                     </div>
                                 </div>
-                                {{-- <div class="chat-header">
-                                    {{ $log->user->name }}
-                                    <time class="text-xs opacity-50">{{ $log->created_at->diffForHumans() }}</time>
-                                </div> --}}
-                                <div class="chat-bubble flex flex-col gap-2">
-                                    @if ($log->photo)
-                                        <img src="{{ $log->image }}"
-                                            wire:click="$dispatch('showPreview', {url:'{{ $log->photo }}'})"
-                                            class="rounded-lg max-w-40 max-h-40" />
-                                    @endif
+                                <div class="chat-bubble bg-base-300 text-base-content btn-bordered flex flex-col gap-2">
                                     <span>{{ $log->uraian }}</span>
                                 </div>
                             </div>

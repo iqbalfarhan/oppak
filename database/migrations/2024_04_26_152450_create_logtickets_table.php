@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('uraian')->nullable();
+            $table->text('uraian')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

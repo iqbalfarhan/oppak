@@ -41,7 +41,7 @@ class TicketForm extends Form
             'kode' => 'required|unique:tickets,kode',
             'progress' => 'required',
             'perangkat' => 'required',
-            'uraian' => 'required',
+            'uraian' => 'required|max:255',
             'done' => 'required',
             'pengajuan' => 'required',
         ]);
@@ -63,7 +63,7 @@ class TicketForm extends Form
             'kode' => 'required|unique:tickets,kode,'.$this->ticket->id,
             'progress' => 'required',
             'perangkat' => 'required',
-            'uraian' => 'required',
+            'uraian' => 'required|max:255',
             'done' => 'required',
             'pengajuan' => 'required',
         ]);

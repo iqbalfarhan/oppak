@@ -2,27 +2,33 @@
     @livewire('partial.header', ['title' => 'Ticketing'])
 
     <div class="grid grid-cols-3 gap-6">
-        @livewire('widget.ticket', [
-            'number' => $datas->where('done', false)->count(),
-            'title' => 'Ticket belum selesai',
-            'desc' => 'Jumlah ticket belum selesai',
-        ])
-        @livewire('widget.ticket', [
-            'color' => 'warning',
-            'number' => $datas->where('pengajuan')->count(),
-            'title' => 'Request close',
-            'desc' => 'Jumlah ticket yang belum selesai',
-        ])
-        @livewire('widget.ticket', [
-            'color' => 'success',
-            'number' => $datas->where('done')->count(),
-            'title' => 'Ticket selesai ',
-            'desc' => 'Jumlah ticket selesai',
-        ])
+        <div wire:click="setDone">
+            @livewire('widget.ticket', [
+                'number' => $datas->where('done', false)->count(),
+                'title' => 'Ticket belum selesai',
+                'desc' => 'Jumlah ticket belum selesai',
+            ])
+        </div>
+        <div wire:click="setPengajuan(1)">
+            @livewire('widget.ticket', [
+                'color' => 'warning',
+                'number' => $datas->where('pengajuan')->count(),
+                'title' => 'Request close',
+                'desc' => 'Jumlah ticket yang belum selesai',
+            ])
+        </div>
+        <div wire:click="setDone(1)">
+            @livewire('widget.ticket', [
+                'color' => 'success',
+                'number' => $datas->where('done')->count(),
+                'title' => 'Ticket selesai ',
+                'desc' => 'Jumlah ticket selesai',
+            ])
+        </div>
     </div>
 
     <div class="flex flex-col md:flex-row gap-2 justify-between">
-        <input type="text" class="input input-bordered" placeholder="Pencarian" />
+        <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.lazy="search" />
         @can('ticket.create')
             <button class="btn btn-primary" wire:click="$dispatch('createTicket')">
                 <x-tabler-plus class="size-5" />
@@ -37,7 +43,7 @@
                 <th>No</th>
                 <th>Kode ticket</th>
                 <th>Pembuat ticket</th>
-                <th>Percentage</th>
+                <th>Progress</th>
                 <th>Uraian</th>
                 <th>Log</th>
                 @canany(['ticket.edit', 'ticket.delete'])
@@ -50,7 +56,7 @@
                         <td>{{ $no++ }}</td>
                         <td>
                             <a href="{{ route('ticket.show', $data) }}" @class([
-                                'btn btn-xs uppercase btn-block',
+                                'btn btn-xs uppercase',
                                 'btn-success' => $data->done,
                                 'btn-bordered' => !$data->done,
                             ])>
@@ -66,12 +72,17 @@
                                 </div>
                                 <div class="flex flex-col items-start">
                                     <div>{{ $data->user->name }}</div>
-                                    <div class="text-xs opacity-75">({{ $data->site->label }})</div>
+                                    <div class="text-xs opacity-75">{{ $data->site->label }}</div>
                                 </div>
                             </div>
                         </td>
                         <td>{{ Number::percentage($data->progress) }}</td>
-                        <td class="whitespace-normal min-w-52 max-w-80">{{ $data->uraian }}</td>
+                        <td class="whitespace-normal min-w-52 max-w-80">
+                            <div class="flex flex-col items-start">
+                                <div>{{ $data->perangkat }}</div>
+                                <div class="text-xs opacity-75 line-clamp-1">{{ $data->uraian }}</div>
+                            </div>
+                        </td>
                         <td>{{ $data->logtickets_count }}</td>
                         @canany(['ticket.edit', 'ticket.delete'])
                             <td>
