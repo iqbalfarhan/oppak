@@ -7,11 +7,6 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('logout',  function(){
-    Auth::logout();
-    return redirect()->route('login');
-})->name('logout');
-
 Route::middleware('guest')->group(function(){
     Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
     Route::get('/register', \App\Livewire\Auth\Register::class)->name('register');

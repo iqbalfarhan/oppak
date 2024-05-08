@@ -20,6 +20,10 @@ class SettingSeeder extends Seeder
             'TELEGRAM_GROUP_ID_PERGANTIAN_RUTIN' => null,
             'TELEGRAM_GROUP_ID_TICKETING' => null,
             'TELEGRAM_GROUP_ID_BUKU_TAMU' => null,
+            'LDAP_HOST' => null,
+            'LDAP_PORT' => null,
+            'LDAP_BASEDN' => 'o=Telkom',
+            'LDAP_AUTHREALM' => 'MyRealm',
         ];
 
         foreach ($datas as $key => $value) {

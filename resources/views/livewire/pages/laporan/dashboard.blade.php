@@ -10,9 +10,13 @@
         </button>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        @foreach ($witels as $witel)
+        @forelse ($witels as $witel)
             @livewire('widget.laporan-rutin', ['witel' => $witel], key($witel))
-        @endforeach
+        @empty
+            <div class="col-span-full">
+                @livewire('partial.nocontent', ['title' => 'Belum ada data site yang diinput'])
+            </div>
+        @endforelse
     </div>
     @livewire('pages.home.cari-tanggal')
     @livewire('pages.laporan.listbywitel')

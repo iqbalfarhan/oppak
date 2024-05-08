@@ -8,12 +8,15 @@ use Livewire\Component;
 class Index extends Component
 {
     public $no = 1;
+    public $tanggal;
     protected $listeners = ['reload' => '$refresh'];
 
     public function render()
     {
         return view('livewire.pages.tamu.index', [
-            'datas' => Tamu::orderBy('keluar')->latest('created_at')->get()
+            'datas' => Tamu::when($this->tanggal, function($tamu){
+                $tamu->whereDate('created_at', $this->tanggal);
+            })->orderBy('keluar')->latest('created_at')->get()
         ]);
     }
 }

@@ -1,24 +1,24 @@
 <div class="page-wrapper">
     @livewire('partial.header', [
-        'title' => 'Visitor Book',
+        'title' => 'Buku Tamu',
     ])
 
-    <div class="grid md:grid-cols-3 gap-3 md:gap-6">
+    <div class="grid md:grid-cols-3 gap-2 md:gap-6">
         @livewire('widget.visitor', [
             'number' => $datas->count(),
-            'title' => 'Visitor hari ini',
+            'title' => 'Tamu hari ini',
             'desc' => 'Tanggal ' . date('d F Y'),
         ])
         @livewire('widget.visitor', [
             'number' => $datas->where('keluar', null)->count(),
             'color' => 'warning',
-            'title' => 'Visitor masuk',
-            'desc' => 'Status visitor masih di dalam',
+            'title' => 'Tamu masuk',
+            'desc' => 'Status Tamu masih di dalam',
         ])
         @livewire('widget.visitor', [
             'number' => $datas->whereNotNull('keluar')->count(),
             'color' => 'success',
-            'title' => 'Visitor sudah keluar',
+            'title' => 'Tamu sudah keluar',
             'desc' => 'Sudah selesai / keluar',
         ])
     </div>
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body space-y-2">
                         <div class="text-lg font-semibold flex justify-between">
-                            <span>Input visitor</span>
+                            <span>Input Tamu</span>
                             <x-tabler-plus class="size-5" />
                         </div>
                         <p class="text-sm line-clamp-2">Input tamu sebelum masuk ke site atau STO. Input nama, nomor
@@ -37,7 +37,7 @@
                         <div class="card-actions">
                             <button class="btn btn-primary gap-1" wire:click="$dispatch('createTamu')">
                                 <x-tabler-plus class="size-5" />
-                                <span>Input visitor</span>
+                                <span>Input Tamu</span>
                             </button>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                 <div class="card">
                     <div class="card-body space-y-2">
                         <div class="text-lg font-semibold flex justify-between">
-                            <span>Riwayat visitor</span>
+                            <span>Riwayat Tamu</span>
                             <x-tabler-list class="size-5" />
                         </div>
                         <p class="text-sm line-clamp-2">Lihat semua data tamu. filter data tamu dengan tanggal, nama tamu,
@@ -55,7 +55,7 @@
                         <div class="card-actions">
                             <a href="{{ route('tamu.index') }}" class="btn btn-primary gap-1" wire:navigate>
                                 <x-tabler-list class="size-5" />
-                                <span>Riwayat visitor</span>
+                                <span>Riwayat Tamu</span>
                             </a>
                         </div>
                     </div>

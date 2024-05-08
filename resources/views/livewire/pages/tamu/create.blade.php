@@ -2,7 +2,8 @@
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
         <form class="modal-box max-w-sm" wire:submit="simpan">
-            <div class="card-title">Input tamu baru</div>
+            <div class="text-lg">Input tamu baru</div>
+
             <div class="flex flex-col gap-2 py-6">
                 <label class="form-control w-full">
                     <div class="label">

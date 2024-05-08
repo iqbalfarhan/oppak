@@ -17,6 +17,8 @@ class RoleSeeder extends Seeder
             'superadmin',
             'admin',
             'user',
+            'insidensial',
+            'helpdesk',
             'guest',
         ];
 

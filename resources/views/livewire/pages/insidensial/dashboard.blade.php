@@ -1,6 +1,6 @@
 <div class="card card-compact card-divider">
     <div class="card-body bg-base-200/50 py-0">
-        <h3 class="font-bold text-md">Summary laporan insidensial :</h3>
+        <h3 class="font-bold text-lg">Summary laporan insidensial :</h3>
     </div>
     <div class="card-body">
         <div class="table-wrapper">

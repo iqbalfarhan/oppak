@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use App\Traits\LdapTrait;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -10,18 +11,23 @@ use Livewire\Component;
 class Register extends Component
 {
     use LivewireAlert;
+    use LdapTrait;
 
     public $name;
     public $username;
+    public $ldap = false;
     public $password;
 
     public function register()
     {
         $valid = $this->validate([
-            'name' => 'required',
+            'name' => !$this->ldap ? 'required' : '',
             'username' => 'required|unique:users,username',
             'password' => 'required',
         ]);
+
+        $dd = $this->checkLdap($this->username, $this->password);
+        dd($dd);
 
         $user = User::create($valid);
 

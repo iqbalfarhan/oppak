@@ -2,8 +2,7 @@
     @livewire('partial.header', ['Daftar tamu'])
 
     <div class="flex flex-col md:flex-row justify-between gap-1">
-        <input type="text" class="input input-bordered" placeholder="Pencarian">
-        <input type="date" class="input input-bordered">
+        <input type="date" class="input input-bordered" wire:model.lazy="tanggal">
         <button class="btn btn-primary" wire:click="$dispatch('createTamu')">
             <x-tabler-plus class="size-5" />
             <span>Input tamu</span>

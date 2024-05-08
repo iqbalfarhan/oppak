@@ -120,15 +120,6 @@
         </table>
     </div>
 
-    <div>
-        <div class="flex items-center gap-2">
-            <button class="btn btn-warning btn-xs btn-square">
-                <x-tabler-exclamation-circle class="size-4" />
-            </button>
-            <span class="text-xs">Klik action ini untuk close ticket.</span>
-        </div>
-    </div>
-
     @livewire('pages.ticket.actions')
     @livewire('pages.ticket.set-done')
 </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('notelp')->nullable();
+            $table->string('login')->default('local');
             $table->string('telegram_id')->nullable();
             $table->boolean('active')->default(true);
             $table->rememberToken();

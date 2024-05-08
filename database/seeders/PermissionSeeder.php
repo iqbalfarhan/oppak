@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionSeeder extends Seeder
 {
@@ -14,15 +15,17 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $datas = [
+            'home'                                      => "*",
+            'about'                                     => "*",
+            'profile'                                   => "*",
+            'database'                                  => [],
+
             'user.index'                                => ['admin'],
             'user.create'                               => ['admin'],
             'user.edit'                                 => ['admin'],
             'user.delete'                               => ['admin'],
             'user.resetpassword'                        => ['admin'],
             'user.setactive'                            => ['admin'],
-            'home'                                      => ['user', 'guest', 'admin'],
-            'about'                                     => ['user', 'guest', 'admin'],
-            'profile'                                   => ['user', 'guest', 'admin'],
 
             'role.index'                                => [],
             'role.create'                               => [],
@@ -59,27 +62,27 @@ class PermissionSeeder extends Seeder
             'laporan.show'                              => ['admin', 'user'],
             'laporan.download'                          => ['admin'],
 
-            'insidensial.index'                         => ['admin'],
-            'insidensial.create'                        => ['admin'],
-            'insidensial.edit'                          => ['admin'],
-            'insidensial.delete'                        => ['admin'],
-            'insidensial.show'                          => ['admin'],
+            'insidensial.index'                         => ['admin', 'user', 'insidensial'],
+            'insidensial.create'                        => ['admin', 'user', 'insidensial'],
+            'insidensial.edit'                          => ['admin', 'user', 'insidensial'],
+            'insidensial.delete'                        => ['admin', 'user', 'insidensial'],
+            'insidensial.show'                          => ['admin', 'user', 'insidensial'],
 
-            'ticket.index'                              => ['admin'],
-            'ticket.create'                             => ['admin'],
-            'ticket.edit'                               => ['admin'],
-            'ticket.delete'                             => ['admin'],
-            'ticket.show'                               => ['admin'],
-            'ticket.setprogress'                        => ['admin'],
-            'ticket.requestclose'                       => ['admin'],
-            'ticket.setdone'                            => ['admin'],
-            'ticket.chat'                               => ['admin'],
+            'ticket.index'                              => ['admin', 'helpdesk'],
+            'ticket.create'                             => ['admin', 'helpdesk'],
+            'ticket.edit'                               => ['admin', 'helpdesk'],
+            'ticket.delete'                             => ['admin', 'helpdesk'],
+            'ticket.show'                               => ['admin', 'helpdesk'],
+            'ticket.setprogress'                        => ['admin', 'helpdesk'],
+            'ticket.requestclose'                       => ['admin', 'helpdesk'],
+            'ticket.setdone'                            => ['admin', 'helpdesk'],
+            'ticket.chat'                               => ['admin', 'helpdesk'],
 
-            'pergantian.index'                          => ['admin'],
-            'pergantian.create'                         => ['admin'],
-            'pergantian.edit'                           => ['admin'],
-            'pergantian.show'                           => ['admin'],
-            'pergantian.delete'                         => ['admin'],
+            'pergantian.index'                          => ['admin', 'user'],
+            'pergantian.create'                         => ['admin', 'user'],
+            'pergantian.edit'                           => ['admin', 'user'],
+            'pergantian.show'                           => ['admin', 'user'],
+            'pergantian.delete'                         => ['admin', 'user'],
 
             'perangkat.index'                           => ['admin'],
             'perangkat.create'                          => ['admin'],
@@ -93,19 +96,30 @@ class PermissionSeeder extends Seeder
             'site.show'                                 => ['admin'],
             'site.delete'                               => ['admin'],
 
-            'tamu.dashboard'                            => ['admin'],
-            'tamu.index'                                => ['admin'],
-            'tamu.create'                               => ['admin'],
-            'tamu.edit'                                 => ['admin'],
-            'tamu.show'                                 => ['admin'],
-            'tamu.delete'                               => ['admin'],
-            'tamu.setkeluar'                            => ['admin'],
+            'setting.index'                             => ['admin'],
+            'setting.create'                            => ['admin'],
+            'setting.edit'                              => ['admin'],
+            'setting.show'                              => ['admin'],
+            'setting.delete'                            => [],
+
+            'tamu.dashboard'                            => ['admin', 'user'],
+            'tamu.index'                                => ['admin', 'user'],
+            'tamu.create'                               => ['admin', 'user'],
+            'tamu.edit'                                 => ['admin', 'user'],
+            'tamu.show'                                 => ['admin', 'user'],
+            'tamu.delete'                               => ['admin', 'user'],
+            'tamu.setkeluar'                            => ['admin', 'user'],
         ];
 
         foreach ($datas as $data => $roles) {
             $permission = Permission::updateOrCreate(['name' => $data]);
 
-            if (count($roles) > 0) {
+            if ($roles == "*") {
+                foreach (Role::pluck('name') as $role) {
+                    $permission->assignRole($role);
+                }
+            }
+            elseif(gettype($roles) == "array") {
                 foreach ($roles as $role) {
                     $permission->assignRole($role);
                 }
