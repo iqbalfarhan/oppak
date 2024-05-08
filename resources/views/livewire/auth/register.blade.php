@@ -2,22 +2,19 @@
     <form class="card-body" wire:submit="register">
         <div class="card-title">Register</div>
         <div class="py-4 space-y-1">
-            <div class="form-control">
+            {{-- <div class="form-control">
                 <label class="label cursor-pointer gap-2 justify-start">
                     <input type="checkbox" class="checkbox checkbox-primary" wire:model.live="ldap" />
                     <span class="label-text">Daftar dengan LDAP</span>
                 </label>
-            </div>
-            @if (!$ldap)
-                <label @class([
-                    'input input-bordered flex items-center gap-2',
-                    'input-error' => $errors->first('name'),
-                ])>
-                    <x-tabler-user class="size-5" />
-                    <input type="text" class="grow" placeholder="Nama lengkap" wire:model="name"
-                        autocomplete="name" />
-                </label>
-            @endif
+            </div> --}}
+            <label @class([
+                'input input-bordered flex items-center gap-2',
+                'input-error' => $errors->first('name'),
+            ])>
+                <x-tabler-user class="size-5" />
+                <input type="text" class="grow" placeholder="Nama lengkap" wire:model="name" autocomplete="name" />
+            </label>
             <div class="form-control">
                 <label @class([
                     'input input-bordered flex items-center gap-2',

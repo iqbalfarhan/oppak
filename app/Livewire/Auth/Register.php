@@ -21,13 +21,10 @@ class Register extends Component
     public function register()
     {
         $valid = $this->validate([
-            'name' => !$this->ldap ? 'required' : '',
+            'name' => $this->ldap == false ? 'required' : '',
             'username' => 'required|unique:users,username',
             'password' => 'required',
         ]);
-
-        $dd = $this->checkLdap($this->username, $this->password);
-        dd($dd);
 
         $user = User::create($valid);
 

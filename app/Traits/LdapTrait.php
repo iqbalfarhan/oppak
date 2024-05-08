@@ -17,10 +17,12 @@ trait LdapTrait
             'data' => []
         ];
 
-        $ldapconfig['host'] = $host;
-        $ldapconfig['port'] = $port;
-        $ldapconfig['basedn'] = $basedn;
-        $ldapconfig['authrealm'] = $authrealm;
+        $ldapconfig = [
+            'host' => $host,
+            'port' => $port,
+            'basedn' => $basedn,
+            'authrealm' => $authrealm,
+        ];
 
         $ds = @ldap_connect($ldapconfig['host']);
         $r = @ldap_search($ds, $ldapconfig['basedn'], 'uid='.$username);
@@ -33,12 +35,9 @@ trait LdapTrait
                     'status' => TRUE,
                     'data' => [
                         'username' => $info[0]['uid'][0],
-                        'password' => $password,
                         'name' => $info[0]['sn'][0],
-                        'email' => $info[0]['mail'][0],
                     ]
                 ];
-
             }
         }
 
