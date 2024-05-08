@@ -32,6 +32,7 @@ class PermissionSeeder extends Seeder
             'role.edit'                                 => [],
             'role.delete'                               => [],
             'role.setpermission'                        => [],
+
             'permission.index'                          => [],
             'permission.create'                         => [],
             'permission.edit'                           => [],

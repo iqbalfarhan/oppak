@@ -15,6 +15,7 @@ class UserForm extends Form
     public $username;
     public $password;
     public $role;
+    public $login = "local";
     public $notelp;
     public $telegram_id;
     public $site_id;
@@ -27,6 +28,7 @@ class UserForm extends Form
         $this->role = $user->getRoleNames()->first();
         $this->site_id = $user->site_id;
         $this->notelp = $user->notelp;
+        $this->login = $user->login ?? "local";
         $this->telegram_id = $user->telegram_id;
     }
 
@@ -35,6 +37,7 @@ class UserForm extends Form
             'name' => 'required',
             'username' => 'required',
             'role' => 'required',
+            'login' => 'required',
             'notelp' => '',
             'telegram_id' => '',
         ]);
@@ -53,6 +56,7 @@ class UserForm extends Form
             'name' => 'required',
             'username' => 'required',
             'role' => 'required',
+            'login' => 'required',
             'notelp' => '',
             'telegram_id' => '',
         ]);

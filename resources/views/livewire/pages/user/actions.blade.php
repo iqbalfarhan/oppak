@@ -60,6 +60,18 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
+                        <span class="label-text">Tipe akun</span>
+                    </div>
+                    <select type="text" @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.login'),
+                    ]) wire:model="form.login">
+                        <option value="local">Akun local oppak</option>
+                        <option value="ldap">Akun LDAP</option>
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
                         <span class="label-text">Lokasi Site/STO</span>
                     </div>
                     <select class="select select-bordered" wire:model="form.site_id">

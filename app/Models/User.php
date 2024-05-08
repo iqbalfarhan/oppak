@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'photo',
         'notelp',
+        'login',
         'telegram_id',
         'active',
         'site_id',
