@@ -20,7 +20,7 @@ class Create extends Component
     public function tambahLog()
     {
         $valid = $this->validate([
-            'uraian' => 'required|max:255',
+            'uraian' => 'required',
         ]);
 
         $valid['ticket_id'] = $this->ticket->id;

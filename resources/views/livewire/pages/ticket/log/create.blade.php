@@ -1,23 +1,24 @@
-<form class="card-actions" wire:submit="tambahLog">
-    @if ($photo)
-        <div class="avatar">
-            <div class="w-24 rounded">
-                <img src="{{ $photo->temporaryUrl() }}" />
+<form wire:submit="tambahLog" class="flex gap-2 flex-row justify-between items-center">
+    <label @class([
+        'input input-bordered flex items-center gap-2 w-full',
+        'input-error' => $errors->first('uraian'),
+    ])>
+        <input type="text" class="grow w-full" placeholder="Tulis log" wire:model="uraian" />
+        <button @class([
+            'btn btn-sm btn-circle avatar btn-bordered',
+            'placeholder' => !isset($photo),
+        ]) type="button" onclick="document.getElementById('addEviden').click()">
+            <div class="w-10 rounded-full">
+                @if ($photo)
+                    <img src="{{ $photo->temporaryUrl() }}" />
+                @else
+                    <x-tabler-photo class="size-4" />
+                @endif
             </div>
-        </div>
-    @endif
-    <div class="flex w-full gap-2">
-        <label @class([
-            'input input-bordered flex items-center gap-2 w-full',
-            'input-error' => $errors->first('uraian'),
-        ])>
-            <input type="text" class="grow" placeholder="Tulis log" wire:model="uraian" />
-            <x-tabler-paperclip class="size-5" onclick="document.getElementById('addEviden').click()" />
-        </label>
-        <input type="file" class="hidden" id="addEviden" wire:model="photo">
-        <button class="btn btn-primary">
-            <x-tabler-arrow-right class="size-5" />
-            <span>Kirim</span>
         </button>
-    </div>
+        <input type="file" class="hidden" id="addEviden" wire:model="photo">
+    </label>
+    <button class="btn btn-primary btn-circle">
+        <x-tabler-arrow-right class="size-5" />
+    </button>
 </form>

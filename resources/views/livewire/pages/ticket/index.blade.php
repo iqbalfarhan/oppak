@@ -1,7 +1,7 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Ticketing'])
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-2 md:gap-6">
         <div wire:click="setDone">
             @livewire('widget.ticket', [
                 'number' => $datas->where('done', false)->count(),
