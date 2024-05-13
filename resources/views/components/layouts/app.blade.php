@@ -26,7 +26,7 @@
         @endauth
 
         @guest
-            <div class="flex flex-col gap-6 items-center justify-center h-screen bg-base-300">
+            <div class="flex flex-col gap-6 items-center justify-center h-screen bg-base-300 p-6">
                 <div class="font-bold text-5xl mb-4 text-base-content">{{ config('app.name') }}</div>
 
                 {{ $slot }}

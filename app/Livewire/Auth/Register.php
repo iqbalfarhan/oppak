@@ -15,13 +15,12 @@ class Register extends Component
 
     public $name;
     public $username;
-    public $ldap = false;
     public $password;
 
     public function register()
     {
         $valid = $this->validate([
-            'name' => $this->ldap == false ? 'required' : '',
+            'name' => 'required',
             'username' => 'required|unique:users,username',
             'password' => 'required',
         ]);

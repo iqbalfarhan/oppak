@@ -5,17 +5,17 @@ use App\Models\Setting;
 
 trait LdapTrait
 {
-    public function checkLdap($username, $password) : Array
+    public function checkLdap($credential): bool|string
     {
+        $username = $credential['username'];
+        $password = $credential['password'];
+
         $host = Setting::where('key', 'LDAP_HOST')->first()->value;
         $port = Setting::where('key', 'LDAP_PORT')->first()->value;
         $basedn = Setting::where('key', 'LDAP_BASEDN')->first()->value;
         $authrealm = Setting::where('key', 'LDAP_AUTHREALM')->first()->value;
 
-        $result = [
-            'status' => FALSE,
-            'data' => []
-        ];
+        $result = false;
 
         $ldapconfig = [
             'host' => $host,
@@ -31,13 +31,7 @@ trait LdapTrait
 
         if ($info['count'] != 0) {
             if (@ldap_bind($ds, $info[0]['dn'], $password)) {
-                $result = [
-                    'status' => TRUE,
-                    'data' => [
-                        'username' => $info[0]['uid'][0],
-                        'name' => $info[0]['sn'][0],
-                    ]
-                ];
+                $result = $info[0]['sn'][0];
             }
         }
 

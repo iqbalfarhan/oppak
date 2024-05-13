@@ -17,6 +17,13 @@
                 <x-tabler-key class="size-5" />
                 <input type="password" class="grow" placeholder="Password" wire:model="password" />
             </label>
+
+            <div class="form-control">
+                <label class="label cursor-pointer gap-2 justify-start">
+                    <input type="checkbox" class="toggle toggle-sm" wire:model.live="ldap" />
+                    <span class="label-text">Masuk dengan LDAP</span>
+                </label>
+            </div>
         </div>
         <div class="card-actions">
             <button class="btn btn-primary">

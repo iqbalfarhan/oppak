@@ -58,7 +58,7 @@ trait TelegramTrait
             [
                 'form_params' => [
                     'chat_id' => $this->chatId,
-                    'photo' => new \CURLFile($photoUrl),
+                    'photo' => $photoUrl,
                     'caption' => $caption
                 ]
             ]
