@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
     {
         $datas = [
             'home'                                      => "*",
-            'about'                                     => "*",
+            'about'                                     => ["admin"],
             'profile'                                   => "*",
             'dokumentasi'                               => "*",
             'database'                                  => [],
