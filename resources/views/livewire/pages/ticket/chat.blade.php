@@ -19,10 +19,13 @@
                             <div>
                                 <img src="{{ $log->image }}"
                                     wire:click="$dispatch('showPreview', {url:'{{ $log->photo }}'})"
-                                    class="rounded-lg max-h-24 my-0.5" />
+                                    class="rounded-lg max-w-full my-0.5" />
                             </div>
                         @endif
-                        <span>{{ $log->uraian }}</span>
+                        <div class="flex flex-col gap-1">
+                            <span>{{ $log->uraian }}</span>
+                            <span class="text-[8pt] opacity-50">{{ $log->created_at->diffForHumans() }}</span>
+                        </div>
                     </div>
                 </div>
             @empty
@@ -32,9 +35,11 @@
             @endforelse
         </div>
     </div>
-    @can('ticket.chat')
-        <div class="card-body p-4">
-            @livewire('pages.ticket.log.create', ['ticket' => $ticket])
-        </div>
-    @endcan
+    @if (!$ticket->done)
+        @can('ticket.chat')
+            <div class="card-body p-4">
+                @livewire('pages.ticket.log.create', ['ticket' => $ticket])
+            </div>
+        @endcan
+    @endif
 </div>

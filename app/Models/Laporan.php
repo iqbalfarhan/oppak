@@ -58,4 +58,17 @@ class Laporan extends Model
     {
         return "laporan/".$this->created_at->format("Ymd")."/".$this->id;
     }
+
+    public function getLabelAttribute():String
+    {
+        $route = route('laporan.show', $this->id);
+
+        return implode("\n", [
+            "{$this->user->name} Telah membuat laporan rutin",
+            "tanggal {$this->tanggal->format('d F Y')}",
+            "untuk site : {$this->site->label}",
+            "",
+            $route
+        ]);
+    }
 }

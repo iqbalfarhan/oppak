@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Setting;
 use App\Models\Tamu;
 use App\Traits\TelegramTrait;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 
 class TamuObserver
@@ -18,7 +19,6 @@ class TamuObserver
         if (!is_null($setting->value)) {
             $this->setChatId($setting->value);
             $this->setParseMode("markdown");
-
             $message = $this->generateText("Input tamu baru", $tamu->label);
             $this->sendMessage((string)$message);
         }

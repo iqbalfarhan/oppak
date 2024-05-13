@@ -91,7 +91,7 @@
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
                 <button class="btn btn-primary">
-                    <x-tabler-arrow-right class="size-5" />
+                    <x-tabler-arrow-right class="size-5" wire:loading.class="loading" />
                     <span>Selanjutnya</span>
                 </button>
             </div>

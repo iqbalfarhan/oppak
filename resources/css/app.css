@@ -61,6 +61,11 @@
         @apply opacity-50;
     }
 
+    .table-top th,
+    .table-top td {
+        @apply align-top;
+    }
+
     .sidebar {
         @apply border-r-2 border-base-300 bg-base-100;
     }

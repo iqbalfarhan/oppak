@@ -18,7 +18,7 @@
 
             <div class="modal-action justify-between">
                 <button wire:click="closeModal" class="btn btn-ghost">Close</button>
-                <button wire:click="simpan" class="btn btn-primary">
+                <button wire:click="simpan" class="btn btn-primary" wire:loading.class="loading">
                     <x-tabler-check class="size-5" />
                     <span>Close ticket</span>
                 </button>

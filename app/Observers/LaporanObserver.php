@@ -3,9 +3,13 @@
 namespace App\Observers;
 
 use App\Models\Laporan;
+use App\Models\Setting;
+use App\Traits\TelegramTrait;
+use Exception;
 
 class LaporanObserver
 {
+    use TelegramTrait;
     /**
      * Handle the Laporan "created" event.
      */
@@ -19,7 +23,20 @@ class LaporanObserver
      */
     public function updated(Laporan $laporan): void
     {
-        //
+        if ($laporan->done) {
+            $setting = Setting::where('key', 'TELEGRAM_GROUP_ID_LAPORAN_RUTIN')->first();
+
+            if ($setting && !is_null($setting->value)) {
+                $this->setChatId($setting->value);
+                $this->setParseMode("markdown");
+                $text = $this->generateText("Laporan rutin", $laporan->label);
+                try {
+                    $this->sendPhoto($laporan->image, $text);
+                } catch (Exception $e) {
+                    $this->sendMessage($text);
+                }
+            }
+        }
     }
 
     /**

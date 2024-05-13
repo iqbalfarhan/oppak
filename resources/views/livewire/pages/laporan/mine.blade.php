@@ -4,7 +4,7 @@
     ])
 
     <div class="flex flex-col md:flex-row justify-between gap-2">
-        <input type="date" class="input input-bordered" wire:model.live="tanggal">
+        <input type="date" class="input input-bordered">
         @can('laporan.create')
             <button class="btn btn-primary" wire:click="$dispatch('createLaporan')">
                 <x-tabler-plus class="size-5" />

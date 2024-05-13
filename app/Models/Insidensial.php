@@ -42,4 +42,17 @@ class Insidensial extends Model
     {
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
+
+    public function getLabelAttribute():String
+    {
+        $route = route('insidensial.index');
+        return implode("\n", [
+            "{$this->user->name} Melaporkan laporan insidensial",
+            "kategori laporan {$this->kategori}",
+            "dengan uraian {$this->uraian}",
+            "pada tangggal {$this->created_at->format('d F Y')}",
+            "",
+            $route
+        ]);
+    }
 }

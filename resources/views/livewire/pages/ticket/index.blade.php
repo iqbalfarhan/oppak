@@ -1,7 +1,7 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Ticketing'])
 
-    <div class="grid md:grid-cols-3 gap-2 md:gap-6">
+    <div class="grid md:grid-cols-3 gap-2 md:gap-6" wire:poll>
         <div wire:click="setDone">
             @livewire('widget.ticket', [
                 'number' => $datas->where('done', false)->count(),
@@ -59,6 +59,7 @@
                                 'btn btn-xs uppercase',
                                 'btn-success' => $data->done,
                                 'btn-bordered' => !$data->done,
+                                'btn-warning border-0' => $data->pengajuan,
                             ])>
                                 {{ $data->kode }}
                             </a>

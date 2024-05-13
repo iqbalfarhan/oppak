@@ -41,13 +41,17 @@ class Ticket extends Model
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
     }
 
-    public function getLabelAttribute(){
-        return implode(". ", [
+    public function getLabelAttribute()
+    {
+        $route = route('ticket.show', $this->id);
+        return implode("\n", [
             "Kode ticket ".$this->kode,
             "Pembuat ticket ".$this->user->name,
             "Perangkat ".$this->perangkat,
             "Urraian ".$this->uraian,
             "Site ".$this->site->label,
+            "",
+            $route
         ]);
     }
 }

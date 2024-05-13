@@ -36,7 +36,6 @@ trait TelegramTrait
     public function sendMessage($text)
     {
         $client = new Client();
-
         $response = $client->post(
             'https://api.telegram.org/bot' . $this->botToken . '/sendMessage',
             [
@@ -59,7 +58,7 @@ trait TelegramTrait
             [
                 'form_params' => [
                     'chat_id' => $this->chatId,
-                    'photo' => $photoUrl,
+                    'photo' => new \CURLFile($photoUrl),
                     'caption' => $caption
                 ]
             ]

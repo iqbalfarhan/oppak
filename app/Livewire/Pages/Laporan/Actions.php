@@ -28,15 +28,6 @@ class Actions extends Component
         $this->show = true;
     }
 
-    #[On('deleteLaporan')]
-    public function deleteLaporan(Laporan $laporan)
-    {
-        $laporan->delete();
-        // $this->dispatch('reload');
-        $this->flash('success', 'Laporan deleted');
-        $this->redirect(route('laporan.index'), true);
-    }
-
     public function simpan()
     {
         $this->validate([

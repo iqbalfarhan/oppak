@@ -61,6 +61,16 @@
                         </a>
                     </li>
                 @endcan
+                @can('laporan.mine')
+                    <li>
+                        <a href="{{ route('laporan.mine') }}" @class([
+                            'active' => Route::is(['laporan.mine', 'laporan.show', 'laporan.edit']),
+                        ]) wire:navigate>
+                            <x-tabler-file-smile class="size-5" />
+                            <span>Laporan Rutin Saya</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('insidensial.index')
                     <li>
                         <a href="{{ route('insidensial.index') }}" @class(['active' => Route::is('insidensial.index')]) wire:navigate>

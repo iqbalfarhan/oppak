@@ -49,7 +49,7 @@
                     </p>
                     <div class="card-actions">
                         <button class="btn btn-primary" wire:click="toggleDone" wire:loading.attr="disabled">
-                            <x-tabler-check class="size-5" />
+                            <x-tabler-check class="size-5" wire:loading.class="loading" />
                             <span>Laporan sudah selesai</span>
                         </button>
                     </div>
@@ -62,7 +62,7 @@
                         kembalikan status laporan ini ke draf dengan klik tombol berikut ini</p>
                     <div class="card-actions">
                         <button class="btn btn-warning" wire:click="toggleDone" wire:loading.attr="disabled">
-                            <x-tabler-arrow-back-up class="size-5" />
+                            <x-tabler-arrow-back-up class="size-5" wire:loading.class="loading" />
                             <span>Kembalikan ke draft</span>
                         </button>
                     </div>

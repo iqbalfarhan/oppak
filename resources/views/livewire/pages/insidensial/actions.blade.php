@@ -46,7 +46,7 @@
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
                 <button class="btn btn-primary">
-                    <x-tabler-check class="size-5" />
+                    <x-tabler-check class="size-5" wire:loading.class="loading" />
                     <span>Simpan</span>
                 </button>
             </div>

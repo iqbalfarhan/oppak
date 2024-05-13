@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\TelegramTrait;
 use Illuminate\Http\Request;
-use Iqbalfarhan08\Telegramtools\Traits\TelegramTrait;
 
 class TelegramController extends Controller
 {

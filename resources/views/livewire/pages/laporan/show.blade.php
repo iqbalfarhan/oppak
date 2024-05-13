@@ -125,9 +125,9 @@
     <div class="card card-compact card-divider">
         <div class="card-body space-y-4">
             <h3 class="text-xl font-bold">AMF</h3>
-            <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->amf->photo }}'})">
+            <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->amf?->photo }}'})">
                 <div class="w-24 rounded-lg">
-                    <img src="{{ $laporan->amf->image }}" alt="Shoes" class="h-fit" />
+                    <img src="{{ $laporan->amf?->image ?? url('noimage.png') }}" alt="Shoes" class="h-fit" />
                 </div>
             </div>
         </div>
@@ -135,17 +135,17 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Kebersihan ruangan</div>
-                    <div>Ruangan {{ $laporan->amf->ruangan_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
+                    <div>Ruangan {{ $laporan->amf?->ruangan_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
                 </div>
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Kebersihan engine</div>
-                    <div>Engine {{ $laporan->amf->engine_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
+                    <div>Engine {{ $laporan->amf?->engine_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
                 </div>
             </div>
         </div>
         <div class="card-body py-4">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                @foreach ($laporan->amf->tegangan as $key => $value)
+                @foreach ($laporan->amf?->tegangan ?? [] as $key => $value)
                     <div class="flex flex-col">
                         <div class="text-xs opacity-50">Tegangan {{ $key }}</div>
                         <div>{{ $value }} volt</div>
@@ -155,7 +155,7 @@
         </div>
         <div class="card-body py-4">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                @foreach ($laporan->amf->arus as $key => $value)
+                @foreach ($laporan->amf?->arus ?? [] as $key => $value)
                     <div class="flex flex-col">
                         <div class="text-xs opacity-50">arus {{ $key }}</div>
                         <div>{{ $value }} volt</div>
@@ -167,11 +167,11 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Penggunaan listrik</div>
-                    <div>{{ $laporan->amf->kwh }} Kwh</div>
+                    <div>{{ $laporan->amf?->kwh }} Kwh</div>
                 </div>
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Jam jalan genset</div>
-                    <div>{{ $laporan->amf->jam_jalan_genset }} jam</div>
+                    <div>{{ $laporan->amf?->jam_jalan_genset }} jam</div>
                 </div>
             </div>
         </div>
@@ -285,9 +285,10 @@
                 <div class="flex flex-col md:flex-row gap-4">
                     <div>
                         <div class="avatar"
-                            wire:click="$dispatch('showPreview', {url: '{{ $laporan->temperatur->photo }}'})">
+                            wire:click="$dispatch('showPreview', {url: '{{ $laporan->temperatur?->photo }}'})">
                             <div class="w-24 rounded-lg">
-                                <img src="{{ $laporan->temperatur->image }}" alt="Shoes" class="h-fit" />
+                                <img src="{{ $laporan->temperatur?->image ?? url('noimage.png') }}" alt="Shoes"
+                                    class="h-fit" />
                             </div>
                         </div>
                     </div>
@@ -295,19 +296,19 @@
                         <table class="table table-xs">
                             <tr>
                                 <td>Ruang rectifier</td>
-                                <td>{{ $laporan->temperatur->rectifier }} Celcius</td>
+                                <td>{{ $laporan->temperatur?->rectifier }} Celcius</td>
                             </tr>
                             <tr>
                                 <td>Ruang metro</td>
-                                <td>{{ $laporan->temperatur->metro }} Celcius</td>
+                                <td>{{ $laporan->temperatur?->metro }} Celcius</td>
                             </tr>
                             <tr>
                                 <td>Ruang transmisi</td>
-                                <td>{{ $laporan->temperatur->transmisi }} Celcius</td>
+                                <td>{{ $laporan->temperatur?->transmisi }} Celcius</td>
                             </tr>
                             <tr>
                                 <td>Ruang gpon</td>
-                                <td>{{ $laporan->temperatur->gpon }} Celcius</td>
+                                <td>{{ $laporan->temperatur?->gpon }} Celcius</td>
                             </tr>
                         </table>
                     </div>
@@ -320,9 +321,10 @@
                 <div class="flex flex-col md:flex-row gap-4">
                     <div>
                         <div class="avatar"
-                            wire:click="$dispatch('showPreview', {url: '{{ $laporan->bbm->photo }}'})">
+                            wire:click="$dispatch('showPreview', {url: '{{ $laporan->bbm?->photo }}'})">
                             <div class="w-24 rounded-lg">
-                                <img src="{{ $laporan->bbm->image }}" alt="Shoes" class="h-fit" />
+                                <img src="{{ $laporan->bbm?->image ?? url('noimage.png') }}" alt="Shoes"
+                                    class="h-fit" />
                             </div>
                         </div>
                     </div>
@@ -330,11 +332,11 @@
                         <table class="table table-xs h-fit">
                             <tr>
                                 <td>Volume BBM</td>
-                                <td>{{ $laporan->bbm->volume }}</td>
+                                <td>{{ $laporan->bbm?->volume }}</td>
                             </tr>
                             <tr>
                                 <td>Satuan</td>
-                                <td>{{ $laporan->bbm->satuan }}</td>
+                                <td>{{ $laporan->bbm?->satuan }}</td>
                             </tr>
                         </table>
                     </div>

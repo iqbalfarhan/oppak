@@ -37,7 +37,7 @@ class Index extends Component
                 $ticket->where('done', $this->done);
             })->when($this->pengajuan, function($ticket){
                 $ticket->where('pengajuan', $this->pengajuan);
-            })->withCount('logtickets')->orderBy('done')->get()
+            })->withCount('logtickets')->latest()->orderBy('done')->get()
         ]);
     }
 }

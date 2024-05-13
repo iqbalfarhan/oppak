@@ -56,4 +56,20 @@ class Pergantian extends Model
         return $this->tanggal->addMonths((int)$month);
     }
 
+    public function getLabelAttribute(): String
+    {
+        $route = route('pergantian.index');
+
+        return implode("\n", [
+            "{$this->user->name} telah melakukan pergantian rutin",
+            'untuk perangkat '. $this->perangkat->name,
+            'pada tanggal '. $this->tanggal->format('d F Y'),
+            'dengan keterangan : '. $this->keterangan,
+            'untuk site/STO : '. $this->site->label,
+            'pergantian selanjutnya pada ' . $this->getNextActionAttribute()->format('d F Y'),
+            "",
+            $route
+        ]);
+    }
+
 }
