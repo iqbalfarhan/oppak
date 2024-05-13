@@ -15,7 +15,7 @@
                 'input-error' => $errors->first('password'),
             ])>
                 <x-tabler-key class="size-5" />
-                <input type="text" class="grow" placeholder="Password" wire:model="password" />
+                <input type="password" class="grow" placeholder="Password" wire:model="password" />
             </label>
 
             <div class="form-control">
