@@ -18,6 +18,7 @@ class PermissionSeeder extends Seeder
             'home'                                      => "*",
             'about'                                     => "*",
             'profile'                                   => "*",
+            'dokumentasi'                               => "*",
             'database'                                  => [],
 
             'user.index'                                => ['admin'],

@@ -140,6 +140,14 @@
     <li>
         <h2 class="menu-title">Lainnya</h2>
         <ul>
+            @can('dokumentasi')
+                <li>
+                    <a href="{{ route('dokumentasi') }}" @class(['active' => Route::is('dokumentasi')]) wire:navigate>
+                        <x-tabler-book class="size-5" />
+                        <span>Buku Panduan</span>
+                    </a>
+                </li>
+            @endcan
             @can('about')
                 <li>
                     <a href="{{ route('about') }}" @class(['active' => Route::is('about')]) wire:navigate>
