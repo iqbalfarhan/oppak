@@ -9,9 +9,18 @@ class Dokumentasi extends Component
 {
     public string $file;
 
+    protected function queryString()
+    {
+        return [
+            'file' => [
+                'as' => 'q',
+            ],
+        ];
+    }
+
     public function mount()
     {
-        $this->file = $this->getDefaultFile();
+        $this->file = $this->file ?? $this->getDefaultFile();
     }
 
     public function setFile($path)
