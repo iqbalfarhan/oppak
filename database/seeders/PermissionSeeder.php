@@ -79,7 +79,7 @@ class PermissionSeeder extends Seeder
             'ticket.setprogress'                        => ['helpdesk'],
             'ticket.requestclose'                       => ['helpdesk'],
             'ticket.setdone'                            => ['admin'],
-            'ticket.chat'                               => ['admin', 'helpdesk'],
+            'ticket.log'                               => ['admin', 'helpdesk'],
 
             'pergantian.index'                          => ['admin', 'user'],
             'pergantian.create'                         => ['admin', 'user'],
