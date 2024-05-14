@@ -7,12 +7,14 @@
             <li class="menu-title">Dokumentasi aplikasi :</li>
             <li>
                 <ul>
-                    @foreach ($files as $filename)
-                        <li>
-                            <button wire:click="setFile('{{ $filename }}')" @class(['active' => $filename == $file])>
-                                {{ Str::replaceLast('.md', '', basename($filename)) }}
-                            </button>
-                        </li>
+                    @foreach ($files as $permission => $filename)
+                        @can($permission)
+                            <li>
+                                <button wire:click="setFile('{{ $filename }}')" @class(['active' => $filename == $file])>
+                                    {{ Str::replaceLast('.md', '', basename($filename)) }}
+                                </button>
+                            </li>
+                        @endcan
                     @endforeach
                 </ul>
             </li>

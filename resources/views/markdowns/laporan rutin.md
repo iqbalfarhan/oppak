@@ -1,19 +1,19 @@
-# Laporan rutin
+# Laporan Rutin
 
-Laporan pergantian rutin berfungsi untuk pencatatan pergantian atau maintenance perangkat yang bersifat berkala di setiap site yang terdaftar di aplikasi oppak. Jarak waktu pergantian dapat di atur pada halaman data perangakat pergantian rutin.
+Pembuatan laporan rutin pemeliharaan site PAK. Di laporan rutin ini, user diharuskan mengisi beberapa form yaitu form genset, AMF, baterai, rectifier, temperatur ruangan, dan kondisi BBM.
 
-Untuk memasuki laporan rutin, user harus memiliki akses untuk melakukan laporan rutin. kemudian masuk ke menu "laporan rutin".
+Untuk memasuki laporan rutin, user harus memiliki akses untuk melakukan laporan rutin. Kemudian masuk ke menu "Laporan Rutin".
 
-## 1. List laporan saya
+## 1. List Laporan Saya
 
 ![Laporan rutin](/docs/laporan.png)
 
-## 2. Membuat laporan
+## 2. Membuat Laporan
 
-Untuk membuat laporan rutin, user harus masuk ke menu "laporan rutin" atau "laporan rutin saya". Berikut ini adalah alur pengisian laporan rutin:
+Untuk membuat laporan rutin, user harus masuk ke menu "Laporan Rutin" atau "Laporan Rutin Saya". Berikut ini adalah alur pengisian laporan rutin:
 
 -   User masuk ke menu laporan rutin.
--   User klik tombol buat laporan dan klik "selanjutnya".
+-   User klik tombol buat laporan dan klik "Selanjutnya".
 -   User mengisi form laporan yaitu:
     -   Genset
     -   AMF
@@ -21,11 +21,11 @@ Untuk membuat laporan rutin, user harus masuk ke menu "laporan rutin" atau "lapo
     -   Rectifier
     -   Temperatur
     -   BBM
--   Klik "laporan sudah selesai" pada bagian selesai.
+-   Klik "Laporan Sudah Selesai" pada bagian selesai.
 
-Berikut ini adalah photo dokumentasi pengisian laporan rutin.
+Berikut ini adalah foto dokumentasi pengisian laporan rutin.
 
-![User klik tombol buat laporan dan klik "selanjutnya"](/docs/laporancreate.png)
+![User klik tombol buat laporan dan klik "Selanjutnya"](/docs/laporancreate.png)
 ![User mengisi form laporan summary](/docs/laporaneditsummary.png)
 ![User mengisi form laporan genset](/docs/laporaneditgenset.png)
 ![User mengisi form laporan genset add baterai starter](/docs/laporaneditgensetbateraistarter.png)
@@ -36,12 +36,12 @@ Berikut ini adalah photo dokumentasi pengisian laporan rutin.
 ![User mengisi form laporan bbm](/docs/laporaneditbbm.png)
 ![User mengisi form laporan selesai](/docs/laporaneditselesai.png)
 
-## 3. Edit laporan
+## 3. Edit Laporan
 
-Untuk mengedit laporan, user bisa klik pada button action dengan icon pensil bagian kanan data laporan. Kemudian user dapat mengganti atau merubah data menjadi data yang sesuai.
+Untuk mengedit laporan, user bisa klik pada button action dengan ikon pensil di bagian kanan data laporan. Kemudian user dapat mengganti atau merubah data menjadi data yang sesuai.
 
-## 4. Detail laporan
+## 4. Detail Laporan
 
-Untuk melihat detail laporan, user dapat klik pada button action dengan icon folder di bagian kanan data laporan. Berikut ini adalah tampilan detail laporan.
+Untuk melihat detail laporan, user dapat klik pada button action dengan ikon folder di bagian kanan data laporan. Berikut ini adalah tampilan detail laporan.
 
 ![Laporan rutin](/docs/laporanshow.png)

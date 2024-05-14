@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Dokumentasi extends Component
 {
-    public string $file;
+    public string $file = "aplikasi oppak";
 
     protected function queryString()
     {
@@ -20,7 +20,7 @@ class Dokumentasi extends Component
 
     public function mount()
     {
-        $this->file = $this->file ?? $this->getDefaultFile();
+        $this->file = $this->file ?? "aplikasi oppak";
     }
 
     public function setFile($path)
@@ -28,19 +28,20 @@ class Dokumentasi extends Component
         $this->file = $path;
     }
 
-    private function getDefaultFile()
-    {
-        $files = File::files(resource_path("/views/markdowns/"));
-        return count($files) > 0 ? $files[0] : null;
-    }
-
     public function render()
     {
-        $files = File::files(resource_path("/views/markdowns/"));
-
         return view('livewire.pages.dokumentasi', [
-            'files' => $files,
-            'content' => $this->file ? file_get_contents($this->file) : ""
+            'files' => [
+                'home' => 'aplikasi oppak',
+                'tamu.index' => 'buku tamu',
+                'insidensial.index' => 'laporan insidensial',
+                'laporan.index' => 'laporan rutin',
+                'site.index' => 'mengatur site',
+                'user.index' => 'mengatur user',
+                'pergantian.index' => 'pergantian rutin',
+                'ticket.index' => 'ticketing',
+            ],
+            'content' => $this->file ? file_get_contents(resource_path("/views/markdowns/{$this->file}.md")) : ""
         ]);
     }
 }

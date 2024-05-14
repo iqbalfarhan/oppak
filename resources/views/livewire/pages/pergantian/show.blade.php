@@ -69,7 +69,10 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="whitespace-normal md:max-w-72 min-w-72 text-xs">{{ $data->keterangan }}
+                                    <td class="whitespace-normal text-xs">
+                                        <div class="w-56">
+                                            {{ Str::limit($data->keterangan, 50) }}
+                                        </div>
                                     </td>
                                     @canany(['pergantian.edit', 'pergantian.delete'])
                                         <td>

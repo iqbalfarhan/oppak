@@ -1,33 +1,33 @@
-# Mengatur site
+# Mengatur Site
 
-Pengaturan site merupakan bagian yang harus diisi diawal. Untuk mengakses data site, user harus memiliki akses untuk membuka menu tersebut.
+Pengaturan site merupakan bagian yang harus diisi di awal. Untuk mengakses data site, user harus memiliki akses untuk membuka menu tersebut.
 
-## 1. List data site
+## 1. List Data Site
 
 ![list data site](/docs/site.png)
 
-List data site dapat dibuka dengan masuk pada menu "Site mangement". pada halaman ini menampilkan list data site. klik pada "tambah site" untuk membuat site. klik pada "import" untuk import data excel. dan button action untuk edit dan hapus data site.
+List data site dapat dibuka dengan masuk pada menu "Site Management". Pada halaman ini ditampilkan list data site. Klik pada "Tambah Site" untuk membuat site. Klik pada "Import" untuk mengimpor data Excel. Dan button action untuk mengedit dan menghapus data site.
 
-## 2. Create data site
+## 2. Create Data Site
 
-![list data site](/docs/sitecreate.png)
+![create data site](/docs/sitecreate.png)
 
-Untuk membuat data site, user dapat klik pada tombol "tambah site". Kemudian isi data witel, nama site, dan pilih sumber listrik dengan pilihan pln atau solarcell. kemudian klik simpan.
+Untuk membuat data site, user dapat klik pada tombol "Tambah Site". Kemudian isi data witel, nama site, dan pilih sumber listrik dengan pilihan PLN atau solarcell. Kemudian klik "Simpan".
 
-## 3. Import data site
+## 3. Import Data Site
 
-![list data site](/docs/siteimport.png)
+![import data site](/docs/siteimport.png)
 
-Buat sebuah file excel dengan kolom witel, name dan listrik kemudian isi dengan data site yang ada. khusus untuk listrik, isi dengan pilihan pln atau solar cell.
+Buat sebuah file Excel dengan kolom witel, name, dan listrik, kemudian isi dengan data site yang ada. Khusus untuk listrik, isi dengan pilihan PLN atau solar cell.
 
-Setelah membuat excel data site, buka menu "site management" kemudian klik pada tombol "import" dan pilih file excel yand dibuat tadi kemudian klik "import".
+Setelah membuat Excel data site, buka menu "Site Management" kemudian klik pada tombol "Import" dan pilih file Excel yang dibuat tadi kemudian klik "Import".
 
-## 4. Edit data site
+## 4. Edit Data Site
 
-![list data site](/docs/siteedit.png)
+![edit data site](/docs/siteedit.png)
 
-Pada bagian button actions pada bagian kanan dengan icon pensil. klik pada icon tersebut untuk menampilkan popup data site. ubah keterangan site dan klik simpan.
+Pada bagian button actions pada bagian kanan dengan ikon pensil, klik pada ikon tersebut untuk menampilkan popup data site. Ubah keterangan site dan klik "Simpan".
 
-## 5. Menghapus data site
+## 5. Menghapus Data Site
 
-Pada bagian button actions pada bagian kanan dengan icon tempat sampah. klik pada icon tersebut untuk menghapus data site.
+Pada bagian button actions pada bagian kanan dengan ikon tempat sampah, klik pada ikon tersebut untuk menghapus data site.
