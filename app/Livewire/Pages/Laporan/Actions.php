@@ -24,7 +24,6 @@ class Actions extends Component
         $user = User::find(auth()->id());
         $this->user = $user;
         $this->site = $user->site_id ? Site::find($user->site_id) : null;
-
         $this->show = true;
     }
 

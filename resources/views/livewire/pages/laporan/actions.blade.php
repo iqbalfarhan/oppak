@@ -13,7 +13,7 @@
                         <th>Tanggal laporan</th>
                         <td>{{ date('d F Y', strtotime($tanggal)) }}</td>
                     </tr>
-                    <tr>
+                    <tr @class(['text-error' => isset($site) ? false : true])>
                         <th>Witel Site / STO</th>
                         <td>{{ $site?->label }}</td>
                     </tr>

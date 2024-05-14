@@ -46,6 +46,13 @@ class Profile extends Component
             'site_id' => '',
         ]);
 
+        if ($this->site_id) {
+            $valid['side_id'] = $this->site_id;
+        }
+        else{
+            $valid['site_id'] = NULL;
+        }
+
         if ($this->password) {
             $this->validate([
                 'password' => 'required',
