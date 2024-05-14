@@ -45,3 +45,9 @@ Untuk mengedit laporan, user bisa klik pada button action dengan ikon pensil di 
 Untuk melihat detail laporan, user dapat klik pada button action dengan ikon folder di bagian kanan data laporan. Berikut ini adalah tampilan detail laporan.
 
 ![Laporan rutin](/docs/laporanshow.png)
+
+## 5. Download Laporan
+
+![Laporan rutin](/docs/laporandownload.png)
+
+Download laporan rutin dengan cara masuk ke menu "Download laporan" kemudian pilih range tanggal laporan kemudian klik selanjutnya. hasil dari proses ini adalah sebuah file excel berisi data laporan rutin dengan tanggal berdasarkan range tanggal yang dipilih.

@@ -26,11 +26,12 @@ Aplikasi OPPAK ini dibangun menggunakan Laravel 11, Livewire, Tailwind CSS, dan 
 
 1. Letakkan source code OPPAK di server, misalnya di `/var/www` jika menggunakan Apache atau Nginx. Jika menggunakan PHP Serve, letakkan di mana saja.
 2. Salin file environment dengan menjalankan perintah `cp .env.example .env`.
-3. Buka file .env dan lakukan pengeditan khususnya pada bagian database `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD`.
-4. Jalankan `composer install`.
-5. Jalankan perintah `php artisan oppak:install`.
-6. Untuk mereset data, gunakan perintah `php artisan oppak:reset`.
-7. Saat pertama kali masuk, OPPAK menyediakan akun super yang bisa diakses dengan username "super" dan password "adminoke".
+3. buat sebuah database dengan nama "oppak"
+4. Buka file .env dan lakukan pengeditan khususnya pada bagian database `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD`.
+5. Jalankan `composer install`.
+6. Jalankan perintah `php artisan oppak:install`.
+7. Untuk mereset data, gunakan perintah `php artisan oppak:reset`.
+8. Saat pertama kali masuk, OPPAK menyediakan akun super yang bisa diakses dengan username "super" dan password "adminoke".
 
 ### Konfigurasi Awal
 

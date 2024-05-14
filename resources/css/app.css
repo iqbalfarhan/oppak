@@ -93,4 +93,8 @@
             @apply w-full;
         }
     }
+
+    .prose img {
+        @apply rounded-lg;
+    }
 }

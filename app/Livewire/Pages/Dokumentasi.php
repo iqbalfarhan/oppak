@@ -41,6 +41,8 @@ class Dokumentasi extends Component
                 'user.index' => 'mengatur user',
                 'pergantian.index' => 'pergantian rutin',
                 'ticket.index' => 'ticketing',
+                'permission.index' => 'permission',
+                'setting.index' => 'setting',
             ],
             'content' => $this->file ? file_get_contents(resource_path("/views/markdowns/{$this->file}.md")) : ""
         ]);

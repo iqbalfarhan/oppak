@@ -37,10 +37,10 @@ class OppakInstallCommand extends Command
         ];
 
         $this->withProgressBar($artisantorun, function($command){
-            sleep(1);
             Artisan::call($command);
         });
 
+        $this->newLine(1);
         $this->info("oppak instalation finished");
 
         $this->call('db:seed');
