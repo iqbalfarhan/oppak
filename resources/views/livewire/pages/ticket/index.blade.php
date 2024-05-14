@@ -45,7 +45,7 @@
                 <th>Pembuat ticket</th>
                 <th>Progress</th>
                 <th>Uraian</th>
-                <th>Log</th>
+                <th class="text-center">Log</th>
                 @canany(['ticket.edit', 'ticket.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -84,7 +84,14 @@
                                 <div class="text-xs opacity-75 line-clamp-1">{{ $data->uraian }}</div>
                             </div>
                         </td>
-                        <td>{{ $data->logtickets_count }}</td>
+                        <td>
+                            <div class="flex justify-center">
+                                <a href="{{ route('ticket.log', $data) }}" class="btn btn-xs btn-ghost" wire:navigate>
+                                    {{ $data->logtickets_count }}
+                                    <x-tabler-message-chatbot class="size-5" />
+                                </a>
+                            </div>
+                        </td>
                         @canany(['ticket.edit', 'ticket.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">
