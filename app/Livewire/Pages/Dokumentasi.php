@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Dokumentasi extends Component
 {
+    public $no = 1;
     public string $file = "aplikasi oppak";
 
     protected function queryString()
