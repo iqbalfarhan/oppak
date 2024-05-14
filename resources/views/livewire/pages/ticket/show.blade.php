@@ -152,7 +152,15 @@
             </div>
         </div>
         <div class="md:col-span-2">
-            @livewire('pages.ticket.chat', ['ticket' => $ticket])
+            <div class="card card-divider">
+                <div class="card-body py-4">
+                    <a href="{{ route('ticket.log', $ticket) }}" class="text-lg font-bold" wire:navigate>Log pengajuan
+                        ticket</a>
+                </div>
+                <div class="card-body p-4 md:p-6">
+                    @livewire('pages.ticket.chat', ['ticket' => $ticket])
+                </div>
+            </div>
         </div>
     </div>
 </div>

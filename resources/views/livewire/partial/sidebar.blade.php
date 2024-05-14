@@ -14,7 +14,12 @@
                 @can('ticket.index')
                     <li>
                         <a href="{{ route('ticket.index') }}" @class([
-                            'active' => Route::is(['ticket.index', 'ticket.show', 'ticket.chat']),
+                            'active' => Route::is([
+                                'ticket.index',
+                                'ticket.show',
+                                'ticket.chat',
+                                'ticket.log',
+                            ]),
                         ]) wire:navigate>
                             <x-tabler-ticket class="size-5" />
                             <span>Ticketing</span>
