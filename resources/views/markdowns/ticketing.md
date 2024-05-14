@@ -26,7 +26,7 @@ Kemudian terdapat list data ticket yang memiliki button action edit (icon pensil
 
 ![Detail ticket](docs/ticketingdetail.png)
 
-Halaman detail ini terdapat informasi terkait ticket, action data ticket, log chat progress ticket, action untuk mengajukan close ticket atau membatalkan pengajuan ticket, close ticket atau buka kembali ticket.
+Halaman detail ticket ini dapat diakses dengan klik kode ticket dihalaman list ticket. Halaman detail ini terdapat informasi terkait ticket, action data ticket, log chat progress ticket, action untuk mengajukan close ticket atau membatalkan pengajuan ticket, close ticket atau buka kembali ticket.
 
 ## 3. Membuat Ticket
 
