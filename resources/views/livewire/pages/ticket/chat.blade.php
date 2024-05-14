@@ -1,6 +1,6 @@
-<div class="card card-divider">
+<div class="card">
     <div class="card-body">
-        <h3 class="font-bold">Log pengajuan ticket</h3>
+        <a href="{{ route('ticket.log', $ticket) }}" class="text-lg font-bold" wire:navigate>Log pengajuan ticket</a>
         <div class="py-2">
             @forelse ($datas as $log)
                 <div @class([
@@ -37,7 +37,7 @@
     </div>
     @if (!$ticket->done)
         @can('ticket.chat')
-            <div class="card-body p-4">
+            <div class="card-body py-4">
                 @livewire('pages.ticket.log.create', ['ticket' => $ticket])
             </div>
         @endcan

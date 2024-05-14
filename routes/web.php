@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware('can:tamu.show')->get('/tamu/{tamu}', \App\Livewire\Pages\Tamu\Show::class)->name('tamu.show');
 
     Route::middleware('can:ticket.index')->get('/ticket', \App\Livewire\Pages\Ticket\Index::class)->name('ticket.index');
+    Route::middleware('can:ticket.log')->get('/ticket/{ticket}/log', \App\Livewire\Pages\Ticket\Log::class)->name('ticket.log');
     Route::middleware('can:ticket.show')->get('/ticket/{ticket}', \App\Livewire\Pages\Ticket\Show::class)->name('ticket.show');
 
     Route::middleware('can:laporan.index')->get('/laporan', \App\Livewire\Pages\Laporan\Index::class)->name('laporan.index');
