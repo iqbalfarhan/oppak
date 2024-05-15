@@ -40,8 +40,7 @@
                 <span>Buka camera</span>
             </button>
 
-            <input type="file" id="camera" wire:model.live="photo" class="hidden" capture="environment"
-                multiple />
+            <input type="file" id="camera" wire:model.live="camera" class="hidden" capture="environment" />
 
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>

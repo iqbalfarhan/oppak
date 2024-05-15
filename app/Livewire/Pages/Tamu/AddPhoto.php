@@ -15,6 +15,7 @@ class AddPhoto extends Component
     use LivewireAlert;
     use ImageManipulateTrait;
     public $photo;
+    public $camera;
     public $show = false;
     public Tamu $tamu;
 
@@ -30,6 +31,10 @@ class AddPhoto extends Component
         $this->validate([
             'photo.*' => 'required'
         ]);
+
+        if ($this->camera) {
+            $this->photo[] = $this->camera;
+        }
 
         foreach ($this->photo as $photo) {
             $this->manipulate($photo, 'tamu/'.$this->tamu->id);
