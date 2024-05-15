@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <input type="file" wire:model="photo" id="pickPhoto" class="hidden" accept="image/*">
+            <input type="file" wire:model="photo" id="pickPhoto" class="hidden" accept="image/*" capture="user">
             <div class="py-6 grid md:grid-cols-2 gap-x-6 gap-y-2">
                 <label class="form-control">
                     <div class="label">
