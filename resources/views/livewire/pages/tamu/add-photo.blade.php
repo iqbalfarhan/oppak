@@ -36,7 +36,7 @@
             </div>
 
             <button type="button" class="btn btn-primary" onclick="document.getElementById('camera').click()">
-                <x-tabler-camera class="size-5" wire:loading.class="loading" />
+                <x-tabler-camera class="size-5" />
                 <span>Buka camera</span>
             </button>
 
@@ -45,7 +45,7 @@
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
                 <button class="btn btn-primary">
-                    <x-tabler-upload class="size-5" />
+                    <x-tabler-upload class="size-5" wire:loading.class="loading" />
                     <span>Upload</span>
                 </button>
             </div>
