@@ -8,7 +8,37 @@
                     </div>
                 </div>
             </div>
-            <p>{{ $genset->label }}</p>
+            <div class="flex flex-1 flex-col gap-2">
+                <div class="flex flex-col px-2">
+                    <div class="text-xs opacity-50">Keterangan genset</div>
+                    <div>{{ $genset->keterangan }}</div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table table-xs h-fit">
+                        <tr @class(['text-error' => !$genset->is_valid['ruangan_bersih']])>
+                            <td>Kebersihan ruangan</td>
+                            <td>{{ $genset->ruangan_bersih ? 'Bersih' : 'tidak bersih' }}</td>
+                        </tr>
+                        <tr @class(['text-error' => !$genset->is_valid['engine_bersih']])>
+                            <td>Kebersihan engine</td>
+                            <td>{{ $genset->engine_bersih ? 'Bersih' : 'tidak bersih' }}</td>
+                        </tr>
+                        <tr @class(['text-error' => !$genset->is_valid['suhu_ruangan']])>
+                            <td>Suhu ruangan</td>
+                            <td>{{ $genset->suhu_ruangan }} Celcius</td>
+                        </tr>
+                        <tr @class(['text-error' => !$genset->is_valid['bbm_utama']])>
+                            <td>BBM utama</td>
+                            <td>{{ $genset->bbm_utama }} cm</td>
+                        </tr>
+                        <tr @class(['text-error' => !$genset->is_valid['bbm_harian']])>
+                            <td>BBM harian</td>
+                            <td>{{ $genset->bbm_harian }} cm</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
         </div>
     </div>
     @foreach ($genset->bateraistarters as $key => $bs)

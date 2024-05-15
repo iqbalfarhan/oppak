@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ParameterTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class Rectifier extends Model
 {
     use HasFactory;
+    use ParameterTrait;
 
     protected $fillable = [
         'laporan_id',
@@ -34,5 +36,14 @@ class Rectifier extends Model
             "tegangan output ".$this->tegangan_output. " volt",
             "arus output ".$this->arus_output. " ampere",
         ]);
+    }
+
+    public function getIsValidAttribute()
+    {
+        return [
+            'catuan_input' => $this->getValidStatus('220', $this->catuan_input),
+            'tegangan_output' => $this->getValidStatus('tegangan', $this->tegangan_output),
+            'arus_output' => $this->getValidStatus('arus', $this->arus_output),
+        ];
     }
 }

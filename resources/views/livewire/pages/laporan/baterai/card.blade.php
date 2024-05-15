@@ -8,31 +8,29 @@
                     </div>
                 </div>
             </div>
-            <table class="w-full">
+            <table class="table table-xs h-fit">
                 @foreach ($baterai->tegangan as $key => $tegangan)
-                    <tr>
-                        <td>tegangan total bank {{ $key + 1 }}</td>
-                        <td>:</td>
+                    <tr @class(['text-error' => !$baterai->is_valid['tegangan'][$key]])>
+                        <td>tegangn total bank {{ $key + 1 }}</td>
                         <td>{{ $tegangan }} volt</td>
                     </tr>
                 @endforeach
 
-                <tr @class(['text-error' => $baterai->elektrolit != 'normal'])>
+                <tr @class(['text-error' => !$baterai->is_valid['elektrolit']])>
                     <td>Elektrolit</td>
-                    <td>:</td>
                     <td>{{ $baterai->elektrolit }}</td>
                 </tr>
 
-                <tr>
+                <tr @class(['text-error' => !$baterai->is_valid['bj_cell']])>
                     <td>BJ Cell</td>
-                    <td>:</td>
                     <td>{{ $baterai->bj_cell }} volt</td>
                 </tr>
 
                 @foreach ($baterai->bj_pilot_cell_bank as $key => $pilot)
-                    <tr>
+                    <tr @class([
+                        'text-error' => !$baterai->is_valid['bj_pilot_cell_bank'][$key],
+                    ])>
                         <td>BJ Pilot cell bank {{ $key + 1 }}</td>
-                        <td>:</td>
                         <td>{{ $pilot }} volt</td>
                     </tr>
                 @endforeach

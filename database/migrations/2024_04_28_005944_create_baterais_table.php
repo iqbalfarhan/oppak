@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->json('tegangan');
             $table->string('elektrolit')->default('normal');
-            $table->integer('bj_cell');
+            $table->float('bj_cell');
             $table->json('bj_pilot_cell_bank');
             $table->timestamps();
         });

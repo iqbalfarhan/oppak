@@ -1,6 +1,6 @@
 <div class="page-wrapper">
     @livewire('partial.header', [
-        'title' => 'Laporan rutin',
+        'title' => 'Laporan rutin saya',
     ])
 
     <div class="flex flex-col md:flex-row justify-between gap-2">

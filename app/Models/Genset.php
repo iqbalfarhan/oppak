@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ParameterTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class Genset extends Model
 {
     use HasFactory;
+    use ParameterTrait;
 
     protected $fillable = [
         'laporan_id',
@@ -42,5 +44,16 @@ class Genset extends Model
 
     public function getGambarAttribute(){
         return $this->photo ? Storage::url($this->photo) : url('noimage.png');
+    }
+
+    public function getIsValidAttribute()
+    {
+        return [
+            'ruangan_bersih' => $this->getValidStatus('kebersihan', $this->ruangan_bersih),
+            'engine_bersih'  => $this->getValidStatus('kebersihan', $this->engine_bersih),
+            'suhu_ruangan'   => $this->getValidStatus('suhu', $this->suhu_ruangan),
+            'bbm_utama'      => $this->getValidStatus('tangki_bbm', $this->bbm_utama),
+            'bbm_harian'     => $this->getValidStatus('tangki_bbm', $this->bbm_harian),
+        ];
     }
 }

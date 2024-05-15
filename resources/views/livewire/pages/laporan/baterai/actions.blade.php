@@ -24,28 +24,28 @@
                         <div class="label">
                             <span class="label-text">Tegangan total bank I</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.1" placeholder="Type here" class="input input-bordered"
                             wire:model="form.tegangan.0" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">Tegangan total bank II</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.1" placeholder="Type here" class="input input-bordered"
                             wire:model="form.tegangan.1" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">Tegangan total bank III</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.1" placeholder="Type here" class="input input-bordered"
                             wire:model="form.tegangan.2" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">Tegangan total bank IV</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.1" placeholder="Type here" class="input input-bordered"
                             wire:model="form.tegangan.3" />
                     </label>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="label">
                         <span class="label-text">BJ/Cell</span>
                     </div>
-                    <input type="number" placeholder="Type here" class="input input-bordered"
+                    <input type="number" step="0.01" placeholder="Type here" class="input input-bordered"
                         wire:model="form.bj_cell" />
                 </label>
 
@@ -76,28 +76,28 @@
                         <div class="label">
                             <span class="label-text">BJ pilot cell bank I</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.01" placeholder="Type here" class="input input-bordered"
                             wire:model="form.bj_pilot_cell_bank.0" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">BJ pilot cell bank II</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.01" placeholder="Type here" class="input input-bordered"
                             wire:model="form.bj_pilot_cell_bank.1" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">BJ pilot cell bank III</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.01" placeholder="Type here" class="input input-bordered"
                             wire:model="form.bj_pilot_cell_bank.2" />
                     </label>
                     <label class="form-control">
                         <div class="label">
                             <span class="label-text">BJ pilot cell bank IV</span>
                         </div>
-                        <input type="number" placeholder="Type here" class="input input-bordered"
+                        <input type="number" step="0.01" placeholder="Type here" class="input input-bordered"
                             wire:model="form.bj_pilot_cell_bank.3" />
                     </label>
                 </div>

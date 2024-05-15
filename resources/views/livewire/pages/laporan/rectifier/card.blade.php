@@ -8,9 +8,27 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col">
-                <div class="text-lg font-semibold">{{ $rectifier->keterangan }}</div>
-                <p>{{ $rectifier->label }}</p>
+            <div class="flex flex-col gap-2 flex-1">
+                <div class="flex flex-col px-2">
+                    <div class="text-xs opacity-50">Keterangan rectifier</div>
+                    <div>{{ $rectifier->keterangan }}</div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table table-xs">
+                        <tr>
+                            <td>Catuan input</td>
+                            <td>{{ $rectifier->catuan_input }}</td>
+                        </tr>
+                        <tr @class(['text-error' => !$rectifier->is_valid['tegangan_output']])>
+                            <td>Tegangan output</td>
+                            <td>{{ $rectifier->tegangan_output }} Volt</td>
+                        </tr>
+                        <tr @class(['text-error' => !$rectifier->is_valid['arus_output']])>
+                            <td>Arus output</td>
+                            <td>{{ $rectifier->arus_output }} Ampere</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

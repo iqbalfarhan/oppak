@@ -49,13 +49,6 @@
                             <span>Edit</span>
                         </a>
                     @endcan
-                    @can('laporan.delete')
-                        <button class="btn btn-bordered btn-sm gap-2"
-                            wire:click="$dispatch('deleteLaporan', {laporan:{{ $laporan->id }}})">
-                            <x-tabler-trash class="size-4" />
-                            <span>Delete</span>
-                        </button>
-                    @endcan
                 </div>
             </div>
         @endcanany
@@ -84,23 +77,23 @@
                                         </div>
                                         <div class="table-wrapper">
                                             <table class="table table-xs h-fit">
-                                                <tr>
+                                                <tr @class(['text-error' => !$genset->is_valid['ruangan_bersih']])>
                                                     <td>Kebersihan ruangan</td>
                                                     <td>{{ $genset->ruangan_bersih ? 'Bersih' : 'tidak bersih' }}</td>
                                                 </tr>
-                                                <tr>
+                                                <tr @class(['text-error' => !$genset->is_valid['engine_bersih']])>
                                                     <td>engine_bersih</td>
                                                     <td>{{ $genset->engine_bersih ? 'Bersih' : 'tidak bersih' }}</td>
                                                 </tr>
-                                                <tr>
+                                                <tr @class(['text-error' => !$genset->is_valid['suhu_ruangan']])>
                                                     <td>suhu_ruangan</td>
                                                     <td>{{ $genset->suhu_ruangan }} Celcius</td>
                                                 </tr>
-                                                <tr>
+                                                <tr @class(['text-error' => !$genset->is_valid['bbm_utama']])>
                                                     <td>bbm_utama</td>
                                                     <td>{{ $genset->bbm_utama }} Liter</td>
                                                 </tr>
-                                                <tr>
+                                                <tr @class(['text-error' => !$genset->is_valid['bbm_harian']])>
                                                     <td>bbm_harian</td>
                                                     <td>{{ $genset->bbm_harian }} Liter</td>
                                                 </tr>
@@ -135,22 +128,30 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Kebersihan ruangan</div>
-                    <div>Ruangan {{ $laporan->amf?->ruangan_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
+                    <div @class(['text-error' => !$laporan->amf?->is_valid['ruangan_bersih']])>
+                        Ruangan {{ $laporan->amf?->ruangan_bersih ? 'Bersih' : 'Tidak bersih' }}
+                    </div>
                 </div>
                 <div class="flex flex-col">
                     <div class="text-xs opacity-50">Kebersihan engine</div>
-                    <div>Engine {{ $laporan->amf?->engine_bersih ? 'Bersih' : 'Tidak bersih' }}</div>
+                    <div @class(['text-error' => !$laporan->amf?->is_valid['engine_bersih']])>
+                        Engine {{ $laporan->amf?->engine_bersih ? 'Bersih' : 'Tidak bersih' }}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="card-body py-4">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                @foreach ($laporan->amf?->tegangan ?? [] as $key => $value)
-                    <div class="flex flex-col">
-                        <div class="text-xs opacity-50">Tegangan {{ $key }}</div>
-                        <div>{{ $value }} volt</div>
-                    </div>
-                @endforeach
+                @if ($laporan->amf)
+                    @foreach ($laporan->amf?->tegangan as $key => $value)
+                        <div class="flex flex-col">
+                            <div class="text-xs opacity-50">Tegangan {{ $key }}</div>
+                            <div @class(['text-error' => !$laporan->amf?->is_valid['tegangan'][$key]])>
+                                {{ $value }} volt
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="card-body py-4">
@@ -158,7 +159,9 @@
                 @foreach ($laporan->amf?->arus ?? [] as $key => $value)
                     <div class="flex flex-col">
                         <div class="text-xs opacity-50">arus {{ $key }}</div>
-                        <div>{{ $value }} volt</div>
+                        <div @class(['text-error' => !$laporan->amf?->is_valid['arus'][$key]])>
+                            {{ $value }} ampere
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -180,55 +183,59 @@
         <div class="card-body space-y-4">
             <h3 class="text-xl font-bold">Baterai</h3>
             <div class="grid md:grid-cols-2 gap-6">
-                @foreach ($laporan->baterais as $key => $baterai)
-                    <div class="card card-compact">
-                        <div class="card-body">
-                            <div class="flex flex-col md:flex-row gap-4">
-                                <div>
-                                    <div class="avatar"
-                                        wire:click="$dispatch('showPreview', {url: '{{ $baterai->photo }}'})">
-                                        <div class="w-24 rounded-lg">
-                                            <img src="{{ $baterai->image }}" alt="Shoes" class="h-fit" />
+                @if ($laporan->baterais)
+                    @foreach ($laporan->baterais as $key => $baterai)
+                        <div class="card card-compact">
+                            <div class="card-body">
+                                <div class="flex flex-col md:flex-row gap-4">
+                                    <div>
+                                        <div class="avatar"
+                                            wire:click="$dispatch('showPreview', {url: '{{ $baterai->photo }}'})">
+                                            <div class="w-24 rounded-lg">
+                                                <img src="{{ $baterai->image }}" alt="Shoes" class="h-fit" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="flex flex-1 flex-col gap-2">
-                                    <div class="flex flex-col px-2">
-                                        <div class="text-xs opacity-50">Baterai {{ $key + 1 }}</div>
-                                    </div>
-                                    <div class="table-wrapper">
-                                        <table class="table table-xs h-fit">
-                                            @foreach ($baterai->tegangan as $key => $tegangan)
-                                                <tr>
-                                                    <td>tegangn total bank {{ $key + 1 }}</td>
-                                                    <td>{{ $tegangan }} volt</td>
+                                    <div class="flex flex-1 flex-col gap-2">
+                                        <div class="flex flex-col px-2">
+                                            <div class="text-xs opacity-50">Baterai {{ $key + 1 }}</div>
+                                        </div>
+                                        <div class="table-wrapper">
+                                            <table class="table table-xs h-fit">
+                                                @foreach ($baterai->tegangan as $key => $tegangan)
+                                                    <tr @class(['text-error' => !$baterai->is_valid['tegangan'][$key]])>
+                                                        <td>tegangn total bank {{ $key + 1 }}</td>
+                                                        <td>{{ $tegangan }} volt</td>
+                                                    </tr>
+                                                @endforeach
+
+                                                <tr @class(['text-error' => !$baterai->is_valid['elektrolit']])>
+                                                    <td>Elektrolit</td>
+                                                    <td>{{ $baterai->elektrolit }}</td>
                                                 </tr>
-                                            @endforeach
 
-                                            <tr @class(['text-error' => $baterai->elektrolit != 'normal'])>
-                                                <td>Elektrolit</td>
-                                                <td>{{ $baterai->elektrolit }}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>BJ Cell</td>
-                                                <td>{{ $baterai->bj_cell }} volt</td>
-                                            </tr>
-
-                                            @foreach ($baterai->bj_pilot_cell_bank as $key => $pilot)
-                                                <tr>
-                                                    <td>BJ Pilot cell bank {{ $key + 1 }}</td>
-                                                    <td>{{ $pilot }} volt</td>
+                                                <tr @class(['text-error' => !$baterai->is_valid['bj_cell']])>
+                                                    <td>BJ Cell</td>
+                                                    <td>{{ $baterai->bj_cell }} volt</td>
                                                 </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
 
+                                                @foreach ($baterai->bj_pilot_cell_bank as $key => $pilot)
+                                                    <tr @class([
+                                                        'text-error' => !$baterai->is_valid['bj_pilot_cell_bank'][$key],
+                                                    ])>
+                                                        <td>BJ Pilot cell bank {{ $key + 1 }}</td>
+                                                        <td>{{ $pilot }} volt</td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -257,16 +264,16 @@
                                     <div class="table-wrapper">
                                         <table class="table table-xs">
                                             <tr>
-                                                <td>Ruang metro</td>
-                                                <td>{{ $rectifier->catuan_input }} Celcius</td>
+                                                <td>Catuan input</td>
+                                                <td>{{ $rectifier->catuan_input }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Ruang transmisi</td>
-                                                <td>{{ $rectifier->tegangan_output }} Celcius</td>
+                                            <tr @class(['text-error' => !$rectifier->is_valid['tegangan_output']])>
+                                                <td>Tegangan output</td>
+                                                <td>{{ $rectifier->tegangan_output }} Volt</td>
                                             </tr>
-                                            <tr>
-                                                <td>Ruang gpon</td>
-                                                <td>{{ $rectifier->arus_output }} Celcius</td>
+                                            <tr @class(['text-error' => !$rectifier->is_valid['arus_output']])>
+                                                <td>Arus output</td>
+                                                <td>{{ $rectifier->arus_output }} Ampere</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -294,19 +301,23 @@
                     </div>
                     <div class="table-wrapper flex-1">
                         <table class="table table-xs">
-                            <tr>
+                            <tr @class([
+                                'text-error' => !$laporan->temperatur?->is_valid['rectifier'],
+                            ])>
                                 <td>Ruang rectifier</td>
                                 <td>{{ $laporan->temperatur?->rectifier }} Celcius</td>
                             </tr>
-                            <tr>
+                            <tr @class(['text-error' => !$laporan->temperatur?->is_valid['metro']])>
                                 <td>Ruang metro</td>
                                 <td>{{ $laporan->temperatur?->metro }} Celcius</td>
                             </tr>
-                            <tr>
+                            <tr @class([
+                                'text-error' => !$laporan->temperatur?->is_valid['transmisi'],
+                            ])>
                                 <td>Ruang transmisi</td>
                                 <td>{{ $laporan->temperatur?->transmisi }} Celcius</td>
                             </tr>
-                            <tr>
+                            <tr @class(['text-error' => !$laporan->temperatur?->is_valid['gpon']])>
                                 <td>Ruang gpon</td>
                                 <td>{{ $laporan->temperatur?->gpon }} Celcius</td>
                             </tr>
@@ -330,7 +341,7 @@
                     </div>
                     <div class="table-wrapper flex-1">
                         <table class="table table-xs h-fit">
-                            <tr>
+                            <tr @class(['text-error' => !$laporan->bbm?->is_valid['volume']])>
                                 <td>Volume BBM</td>
                                 <td>{{ $laporan->bbm?->volume }}</td>
                             </tr>
