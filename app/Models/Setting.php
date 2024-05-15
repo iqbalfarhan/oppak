@@ -13,4 +13,8 @@ class Setting extends Model
         'key',
         'value',
     ];
+
+    public function getNilaiAttribute(){
+        return $this->value;
+    }
 }

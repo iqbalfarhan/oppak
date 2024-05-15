@@ -6,10 +6,10 @@
             <div class="py-6 space-y-2">
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Keterangan genset</span>
+                        <span class="label-text">Photo genset</span>
                     </div>
                     <input type="file" placeholder="Keterangan genset" class="file-input file-input-bordered"
-                        wire:model="photo" />
+                        wire:model="photo" capture="environment" />
                 </label>
                 @if ($photo)
                     <div class="avatar">
@@ -48,8 +48,9 @@
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Suhu ruangan</span>
+                        <span class="label-text-alt">celcius</span>
                     </div>
-                    <input type="number" placeholder="Type here" class="input input-bordered"
+                    <input type="number" placeholder="Tulis suhu ruangan dalam angka" class="input input-bordered"
                         wire:model="form.suhu_ruangan" />
                 </label>
                 <div class="grid grid-cols-2 gap-6">

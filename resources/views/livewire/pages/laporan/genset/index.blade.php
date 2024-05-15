@@ -4,6 +4,7 @@
         <p class="text-sm">Klik tambah genset untuk menambahkan genset, biasanya di Site/STO terdapat lebih dari
             1 genset. isi juga baterai starter pada saat mengisi genset. setelah menambahkan genset, klik tambah baterai
             starter untuk menambahkan baterai starter.</p>
+
     </div>
     <div class="card-body">
         <div class="grid md:grid-cols-2 gap-6">
@@ -23,6 +24,7 @@
             @endforeach
         </div>
     </div>
-    @livewire('pages.laporan.genset.actions')
+
     @livewire('pages.laporan.genset.bateraistarter.actions')
+    @livewire('pages.laporan.genset.actions')
 </div>

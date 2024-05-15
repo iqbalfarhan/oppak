@@ -38,4 +38,16 @@ trait LdapTrait
         return $result;
     }
 
+    public static function canUseLdap():bool
+    {
+        $existhost = Setting::where('key', 'LDAP_HOST')->first();
+        if ($existhost) {
+            if ($existhost->value != 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -23,10 +23,18 @@ class SettingForm extends Form
     public function store(){
         $valid = $this->validate([
             'key' => 'required|unique:settings',
-            'value' => 'required',
+            'value' => '',
         ]);
 
         $valid['key'] = $this->generateKey($this->key);
+
+        if ($this->value) {
+            $valid['value'] = $this->value;
+        }
+        else{
+            $valid['value'] = NULL;
+        }
+
 
         Setting::create($valid);
         $this->reset();
@@ -35,10 +43,17 @@ class SettingForm extends Form
     public function update(){
         $valid = $this->validate([
             'key' => 'required|unique:settings,key,'.$this->setting->id,
-            'value' => 'required',
+            'value' => '',
         ]);
 
         $valid['key'] = $this->generateKey($this->key);
+
+        if ($this->value) {
+            $valid['value'] = $this->value;
+        }
+        else{
+            $valid['value'] = NULL;
+        }
 
         $this->setting->update($valid);
         $this->reset();

@@ -40,6 +40,7 @@ class Actions extends Component
 
         if (Laporan::where($valid)->count()) {
             $this->alert('error', 'Sudah membuat laporan');
+            $this->closeModal();
         }
         else{
             $valid['user_id'] = $this->user->id;

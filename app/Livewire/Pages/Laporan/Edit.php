@@ -12,6 +12,15 @@ class Edit extends Component
 
     public $page = "summary";
 
+    protected function queryString()
+    {
+        return [
+            'page' => [
+                'as' => 'p'
+            ]
+        ];
+    }
+
     public $pageList = [
         "summary" => "Summary",
         "genset" => "Genset",
