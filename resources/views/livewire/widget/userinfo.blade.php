@@ -7,7 +7,7 @@
             </div>
         </button>
         <div class="flex flex-col flex-1">
-            <div class="text-lg font-bold">{{ $user->name }}</div>
+            <div class="text-lg font-bold line-clamp-1">{{ $user->name }}</div>
             <div class="text-xs line-clamp-1">{{ $user->site ? $user->site->label : $user->getRoleNames()->first() }}
             </div>
         </div>

@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col">
-                                    <span>{{ $data->name }}</span>
+                                    <span>{{ Str::words($data->name, 3) }}</span>
                                     <span class="text-xs opacity-70">{{ $data->username }}</span>
                                 </div>
                             </div>
