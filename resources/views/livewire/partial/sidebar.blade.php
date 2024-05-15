@@ -1,4 +1,4 @@
-<ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6" data-theme="dark">
+<ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6 scrollbar-hide" data-theme="dark">
     @canany(['home', 'tamu.dashboard', 'ticket.index', 'laporan.download'])
         <li>
             <h2 class="menu-title">Dashboard</h2>
