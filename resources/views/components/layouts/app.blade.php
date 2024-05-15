@@ -7,6 +7,7 @@
 
         <title>{{ $title ?? config('app.name') }}</title>
         @vite('resources/css/app.css')
+        @laravelPWA
     </head>
 
     <body>
