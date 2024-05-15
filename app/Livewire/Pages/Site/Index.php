@@ -17,7 +17,8 @@ class Index extends Component
         return view('livewire.pages.site.index', [
             'datas' => Site::when($this->search, function($site){
                 $site->where('witel', 'like', "%".$this->search."%")
-                ->orWhere('name', 'like', "%".$this->search."%");
+                ->orWhere('name', 'like', "%".$this->search."%")
+                ->orWhere('listrik', 'like', "%".$this->search."%");
             })->withCount('users')->get()
         ]);
     }
