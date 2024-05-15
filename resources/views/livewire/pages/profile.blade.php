@@ -18,7 +18,7 @@
                     <div class="label">
                         <span class="label-text">Ambil photo dari gallery</span>
                     </div>
-                    <input type="text" placeholder="Type here" @class([
+                    <input type="file" @class([
                         'file-input file-input-bordered',
                         'file-input-error' => $errors->first('photo'),
                     ]) wire:model="photo" />
