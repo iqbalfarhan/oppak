@@ -3,19 +3,19 @@
         'title' => 'User management',
     ])
     <div class="table-filter-wrapper">
-        <div class="flex-1">
-            <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
+        <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
+        <div class="flex justify-between gap-1">
+            @can('user.create')
+                <button class="btn btn-primary" wire:click="$dispatch('importUser')">
+                    <x-tabler-database-import class="size-5" />
+                    <span>Import</span>
+                </button>
+                <button class="btn btn-primary" wire:click="$dispatch('createUser')">
+                    <x-tabler-plus class="size-5" />
+                    <span>Tambah user</span>
+                </button>
+            @endcan
         </div>
-        @can('user.create')
-            <button class="btn btn-primary" wire:click="$dispatch('importUser')">
-                <x-tabler-database-import class="size-5" />
-                <span>Import</span>
-            </button>
-            <button class="btn btn-primary" wire:click="$dispatch('createUser')">
-                <x-tabler-plus class="size-5" />
-                <span>Tambah user</span>
-            </button>
-        @endcan
     </div>
 
     <div class="table-wrapper">

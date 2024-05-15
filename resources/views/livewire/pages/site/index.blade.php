@@ -1,20 +1,20 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Site management'])
 
-    <div class="flex flex-col md:flex-row gap-2 justify-between">
-        <div class="flex-1">
-            <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.lazy="search">
+    <div class="flex flex-col md:flex-row gap-1 justify-between">
+        <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.lazy="search">
+        <div class="flex gap-2 justify-between">
+            @can('site.create')
+                <button class="btn btn-primary" wire:click="$dispatch('importSite')">
+                    <x-tabler-database-import class="size-5" />
+                    <span>Import</span>
+                </button>
+                <button class="btn btn-primary" wire:click="$dispatch('createSite')">
+                    <x-tabler-plus class="size-5" />
+                    <span>Tambah site</span>
+                </button>
+            @endcan
         </div>
-        @can('site.create')
-            <button class="btn btn-primary" wire:click="$dispatch('importSite')">
-                <x-tabler-database-import class="size-5" />
-                <span>Import</span>
-            </button>
-            <button class="btn btn-primary" wire:click="$dispatch('createSite')">
-                <x-tabler-plus class="size-5" />
-                <span>Tambah site</span>
-            </button>
-        @endcan
     </div>
 
     <div class="table-wrapper">
