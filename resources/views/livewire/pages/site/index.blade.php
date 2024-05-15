@@ -3,7 +3,7 @@
 
     <div class="flex flex-col md:flex-row gap-2 justify-between">
         <div class="flex-1">
-            <input type="text" class="input input-bordered" placeholder="Pencarian">
+            <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.lazy="search">
         </div>
         @can('site.create')
             <button class="btn btn-primary" wire:click="$dispatch('importSite')">
