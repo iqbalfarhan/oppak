@@ -35,6 +35,7 @@ class Login extends Component
             else{
                 $valid['name'] = $check;
                 $valid['login'] = 'ldap';
+                $valid['password'] = uniqid();
 
                 $user = User::updateOrCreate([
                     'username' => $valid['username']

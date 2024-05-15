@@ -7,10 +7,10 @@ return [
         'short_name' => 'OPPAK',
         'start_url' => '/',
         'background_color' => '#E5E6E6',
-        'theme_color' => '#E5E6E6',
+        'theme_color' => '#F2F2F2',
         'display' => 'standalone',
-        'orientation'=> 'any',
-        'status_bar'=> '#E5E6E6',
+        'orientation'=> 'potrait',
+        'status_bar'=> '#1D232A',
         'icons' => [
             '72x72' => [
                 'path' => '/images/icons/icon-72x72.png',
