@@ -7,7 +7,7 @@ return [
         'short_name' => 'OPPAK',
         'start_url' => '/',
         'background_color' => '#E5E6E6',
-        'theme_color' => '#F2F2F2',
+        'theme_color' => '#1D232A',
         'display' => 'standalone',
         'orientation'=> 'potrait',
         'status_bar'=> '#1D232A',
