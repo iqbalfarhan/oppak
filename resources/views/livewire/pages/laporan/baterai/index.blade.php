@@ -1,9 +1,8 @@
 <div class="card card-divider">
     <div class="card-body space-y-4">
         <h3 class="font-bold text-xl">Baterai</h3>
-        <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et non voluptate commodi recusandae
-            temporibus
-            maxime tempora incidunt! Quam fuga sed voluptate commodi enim velit quis ea dolorem nihil minima? At.</p>
+        <p class="text-sm">Klik "Tambah baterai" untuk menambahkan baterai. biasanya di site/sto terdapat lebih dari 1
+            baterai. Klik "simpan" setelah mengisi form baterai untuk menyimpan data input.</p>
     </div>
     <div class="card-body space-y-6">
         <div class="grid md:grid-cols-2 gap-6">

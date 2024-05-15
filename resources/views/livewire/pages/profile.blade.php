@@ -16,6 +16,15 @@
             <div class="py-6 grid md:grid-cols-2 gap-x-6 gap-y-2">
                 <label class="form-control">
                     <div class="label">
+                        <span class="label-text">Ambil photo dari gallery</span>
+                    </div>
+                    <input type="text" placeholder="Type here" @class([
+                        'file-input file-input-bordered',
+                        'file-input-error' => $errors->first('photo'),
+                    ]) wire:model="photo" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
                         <span class="label-text">Nama lengkap</span>
                     </div>
                     <input type="text" placeholder="Type here" @class([
