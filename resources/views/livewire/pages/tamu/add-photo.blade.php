@@ -19,6 +19,9 @@
                         gambar.</p>
                 @endif
                 <label class="form-control">
+                    <label for="" class="label">
+                        <div class="label-text">Ambil photo dari gallery</div>
+                    </label>
                     <input type="file" @class([
                         'file-input file-input-bordered',
                         'file-input-error' => $errors->first('photo'),
@@ -31,6 +34,14 @@
                     @enderror
                 </label>
             </div>
+
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('camera').click()">
+                <x-tabler-camera class="size-5" />
+                <span>Buka camera</span>
+            </button>
+
+            <input type="file" id="camera" wire:model.live="photo" class="hidden" capture="environment" />
+
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
                 <button class="btn btn-primary">

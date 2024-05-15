@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware('can:user.index')->get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
     Route::middleware('can:permission.index')->get('/permission', \App\Livewire\Pages\Permission\Index::class)->name('permission.index');
     Route::middleware('can:setting.index')->get('/setting', \App\Livewire\Pages\Setting\Index::class)->name('setting.index');
-    Route::middleware('can:site.index')->get('/site/index', \App\Livewire\Pages\Site\Index::class)->name('site.index');
+    Route::middleware('can:site.index')->get('/site', \App\Livewire\Pages\Site\Index::class)->name('site.index');
 
     Route::middleware('can:tamu.index')->get('/tamu', \App\Livewire\Pages\Tamu\Index::class)->name('tamu.index');
     Route::middleware('can:tamu.create')->get('/tamu/create', \App\Livewire\Pages\Tamu\Create::class)->name('tamu.create');

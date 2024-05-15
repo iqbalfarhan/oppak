@@ -4,7 +4,7 @@
     ])
     <div class="table-filter-wrapper">
         <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
-        <div class="flex justify-between gap-1">
+        <div class="table-filter-wrapper">
             @can('user.create')
                 <button class="btn btn-primary" wire:click="$dispatch('importUser')">
                     <x-tabler-database-import class="size-5" />

@@ -1,9 +1,9 @@
 <div class="page-wrapper">
     @livewire('partial.header', ['title' => 'Site management'])
 
-    <div class="flex flex-col md:flex-row gap-1 justify-between">
+    <div class="table-filter-wrapper">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.lazy="search">
-        <div class="flex gap-2 justify-between">
+        <div class="table-filter-wrapper">
             @can('site.create')
                 <button class="btn btn-primary" wire:click="$dispatch('importSite')">
                     <x-tabler-database-import class="size-5" />
