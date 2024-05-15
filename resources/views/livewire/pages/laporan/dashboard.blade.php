@@ -9,7 +9,7 @@
             <span class="hidden md:flex">Filter tanggal</span>
         </button>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
         @forelse ($witels as $witel)
             @livewire('widget.laporan-rutin', ['witel' => $witel], key($witel))
         @empty

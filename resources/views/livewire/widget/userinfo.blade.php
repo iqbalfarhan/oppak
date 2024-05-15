@@ -11,7 +11,7 @@
             <div class="text-xs line-clamp-1">{{ $user->site ? $user->site->label : $user->getRoleNames()->first() }}
             </div>
         </div>
-        <div class="hidden lg:flex">
+        <div class="hidden xl:flex">
             <a href="{{ route('profile') }}" class="btn btn-sm btn-bordered" wire:navigate>
                 <x-tabler-edit class="size-4" />
                 <span>Profile</span>
