@@ -36,11 +36,12 @@
             </div>
 
             <button type="button" class="btn btn-primary" onclick="document.getElementById('camera').click()">
-                <x-tabler-camera class="size-5" />
+                <x-tabler-camera class="size-5" wire:loading.class="loading" />
                 <span>Buka camera</span>
             </button>
 
-            <input type="file" id="camera" wire:model.live="photo" class="hidden" capture="environment" />
+            <input type="file" id="camera" wire:model.live="photo" class="hidden" capture="environment"
+                multiple />
 
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
