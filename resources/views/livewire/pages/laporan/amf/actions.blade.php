@@ -8,7 +8,8 @@
                 <div class="label">
                     <span class="label-text">Photo ATS dari gallery</span>
                 </div>
-                <input type="file" class="file-input file-input-bordered w-full" wire:model.live="photo" />
+                <input type="file" class="file-input file-input-bordered w-full" wire:model="photo"
+                    accept="image/*" />
 
                 <div class="avatar" onclick="document.getElementById('openCamera').click()">
                     <div class="w-24 rounded-lg">

@@ -17,7 +17,7 @@
                         <span class="label-text">Photo baterai</span>
                     </div>
                     <input type="file" placeholder="Type here" class="file-input file-input-bordered"
-                        wire:model="photo" />
+                        wire:model="photo" accept="image/*" />
                 </label>
                 <div class="grid grid-cols-2 gap-x-6 gap-y-2">
                     <label class="form-control">

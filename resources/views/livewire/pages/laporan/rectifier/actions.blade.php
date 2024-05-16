@@ -51,7 +51,7 @@
                     <input type="file" @class([
                         'file-input file-input-bordered',
                         'file-input-error' => $errors->first('photo'),
-                    ]) wire:model="photo" />
+                    ]) wire:model="photo" accept="image/*" />
                 </label>
 
                 <div class="avatar" onclick="document.getElementById('openCamera').click()">

@@ -15,8 +15,11 @@
                     <div class="label">
                         <span class="label-text">Pilih photo dari gallery</span>
                     </div>
-                    <input type="file" placeholder="Keterangan genset" class="file-input file-input-bordered"
-                        wire:model="photo" capture="environment" />
+                    <input type="file" placeholder="Keterangan genset" @class([
+                        'file-input file-input-bordered',
+                        'file-input-error' => $errors()->first('photo'),
+                    ])
+                        wire:model="photo" accept="image/*" />
                 </label>
                 <label class="form-control">
                     <div class="label">

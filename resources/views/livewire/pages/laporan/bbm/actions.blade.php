@@ -23,7 +23,7 @@
                 <div class="label">
                     <span class="label-text">Photo indikator BBM</span>
                 </div>
-                <input wire:model="photo" type="file" class="file-input file-input-bordered" />
+                <input wire:model="photo" type="file" class="file-input file-input-bordered" accept="image/*" />
             </label>
             <div class="avatar" onclick="document.getElementById('openCamera').click()">
                 <div class="w-full rounded-lg">
