@@ -38,7 +38,7 @@ class AmfForm extends Form
             'engine_bersih' => 'required',
             'tegangan' => 'required',
             'arus' => 'required',
-            'kwh' => 'required',
+            'kwh' => '',
             'jam_jalan_genset' => 'required',
         ]);
 
@@ -56,7 +56,7 @@ class AmfForm extends Form
             'engine_bersih' => 'required',
             'tegangan' => 'required',
             'arus' => 'required',
-            'kwh' => 'required',
+            'kwh' => '',
             'jam_jalan_genset' => 'required',
         ]);
 

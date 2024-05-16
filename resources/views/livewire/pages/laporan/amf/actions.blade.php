@@ -23,7 +23,10 @@
                 <div class="label">
                     <span class="label-text">Kebersihan ruangan</span>
                 </div>
-                <select class="select select-bordered" wire:model="form.ruangan_bersih">
+                <select @class([
+                    'select select-bordered',
+                    'select-error' => $errors->first('form.ruangan_bersih'),
+                ]) wire:model="form.ruangan_bersih">
                     <option value="1">Bersih</option>
                     <option value="0">Tidak bersih</option>
                 </select>
@@ -32,7 +35,10 @@
                 <div class="label">
                     <span class="label-text">Kebersihan engine</span>
                 </div>
-                <select class="select select-bordered" wire:model="form.engine_bersih">
+                <select @class([
+                    'select select-bordered',
+                    'select-error' => $errors->first('form.engine_bersih'),
+                ]) wire:model="form.engine_bersih">
                     <option value="1">Bersih</option>
                     <option value="0">Tidak bersih</option>
                 </select>
@@ -51,7 +57,7 @@
                 </div>
                 <input type="number" @class([
                     'input input-bordered flex items-center gap-2',
-                    'input-error' => false,
+                    'input-error' => $errors->first('form.arus.R'),
                 ]) placeholder="Arus beban R"
                     wire:model='form.arus.R' />
             </div>
@@ -62,7 +68,7 @@
                 </div>
                 <input type="number" @class([
                     'input input-bordered flex items-center gap-2',
-                    'input-error' => false,
+                    'input-error' => $errors->first('form.arus.S'),
                 ]) placeholder="Arus beban S"
                     wire:model='form.arus.S' />
             </div>
@@ -73,7 +79,7 @@
                 </div>
                 <input type="number" @class([
                     'input input-bordered flex items-center gap-2',
-                    'input-error' => false,
+                    'input-error' => $errors->first('form.arus.T'),
                 ]) placeholder="Arus beban T"
                     wire:model='form.arus.T' />
             </div>
@@ -89,42 +95,57 @@
                     <span class="label-text">R-S</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt" wire:model="form.tegangan.R-S" />
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.tegangan.R-S'),
+                ]) placeholder="Volt" wire:model="form.tegangan.R-S" />
             </div>
             <div class="form-control">
                 <div class="label">
                     <span class="label-text">S-T</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt" wire:model="form.tegangan.S-T" />
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.tegangan.S-T'),
+                ]) placeholder="Volt" wire:model="form.tegangan.S-T" />
             </div>
             <div class="form-control">
                 <div class="label">
                     <span class="label-text">T-R</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt" wire:model="form.tegangan.T-R" />
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.tegangan.T-R'),
+                ]) placeholder="Volt" wire:model="form.tegangan.T-R" />
             </div>
             <div class="form-control">
                 <div class="label">
                     <span class="label-text">R-N</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt" wire:model="form.tegangan.R-N" />
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.tegangan.R-N'),
+                ]) placeholder="Volt" wire:model="form.tegangan.R-N" />
             </div>
             <div class="form-control">
                 <div class="label">
                     <span class="label-text">S-N</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt" wire:model="form.tegangan.S-N" />
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.tegangan.S-N'),
+                ]) placeholder="Volt" wire:model="form.tegangan.S-N" />
             </div>
             <div class="form-control">
                 <div class="label">
                     <span class="label-text">T-N</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Volt"
+                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="$errors->first('form.tegangan.T-N')"
                     wire:model="form.tegangan.T-N" />
             </div>
         </div>
@@ -139,14 +160,20 @@
                 <div class="label">
                     <span class="label-text">KWH (Setiap tanggal 1)</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="KWH meter setiap tanggal 1"
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.kwh'),
+                ]) placeholder="KWH meter setiap tanggal 1"
                     wire:model="form.kwh" />
             </div>
             <div class="form-control">
                 <div class="label">
                     <span class="label-text">Jam jalan genset (mingguan)</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="Jam jalan genset mingguan"
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.jam_jalan_genset'),
+                ]) placeholder="Jam jalan genset mingguan"
                     wire:model="form.jam_jalan_genset" />
             </div>
         </div>
