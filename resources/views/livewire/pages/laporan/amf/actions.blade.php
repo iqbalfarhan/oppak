@@ -6,26 +6,17 @@
         <div class="card-body grid md:grid-cols-3 gap-2 md:gap-6">
             <label class="form-control w-full">
                 <div class="label">
-                    <span class="label-text">Photo ATS</span>
+                    <span class="label-text">Photo ATS dari gallery</span>
                 </div>
                 <input type="file" class="file-input file-input-bordered w-full" wire:model.live="photo" />
-                <div class="flex gap-2">
-                    @isset($form->amf->photo)
-                        <div class="avatar">
-                            <div class="w-24 rounded-xl">
-                                <img src="{{ $form->amf->image }}" />
-                            </div>
-                        </div>
-                    @endisset
 
-                    @if ($photo)
-                        <div class="avatar">
-                            <div class="w-24 rounded-xl">
-                                <img src="{{ $photo->temporaryUrl() }}" />
-                            </div>
-                        </div>
-                    @endif
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                    <div class="w-24 rounded-lg">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : $form->amf?->image ?? url('noimage.png') }}"
+                            alt="">
+                    </div>
                 </div>
+                <input type="file" id="openCamera" wire:model="camera" class="hidden">
             </label>
             <label class="form-control">
                 <div class="label">

@@ -16,11 +16,13 @@ class Actions extends Component
     use ImageManipulateTrait;
 
     public Laporan $laporan;
+    public Temperatur $temperatur;
     public $rectifier;
     public $metro;
     public $transmisi;
     public $gpon;
     public $photo;
+    public $camera;
 
     public function simpan(){
         $valid = $this->validate([
@@ -49,6 +51,12 @@ class Actions extends Component
         Temperatur::where('laporan_id', $this->laporan->id)->delete();
     }
 
+    public function updatedCamera($camera)
+    {
+        $this->photo = $camera;
+        $this->camera = null;
+    }
+
     public function mount(Laporan $laporan)
     {
         $this->laporan = $laporan;
@@ -58,6 +66,8 @@ class Actions extends Component
             $this->metro = $laporan->temperatur->metro;
             $this->transmisi = $laporan->temperatur->transmisi;
             $this->gpon = $laporan->temperatur->gpon;
+
+            $this->temperatur = $laporan->temperatur;
         }
 
     }

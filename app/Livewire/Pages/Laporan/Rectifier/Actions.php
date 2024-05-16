@@ -19,6 +19,7 @@ class Actions extends Component
 
     public $show = false;
     public $photo;
+    public $camera;
 
     public RectifierForm $form;
     public Laporan $laporan;
@@ -46,6 +47,12 @@ class Actions extends Component
 
         $this->dispatch('reload');
         $this->alert('success', 'Rectifier deleted successfully');
+    }
+
+    public function updatedCamera($camera)
+    {
+        $this->photo = $camera;
+        $this->camera = null;
     }
 
     public function simpan()

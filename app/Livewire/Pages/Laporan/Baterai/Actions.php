@@ -19,6 +19,7 @@ class Actions extends Component
 
     public $show = false;
     public $photo;
+    public $camera;
 
     public ?BateraiForm $form;
     public ?Laporan $laporan;
@@ -45,6 +46,12 @@ class Actions extends Component
         $baterai->delete();
         $this->dispatch('reload');
         $this->alert('success', 'Baterai deleted');
+    }
+
+    public function updatedCamera($camera)
+    {
+        $this->photo = $camera;
+        $this->camera = null;
     }
 
     public function simpan()

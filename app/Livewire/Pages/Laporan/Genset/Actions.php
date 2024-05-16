@@ -22,6 +22,7 @@ class Actions extends Component
     public GensetForm $form;
     public ?Laporan $laporan;
     public $photo;
+    public $camera;
     public $genset;
 
     #[On('createGenset')]
@@ -46,6 +47,12 @@ class Actions extends Component
         $genset->delete();
         $this->dispatch('reload');
         $this->alert('success', 'Genset deleted successfully');
+    }
+
+    public function updatedCamera($camera)
+    {
+        $this->photo = $camera;
+        $this->camera = null;
     }
 
     public function simpan()

@@ -1,4 +1,4 @@
-<div class="card max-w-lg mx-auto">
+<div class="card max-w-sm mx-auto">
     <form class="card-body space-y-4" wire:submit="simpan">
         <h3 class="font-bold text-xl">BBM</h3>
         <div class="space-y-2">
@@ -25,22 +25,13 @@
                 </div>
                 <input wire:model="photo" type="file" class="file-input file-input-bordered" />
             </label>
-            <div class="flex gap-1">
-                @if ($gambar)
-                    <div class="avatar" wire:click="$dispatch('showPreview', {url: '{{ $laporan->bbm->photo }}'})">
-                        <div class="w-24 rounded-xl">
-                            <img src="{{ $gambar }}" />
-                        </div>
-                    </div>
-                @endif
-                @if ($photo)
-                    <div class="avatar">
-                        <div class="w-24 rounded-xl">
-                            <img src="{{ $photo->temporaryUrl() }}" />
-                        </div>
-                    </div>
-                @endif
+            <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                <div class="w-full rounded-lg">
+                    <img src="{{ $photo ? $photo->temporaryUrl() : $bbm?->image ?? url('noimage.png') }}"
+                        alt="">
+                </div>
             </div>
+            <input type="file" id="openCamera" wire:model="camera" class="hidden">
         </div>
         <div class="card-actions">
             <button class="btn btn-primary">

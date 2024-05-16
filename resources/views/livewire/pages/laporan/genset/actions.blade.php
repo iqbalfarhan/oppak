@@ -4,20 +4,20 @@
         <form class="modal-box" wire:submit="simpan">
             <h3 class="font-bold text-lg">Form input genset</h3>
             <div class="py-6 space-y-2">
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                    <div class="w-24 rounded-lg">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : $form->genset?->gambar ?? url('noimage.png') }}"
+                            alt="">
+                    </div>
+                </div>
+                <input type="file" id="openCamera" wire:model="camera" class="hidden">
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Photo genset</span>
+                        <span class="label-text">Pilih photo dari gallery</span>
                     </div>
                     <input type="file" placeholder="Keterangan genset" class="file-input file-input-bordered"
                         wire:model="photo" capture="environment" />
                 </label>
-                @if ($photo)
-                    <div class="avatar">
-                        <div class="w-24 rounded-lg">
-                            <img src="{{ $photo->temporaryUrl() }}" alt="">
-                        </div>
-                    </div>
-                @endif
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Keterangan genset</span>
@@ -72,7 +72,10 @@
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
-                <button class="btn btn-primary">Simpan</button>
+                <button class="btn btn-primary">
+                    <x-tabler-check class="size-5" />
+                    <span>Simpan</span>
+                </button>
             </div>
         </form>
     </div>

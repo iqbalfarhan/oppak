@@ -4,22 +4,21 @@
         <form class="modal-box max-w-sm" wire:submit="simpan">
             <h3 class="font-bold text-lg">Laporan insidensial</h3>
             <div class="py-4 space-y-2">
-                <div class="flex justify-center">
-                    <div class="avatar">
-                        <div class="w-48 rounded-lg btn-bordered">
-                            <img src="{{ $photo ? $photo->temporaryUrl() : $oldPhoto ?? url('noimage.png') }}" />
-                        </div>
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                    <div class="w-full rounded-lg btn-bordered">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : $oldPhoto ?? url('noimage.png') }}"
+                            class="w-full" />
                     </div>
                 </div>
+                <input type="file" class="hidden" id="openCamera" wire:model="camera" capture="environment">
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Photo laporan</span>
+                        <span class="label-text">Ambil photo dari gallery</span>
                     </div>
                     <input type="file" placeholder="Type here" @class([
                         'file-input file-input-bordered',
                         'file-input-error' => $errors->first('photo'),
-                    ]) wire:model="photo"
-                        capture="environment" />
+                    ]) wire:model="photo" />
                     @error('photo')
                         <div class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>

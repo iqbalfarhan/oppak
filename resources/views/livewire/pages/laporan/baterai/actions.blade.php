@@ -4,6 +4,14 @@
         <form class="modal-box" wire:submit="simpan">
             <h3 class="font-bold text-lg">Form baterai</h3>
             <div class="py-4 space-y-2">
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                    <div class="w-24 rounded-lg">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : $form->baterai?->image ?? url('noimage.png') }}"
+                            alt="">
+                    </div>
+                </div>
+                <input type="file" id="openCamera" wire:model="camera" class="hidden">
+
                 <label class="form-control">
                     <div class="label">
                         <span class="label-text">Photo baterai</span>
@@ -11,14 +19,6 @@
                     <input type="file" placeholder="Type here" class="file-input file-input-bordered"
                         wire:model="photo" />
                 </label>
-
-                @if ($photo)
-                    <div class="avatar">
-                        <div class="w-24 rounded-lg">
-                            <img src="{{ $photo->temporaryUrl() }}" alt="">
-                        </div>
-                    </div>
-                @endif
                 <div class="grid grid-cols-2 gap-x-6 gap-y-2">
                     <label class="form-control">
                         <div class="label">

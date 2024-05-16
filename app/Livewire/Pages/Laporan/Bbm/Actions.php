@@ -16,11 +16,13 @@ class Actions extends Component
     use ImageManipulateTrait;
 
     public $photo;
+    public $camera;
     public $gambar;
     public $volume;
     public $satuan;
 
     public Laporan $laporan;
+    public Bbm $bbm;
 
     public function simpan()
     {
@@ -52,6 +54,8 @@ class Actions extends Component
             $this->volume = $laporan->bbm->volume;
             $this->satuan = $laporan->bbm->satuan;
             $this->gambar = $laporan->bbm->image;
+
+            $this->bbm = $laporan->bbm;
         }
     }
 

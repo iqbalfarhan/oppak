@@ -16,6 +16,7 @@ class Actions extends Component
 {
     use LivewireAlert, WithFileUploads, ImageManipulateTrait;
     public $photo;
+    public $camera;
     public $oldPhoto;
     public $show = false;
     public InsidensialForm $form;
@@ -40,6 +41,11 @@ class Actions extends Component
         $insidensial->delete();
         $this->dispatch('reload');
         $this->alert('success', 'Insidensial deleted successfully');
+    }
+
+    public function updatedCamera($camera){
+        $this->photo = $camera;
+        $this->camera = null;
     }
 
     public function simpan()

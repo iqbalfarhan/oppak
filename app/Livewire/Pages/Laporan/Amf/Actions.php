@@ -16,6 +16,7 @@ class Actions extends Component
     use ImageManipulateTrait;
 
     public $photo;
+    public $camera;
     public AmfForm $form;
     public Laporan $laporan;
 
@@ -27,6 +28,12 @@ class Actions extends Component
         if ($laporan->amf) {
             $this->form->setAmf($laporan->amf);
         }
+    }
+
+    public function updatedCamera($camera)
+    {
+        $this->photo = $camera;
+        $this->camera = null;
     }
 
     public function simpan()

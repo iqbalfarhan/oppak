@@ -46,7 +46,7 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">photo rectifier</span>
+                        <span class="label-text">Ambil photo rectifier dari gallery</span>
                     </div>
                     <input type="file" @class([
                         'file-input file-input-bordered',
@@ -54,22 +54,13 @@
                     ]) wire:model="photo" />
                 </label>
 
-                <div class="flex gap-2">
-                    @isset($form->rectifier)
-                        <div class="avatar">
-                            <div class="w-32 rounded-lg">
-                                <img src="{{ $form->rectifier->image }}" alt="">
-                            </div>
-                        </div>
-                    @endisset
-                    @if ($photo)
-                        <div class="avatar">
-                            <div class="w-32 rounded-lg">
-                                <img src="{{ $photo->temporaryUrl() }}" alt="">
-                            </div>
-                        </div>
-                    @endif
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                    <div class="w-24 rounded-lg">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : $form->rectifier?->image ?? url('noimage.png') }}"
+                            alt="">
+                    </div>
                 </div>
+                <input type="file" id="openCamera" wire:model="camera" class="hidden">
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>
