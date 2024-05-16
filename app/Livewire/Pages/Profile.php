@@ -17,6 +17,7 @@ class Profile extends Component
     use WithFileUploads, LivewireAlert, ImageManipulateTrait;
 
     public $photo;
+    public $camera;
     public $name;
     public $username;
     public $notelp;
@@ -34,6 +35,12 @@ class Profile extends Component
         $this->telegram_id = $user->telegram_id;
         $this->notelp = $user->notelp;
         $this->site_id = $user->site_id;
+    }
+
+    public function updatedCamera($camera)
+    {
+        $this->photo = $camera;
+        $this->camera = null;
     }
 
     public function simpan(){

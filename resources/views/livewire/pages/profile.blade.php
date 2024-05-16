@@ -6,13 +6,13 @@
     <div class="card max-w-2xl mx-auto card-divider">
         <form class="card-body" wire:submit="simpan">
             <div class="flex w-full justify-center">
-                <div class="avatar" onclick="document.getElementById('pickPhoto').click()">
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
                     <div class="w-32 rounded-full btn-bordered">
                         <img src="{{ $photo ? $photo->temporaryUrl() : $user->image }}" />
                     </div>
                 </div>
             </div>
-            <input type="file" wire:model="photo" id="pickPhoto" class="hidden" accept="image/*" capture="user">
+            <input type="file" wire:model="camera" id="openCamera" class="hidden" accept="image/*" capture="user">
             <div class="py-6 grid md:grid-cols-2 gap-x-6 gap-y-2">
                 <label class="form-control">
                     <div class="label">
