@@ -98,7 +98,8 @@
                 <input type="number" @class([
                     'input input-bordered',
                     'input-error' => $errors->first('form.tegangan.R-S'),
-                ]) placeholder="Volt" wire:model="form.tegangan.R-S" />
+                ]) placeholder="Tegangan R-S"
+                    wire:model="form.tegangan.R-S" />
             </div>
             <div class="form-control">
                 <div class="label">
@@ -108,7 +109,8 @@
                 <input type="number" @class([
                     'input input-bordered',
                     'input-error' => $errors->first('form.tegangan.S-T'),
-                ]) placeholder="Volt" wire:model="form.tegangan.S-T" />
+                ]) placeholder="Tegangan S-T"
+                    wire:model="form.tegangan.S-T" />
             </div>
             <div class="form-control">
                 <div class="label">
@@ -118,7 +120,8 @@
                 <input type="number" @class([
                     'input input-bordered',
                     'input-error' => $errors->first('form.tegangan.T-R'),
-                ]) placeholder="Volt" wire:model="form.tegangan.T-R" />
+                ]) placeholder="Tegangan T-R"
+                    wire:model="form.tegangan.T-R" />
             </div>
             <div class="form-control">
                 <div class="label">
@@ -128,7 +131,8 @@
                 <input type="number" @class([
                     'input input-bordered',
                     'input-error' => $errors->first('form.tegangan.R-N'),
-                ]) placeholder="Volt" wire:model="form.tegangan.R-N" />
+                ]) placeholder="Tegangan R-N"
+                    wire:model="form.tegangan.R-N" />
             </div>
             <div class="form-control">
                 <div class="label">
@@ -138,7 +142,8 @@
                 <input type="number" @class([
                     'input input-bordered',
                     'input-error' => $errors->first('form.tegangan.S-N'),
-                ]) placeholder="Volt" wire:model="form.tegangan.S-N" />
+                ]) placeholder="Tegangan S-N"
+                    wire:model="form.tegangan.S-N" />
             </div>
             <div class="form-control">
                 <div class="label">
@@ -148,7 +153,7 @@
                 <input type="number" @class([
                     'input input-bordered',
                     'input-error' => $errors->first('form.tegangan.T-N'),
-                ]) placeholder="Volt"
+                ]) placeholder="Tegangan T-N"
                     wire:model="form.tegangan.T-N" />
             </div>
         </div>
@@ -181,6 +186,27 @@
             </div>
         </div>
     </div>
+    @error('form.laporan_id')
+        laporan_id
+    @enderror
+    @error('form.ruangan_bersih')
+        ruangan_bersih
+    @enderror
+    @error('form.engine_bersih')
+        engine_bersih
+    @enderror
+    @error('form.tegangan')
+        tegangan
+    @enderror
+    @error('form.arus')
+        arus
+    @enderror
+    @error('form.kwh')
+        kwh
+    @enderror
+    @error('form.jam_jalan_genset')
+        jam_jalan_genset
+    @enderror
     <div class="card col-span-full">
         <div class="card-body">
             <div class="card-actions">
