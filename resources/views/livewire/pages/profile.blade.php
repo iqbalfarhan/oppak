@@ -93,7 +93,7 @@
             </div>
             <div class="card-action">
                 <button class="btn btn-primary">
-                    <x-tabler-check class="size-5" />
+                    <x-tabler-check class="size-5" wire:loading.class="loading" />
                     <span>Simpan</span>
                 </button>
             </div>
@@ -106,7 +106,7 @@
             </p>
             <div class="card-actions">
                 <button class="btn btn-error" wire:click="$dispatch('deleteAccount', {user: {{ $user->id }}})">
-                    <x-tabler-trash class="size-5" wire:loading.class="loading" />
+                    <x-tabler-trash class="size-5" />
                     <span>Hapus akun saya</span>
                 </button>
             </div>
