@@ -4,7 +4,7 @@
             <h3 class="font-bold">Info AMF</h3>
         </div>
         <div class="card-body grid md:grid-cols-3 gap-2 md:gap-6">
-            <label class="form-control w-full">
+            <div class="form-control w-full">
                 <div class="label">
                     <span class="label-text">Photo ATS dari gallery</span>
                 </div>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
-            </label>
+            </div>
             <label class="form-control">
                 <div class="label">
                     <span class="label-text">Kebersihan ruangan</span>
