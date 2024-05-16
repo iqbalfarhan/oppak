@@ -7,7 +7,7 @@
                     <div class="label">
                         <span class="label-text">Value BBM</span>
                     </div>
-                    <input type="number" placeholder="Suhu ruangan" class="input input-bordered" wire:model="volume" />
+                    <input type="number" placeholder="Volume bbm" class="input input-bordered" wire:model="volume" />
                 </label>
                 <label class="form-control">
                     <div class="label">
@@ -31,7 +31,7 @@
                         alt="">
                 </div>
             </div>
-            <input type="file" id="openCamera" wire:model="camera" class="hidden">
+            <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
         </div>
         <div class="card-actions">
             <button class="btn btn-primary">

@@ -60,7 +60,7 @@
                             alt="">
                     </div>
                 </div>
-                <input type="file" id="openCamera" wire:model="camera" class="hidden">
+                <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="closeModal" class="btn btn-ghost">Close</button>

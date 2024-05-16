@@ -16,7 +16,7 @@
                             alt="">
                     </div>
                 </div>
-                <input type="file" id="openCamera" wire:model="camera" class="hidden">
+                <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
             </label>
             <label class="form-control">
                 <div class="label">

@@ -8,7 +8,7 @@
                         alt="">
                 </div>
             </div>
-            <input type="file" id="openCamera" wire:model="camera" class="hidden">
+            <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
             <label class="form-control">
                 <div class="label">
                     <span class="label-text">Pilih photo pengukur suhu dari gallery</span>
