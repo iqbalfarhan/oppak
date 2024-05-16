@@ -39,7 +39,7 @@ class AmfForm extends Form
             'tegangan' => 'required',
             'arus' => 'required',
             'kwh' => '',
-            'jam_jalan_genset' => 'required',
+            'jam_jalan_genset' => '',
         ]);
 
         if ($this->photo) {
@@ -57,7 +57,7 @@ class AmfForm extends Form
             'tegangan' => 'required',
             'arus' => 'required',
             'kwh' => '',
-            'jam_jalan_genset' => 'required',
+            'jam_jalan_genset' => '',
         ]);
 
         if ($this->photo) {

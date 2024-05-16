@@ -145,7 +145,10 @@
                     <span class="label-text">T-N</span>
                     <span class="label-text-alt">Volt</span>
                 </div>
-                <input type="number" @class(['input input-bordered', 'input-error' => false]) placeholder="$errors->first('form.tegangan.T-N')"
+                <input type="number" @class([
+                    'input input-bordered',
+                    'input-error' => $errors->first('form.tegangan.T-N'),
+                ]) placeholder="Volt"
                     wire:model="form.tegangan.T-N" />
             </div>
         </div>
