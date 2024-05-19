@@ -1,7 +1,7 @@
 <div>
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
-        <form class="modal-box" wire:submit="simpan">
+        <form class="modal-box max-w-lg" wire:submit="simpan">
             <h3 class="font-bold text-lg">Form baterai</h3>
             <div class="py-4 space-y-2">
                 <div class="avatar" onclick="document.getElementById('openCamera').click()">

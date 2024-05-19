@@ -1,48 +1,63 @@
 <form class="space-y-6" wire:submit="simpan">
-    <div class="card card-divider">
-        <div class="card-body py-4 bg-base-200/50">
-            <h3 class="font-bold">Info AMF</h3>
-        </div>
-        <div class="card-body grid md:grid-cols-3 gap-2 md:gap-6">
-            <div class="form-control w-full">
-                <div class="label">
-                    <span class="label-text">Photo ATS dari gallery</span>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div>
+            <div class="card card-divider">
+                <div class="card-body py-4 bg-base-200/50">
+                    <h3 class="font-bold">Info AMF</h3>
                 </div>
-                <input type="file" class="file-input file-input-bordered w-full" wire:model="photo"
-                    accept="image/*" />
-
-                <div class="avatar" onclick="document.getElementById('openCamera').click()">
-                    <div class="w-24 rounded-lg">
-                        <img src="{{ $photo ? $photo->temporaryUrl() : $form->amf?->image ?? url('noimage.png') }}"
-                            alt="">
+                <div class="card-body">
+                    <div class="flex flex-col md:flex-row gap-2 items-start">
+                        <div>
+                            <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                                <div class="w-24 rounded-lg">
+                                    <img src="{{ $photo ? $photo->temporaryUrl() : $form->amf?->image ?? url('noimage.png') }}"
+                                        alt="">
+                                </div>
+                            </div>
+                            <input type="file" id="openCamera" wire:model="camera" class="hidden"
+                                capture="environment">
+                        </div>
+                        <div class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">Photo ATS dari gallery</span>
+                            </div>
+                            <input type="file" class="file-input file-input-bordered w-full" wire:model="photo"
+                                accept="image/*" />
+                        </div>
                     </div>
                 </div>
-                <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
             </div>
-            <label class="form-control">
-                <div class="label">
-                    <span class="label-text">Kebersihan ruangan</span>
-                </div>
-                <select @class([
-                    'select select-bordered',
-                    'select-error' => $errors->first('form.ruangan_bersih'),
-                ]) wire:model="form.ruangan_bersih">
-                    <option value="1">Bersih</option>
-                    <option value="0">Tidak bersih</option>
-                </select>
-            </label>
-            <label class="form-control">
-                <div class="label">
-                    <span class="label-text">Kebersihan engine</span>
-                </div>
-                <select @class([
-                    'select select-bordered',
-                    'select-error' => $errors->first('form.engine_bersih'),
-                ]) wire:model="form.engine_bersih">
-                    <option value="1">Bersih</option>
-                    <option value="0">Tidak bersih</option>
-                </select>
-            </label>
+        </div>
+        <div class="card card-divider">
+            <div class="card-body py-4 bg-base-200/50">
+                <h3 class="font-bold">Info kebersihan</h3>
+            </div>
+            <div class="card-body">
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Kebersihan ruangan</span>
+                    </div>
+                    <select @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.ruangan_bersih'),
+                    ]) wire:model="form.ruangan_bersih">
+                        <option value="1">Bersih</option>
+                        <option value="0">Tidak bersih</option>
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Kebersihan engine</span>
+                    </div>
+                    <select @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.engine_bersih'),
+                    ]) wire:model="form.engine_bersih">
+                        <option value="1">Bersih</option>
+                        <option value="0">Tidak bersih</option>
+                    </select>
+                </label>
+            </div>
         </div>
     </div>
     <div class="card card-divider">

@@ -1,14 +1,16 @@
-<div class="card card-divider max-w-sm mx-auto">
+<div class="card card-divider max-w-md mx-auto">
     <form class="card-body space-y-4" wire:submit="simpan">
         <h3 class="font-bold text-xl">Temperatur ruangan</h3>
         <div class="space-y-2">
-            <div class="avatar" onclick="document.getElementById('openCamera').click()">
-                <div class="w-24 rounded-lg">
-                    <img src="{{ $photo ? $photo->temporaryUrl() : $temperatur?->image ?? url('noimage.png') }}"
-                        alt="">
+            <div class="flex items-center justify-center">
+                <div class="avatar" onclick="document.getElementById('openCamera').click()">
+                    <div class="w-32 rounded-lg">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : $temperatur?->image ?? url('noimage.png') }}"
+                            alt="">
+                    </div>
                 </div>
+                <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
             </div>
-            <input type="file" id="openCamera" wire:model="camera" class="hidden" capture="environment">
             <label class="form-control">
                 <div class="label">
                     <span class="label-text">Pilih photo pengukur suhu dari gallery</span>
