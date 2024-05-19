@@ -49,8 +49,8 @@ class Genset extends Model
     public function getIsValidAttribute()
     {
         return [
-            'ruangan_bersih' => $this->getValidStatus('kebersihan', $this->ruangan_bersih),
-            'engine_bersih'  => $this->getValidStatus('kebersihan', $this->engine_bersih),
+            'ruangan_bersih' => $this->getValidStatus('kebersihan', $this->ruangan_bersih ? "bersih" : "tidak bersih"),
+            'engine_bersih'  => $this->getValidStatus('kebersihan', $this->engine_bersih ? "bersih" : "tidak bersih"),
             'suhu_ruangan'   => $this->getValidStatus('suhu', $this->suhu_ruangan),
             'bbm_utama'      => $this->getValidStatus('tangki_bbm', $this->bbm_utama),
             'bbm_harian'     => $this->getValidStatus('tangki_bbm', $this->bbm_harian),

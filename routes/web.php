@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware(['can:laporan.edit', IsMeMiddleware::class])->get('/laporan/{laporan}/edit', \App\Livewire\Pages\Laporan\Edit::class)->name('laporan.edit');
 
     Route::middleware('can:insidensial.index')->get('/insidensial', \App\Livewire\Pages\Insidensial\Index::class)->name('insidensial.index');
+    Route::middleware('can:parameter.index')->get('/parameter', \App\Livewire\Pages\Parameter\Index::class)->name('parameter.index');
 
     Route::middleware('can:pergantian.index')->get('/pergantian', \App\Livewire\Pages\Pergantian\Index::class)->name('pergantian.index');
     Route::middleware('can:dokumentasi')->get('/dokumentasi', \App\Livewire\Pages\Dokumentasi::class)->name('dokumentasi');

@@ -123,6 +123,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('parameter.index')
+                    <li>
+                        <a href="{{ route('parameter.index') }}" @class(['active' => Route::is('parameter.index')]) wire:navigate>
+                            <x-tabler-edit class="size-5" />
+                            <span>Parameter input</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('permission.index')
                     <li>
                         <a href="{{ route('permission.index') }}" @class(['active' => Route::is('permission.index')]) wire:navigate>

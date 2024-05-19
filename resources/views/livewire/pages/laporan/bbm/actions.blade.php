@@ -26,7 +26,7 @@
                 <input wire:model="photo" type="file" class="file-input file-input-bordered" accept="image/*" />
             </label>
             <div class="avatar" onclick="document.getElementById('openCamera').click()">
-                <div class="w-full rounded-lg">
+                <div class="w-24 rounded-lg">
                     <img src="{{ $photo ? $photo->temporaryUrl() : $bbm?->image ?? url('noimage.png') }}"
                         alt="">
                 </div>

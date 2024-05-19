@@ -39,6 +39,12 @@ class PermissionSeeder extends Seeder
             'permission.edit'                           => [],
             'permission.delete'                         => [],
 
+            'parameter.index'                           => [],
+            'parameter.create'                          => [],
+            'parameter.edit'                            => [],
+            'parameter.delete'                          => [],
+
+            'laporan.chat'                              => ['admin', 'helpdesk'],
             'laporan.index'                             => ['admin', 'guest'],
             'laporan.mine'                              => ['user'],
             'laporan.create'                            => ['admin', 'user'],
