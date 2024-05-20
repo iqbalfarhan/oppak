@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar print:hidden">
     <div class="navbar-start">
         <label for="drawer" class="btn btn-circle btn-ghost">
             <x-tabler-menu class="size-5" />

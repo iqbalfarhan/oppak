@@ -19,7 +19,7 @@
                     {{ $slot }}
                     @livewire('partial.preview-image')
                 </div>
-                <div class="drawer-side scrollbar-hide">
+                <div class="drawer-side scrollbar-hide print:hidden">
                     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                     @livewire('partial.sidebar')
                 </div>
