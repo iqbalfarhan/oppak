@@ -11,7 +11,7 @@
             </article>
         </div>
 
-        <div class="w-full md:w-80">
+        <div class="w-full md:w-80 print:hidden">
             <ul class="menu w-full bg-base-300 p-4 rounded-lg">
                 <h2 class="menu-title">Dokumentasi aplikasi :</h2>
                 <li></li>
