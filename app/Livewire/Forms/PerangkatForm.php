@@ -11,6 +11,7 @@ class PerangkatForm extends Form
     public $name;
     public $durasi_pln;
     public $durasi_solar_cell;
+    public $durasi_genset;
 
     public ?Perangkat $perangkat;
 
@@ -20,6 +21,7 @@ class PerangkatForm extends Form
         $this->name = $perangkat->name;
         $this->durasi_pln = $perangkat->durasi_pln;
         $this->durasi_solar_cell = $perangkat->durasi_solar_cell;
+        $this->durasi_genset = $perangkat->durasi_genset;
     }
 
     public function store()
@@ -28,6 +30,7 @@ class PerangkatForm extends Form
             'name' => 'required',
             'durasi_pln' => 'required',
             'durasi_solar_cell' => 'required',
+            'durasi_genset' => 'required',
         ]);
 
         Perangkat::create($valid);

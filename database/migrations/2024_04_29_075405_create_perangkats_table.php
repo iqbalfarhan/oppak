@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('durasi_pln');
             $table->string('durasi_solar_cell');
+            $table->string('durasi_genset');
             $table->timestamps();
         });
     }

@@ -27,7 +27,8 @@ class Site extends Model
 
     public static $listrik = [
         'pln',
-        'solar cell'
+        'solar cell',
+        'genset'
     ];
 
     public function getLabelAttribute(){

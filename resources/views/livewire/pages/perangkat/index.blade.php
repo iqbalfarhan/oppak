@@ -19,6 +19,7 @@
                             <th>Nama perangkat</th>
                             <th>Durasi PLN</th>
                             <th>Durasi Solar Cell</th>
+                            <th>Durasi Genset</th>
                             @canany(['perangkat.edit', 'perangkat.delete'])
                                 <th class="text-center">Actions</th>
                             @endcanany
@@ -30,6 +31,7 @@
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->durasi_pln }} Bulan</td>
                                     <td>{{ $data->durasi_solar_cell }} Bulan</td>
+                                    <td>{{ $data->durasi_genset }} Bulan</td>
                                     @canany(['perangkat.edit', 'perangkat.delete'])
                                         <td>
                                             <div class="flex gap-1 justify-center">

@@ -20,6 +20,7 @@ class PerangkatFactory extends Factory
             'name' => fake()->sentence(3),
             'durasi_pln' => fake()->numberBetween(3, 12),
             'durasi_solar_cell' => fake()->numberBetween(3, 12),
+            'durasi_genset' => fake()->numberBetween(3, 12),
         ];
     }
 }
