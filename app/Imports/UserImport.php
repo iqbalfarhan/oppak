@@ -20,7 +20,7 @@ class UserImport implements ToModel, WithHeadingRow
         ],[
             'password' => $row['password'],
             'notelp' => $row['notelp'],
-            'telegram_id' => $row['telegram_id'],
+            'telegram_id' => $row['telegram_id'] ?? NULL,
             'site_id' => $site ? $site->id : NULL,
         ]);
 
