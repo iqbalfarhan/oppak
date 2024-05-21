@@ -14,4 +14,9 @@ class Perangkat extends Model
         'durasi_pln',
         'durasi_solar_cell',
     ];
+
+    public function pergantians()
+    {
+        return $this->hasMany(Pergantian::class);
+    }
 }
