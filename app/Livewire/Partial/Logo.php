@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Logo extends Component
 {
-    public $logotype = "text";
+    public $logotype = "image";
     public $class = 'h-16';
 
     public function render()
